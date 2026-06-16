@@ -1,0 +1,407 @@
+/* Minimalist monochrome theme (inspired by simple portfolio layouts) */
+:root{
+  --bg:#ffffff;
+  --text:#111111;
+  --muted:#555555;
+  --border:#e6e6e6;
+  --max: 980px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.55;
+}
+
+.wrapper{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2rem 0px;
+}
+
+/* Header */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255,255,255,0.92);  /* keeps text readable over content */
+  backdrop-filter: blur(8px);          /* optional */
+  border-bottom: 1px solid var(--border);
+
+  /* optional spacing so it feels like a bar */
+  /* padding: 0px 0; */
+}
+
+.site-header .wrapper{ padding: 1rem 0px; }
+
+.header-inner{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.brand{
+  display:block;
+  padding: 0;
+}
+
+.brand-badge{ display:none; }
+
+.brand h1{
+  margin:0;
+  font-size: 2.5rem;
+  line-height:1.05;
+  /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+  letter-spacing: -0.5px;
+}
+
+.avatar{
+  width: clamp(90px, 20vw, 200px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin: 0 auto 1.25rem;
+}
+.avatar img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 100%;
+  transform: scale(1.8);
+  transform-origin: 47% 30%;
+}
+
+#about{
+  min-height: calc(100vh - 80px); /* 80px ≈ header height, adjust if needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Nav (simple text links) */
+.nav{
+  display:flex;
+  gap: 14px;
+  align-items:center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.nav a{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav a[aria-current="page"]{
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.nav a:hover{
+  color: var(--text);
+  border-bottom-color: var(--border);
+}
+
+.header-actions{ display:none; }
+
+/* Generic elements */
+a{ color: inherit; }
+a.brand { text-decoration: none; }
+
+:root{
+  --header-offset: 120px; /* adjust to your header height */
+  --tl-gap: 3rem; /* increase/decrease until it feels right */
+}
+
+section{
+  scroll-margin-top: var(--header-offset);
+}
+
+.section{ margin-top: 2rem; }
+.section h3{
+  font-size: 2.5rem;
+  line-height:1.05;
+  /* font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.tagline{
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 1.2rem; 
+  letter-spacing: 0.4px;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.motto{
+  margin: 0;
+  text-align: center;
+  font-size: 5rem;      /* adjust bigger/smaller */
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.3px;
+  font-family: Didot, Helvetica, sans-serif;
+  color: var(--text);
+}
+
+.motto-time{
+  margin: 0;
+  text-align: center;
+  font-size: 5rem;      /* adjust bigger/smaller */
+  font-weight: 500;
+  font-style: italic;
+  /* letter-spacing: -0.2rem; */
+  /* font-family: 'Courier New', Courier, monospace, Helvetica, sans-serif; */
+  font-family: Didot, Helvetica, sans-serif;
+  /* font-family: Helvetica, sans-serif; */
+}
+
+/* Social row */
+.social{
+  display: flex;
+  justify-content: center;   /* centers the whole row */
+  align-items: center;
+  gap: 1.25rem;              /* space between icons */
+  margin-top: 1rem;
+}
+.social a{
+  display: inline-flex;      /* makes the <a> a square box */
+  align-items: center;       /* centers icon vertically */
+  justify-content: center;   /* centers icon horizontally */
+  width: 4rem;               
+  height: 4rem;
+  text-decoration: none;
+}
+
+.icon{
+  width: 3rem;               /* actual icon size inside the box */
+  height: 3rem;
+  object-fit: contain;       /* keeps aspect ratio */
+  display: block;
+}
+
+/* Project list like the screenshot: image left, text right */
+.project{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  padding: 26px 0;
+  border-top: 1px solid var(--border);
+}
+.project:first-of-type{ border-top: none; padding-top: 0; }
+.project img{
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+.project h4{
+  margin: 0 0 6px 0;
+  font-size: 2rem;
+  line-height:1.1;
+  letter-spacing: -0.4px;
+}
+.project .stack{
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+}
+.project p{
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== Timeline (Projects) ===== */
+.timeline{
+  position: relative;
+  margin-top: 2rem;
+  padding: 0.5rem 0;
+}
+
+/* center line */
+.timeline::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.tl-item{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1.75rem 0;
+}
+
+/* left vs right card placement */
+.tl-item.left  .tl-card{ grid-column: 1; justify-self: end; text-align: left; }
+.tl-item.right .tl-card{ grid-column: 2; justify-self: start; text-align: left; }
+
+/* dot on the center line */
+.tl-dot{
+  position: absolute;
+  left: 50%;
+  top: 2.1rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 2px solid var(--text);
+  transform: translateX(-50%);
+}
+
+/* card */
+.tl-card{
+  width: min(420px, 90%);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* connector line from dot to card */
+
+.tl-card{ 
+  margin-right: var(--tl-gap); 
+  margin-left: var(--tl-gap);
+}
+
+/* typography */
+.tl-date{
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.tl-title{
+  margin: 0 0 0.35rem 0;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.tl-sub{
+  margin: 0 0 0.65rem 0;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+}
+
+.tl-text{
+  margin: 0;
+  color: var(--muted);
+}
+
+/* optional "Read more" link */
+.tl-link{
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+.tl-link:hover{
+  border-bottom-color: var(--text);
+}
+
+/* mobile: stack into one column with line on the left */
+@media (max-width: 900px){
+  .timeline::before{
+    left: 10px;
+    transform: none;
+  }
+
+  .tl-item{
+    grid-template-columns: 1fr;
+    padding-left: 24px;
+  }
+
+  .tl-dot{
+    left: 10px;
+    transform: none;
+  }
+
+  .tl-card{
+    grid-column: 1 !important;
+    justify-self: start !important;
+    width: 100%;
+  }
+
+  .tl-card::before{
+    display: none;
+  }
+}
+
+/* Minimal buttons */
+.button{
+  border: 1px solid var(--border);
+  background: transparent;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor:pointer;
+  font: inherit;
+}
+.button:hover{ background: #fafafa; }
+.small{ font-size: 0.95rem; }
+
+/* Back to top stays but minimal */
+.back-to-top{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  opacity: 0;
+  pointer-events:none;
+  transition: opacity 160ms ease;
+}
+.back-to-top.show{ opacity: 1; pointer-events:auto; }
+
+/* Forms */
+.form{ display:grid; gap: 12px; margin-top: 12px; }
+label{ display:grid; gap: 6px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+input, textarea{
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font: inherit;
+}
+textarea{ min-height: 120px; resize: vertical; }
+.field-error{ color:#b00020; font-size: 0.9rem; }
+
+/* Footer */
+.site-footer{
+  border-top: 1px solid var(--border);
+  margin-top: 52px;
+  padding-top: 18px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+.footer-row{ display:flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.tag{ display:none; }
+
+@media (max-width: 900px){
+  .brand h1{ font-size: 2.35rem; }
+  .project{ grid-template-columns: 1fr; }
+  .wrapper{ padding: 38px 18px; }
+}

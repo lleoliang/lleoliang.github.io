@@ -168,7 +168,7 @@ body{
 }
 
 .avatar{
-  width: clamp(110px, 16vw, 180px);
+  width: clamp(120px, 17.5vw, 200px);
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;

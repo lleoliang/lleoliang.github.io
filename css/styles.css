@@ -536,56 +536,28 @@ section{
   border-bottom-color: var(--text);
 }
 
-/* ===== Learn More branch diagram ===== */
+/* ===== Learn More links ===== */
 .learn-more-row{
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+  text-align: center;
+  gap: 1rem;
 }
 .learn-more-row h3{
   margin: 0;
-  text-align: left;
-  flex: 0 0 auto;
   font-size: 2.5rem;
-}
-.branch{
-  display: flex;
-  align-items: stretch;
-  gap: 1.5rem;
-  flex: 0 1 380px;
-  min-width: 280px;
-}
-.branch-svg{
-  display: block;
-  flex: 0 0 55%;
-  max-width: 260px;
-  height: auto;
-}
-.branch-trunk,
-.branch-line{
-  fill: none;
-  stroke: #bbbbbb;
-  stroke-width: 3;
-}
-.branch-dot{
-  fill: var(--bg);
-  stroke: var(--text);
-  stroke-width: 2;
 }
 .branch-links{
-  flex: 1;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: left;
+  gap: 0.6rem;
 }
 .branch-link{
-  justify-self: start;
   color: var(--text);
   text-decoration: none;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
@@ -596,27 +568,7 @@ section{
 }
 
 @media (max-width: 700px){
-  .learn-more-row{ flex-direction: column; align-items: flex-start; gap: 1rem; }
-}
-
-@media (max-width: 600px){
-  /* The decorative SVG and 2.5rem link text need real width to line up
-     properly (see the branch-diagram note in CLAUDE.md); below 600px there
-     isn't room for both, so drop the SVG and fall back to a plain list. */
-  .branch{
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 0;
-    width: 100%;
-    gap: 0.5rem;
-  }
-  .branch-svg{ display: none; }
-  .branch-links{
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    width: 100%;
-  }
+  .learn-more-row h3{ font-size: 2rem; }
   .branch-link{ font-size: 1.5rem; }
 }
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leo Liang | AGV Simulation Calibration</title>
+  <meta name="description" content="Regression-based calibration of a simulation to reduce prediction error for autonomous guided vehicles.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper header-inner">
+      <a class="brand" href="../index.html#about">
+        <h1>Leo Liang</h1>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <div class="nav-main">
+          <a href="../index.html#about">About</a>
+          <div class="nav-item">
+            <a href="../projects.html">Projects</a>
+            <ul class="nav-menu">
+              <li><a href="../projects/cvor.html">Cross-View Object Registration (CVOR)<span>January 2026 – Present</span></a></li>
+              <li><a href="../projects/claude-secretary.html">Claude Secretary<span>July 2026</span></a></li>
+              <li><a href="../projects/dynamic-memory-for-claude.html">Dynamic Memory for Claude<span>June 2026</span></a></li>
+              <li><a href="../projects/price-matching.html">Store Price-Matching Algorithm<span>December 2025</span></a></li>
+              <li><a href="../projects/simulation-calibration.html">Simulation Calibration for Autonomous Vehicles<span>June 2025 – August 2025</span></a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../teachings.html">Teachings</a>
+            <ul class="nav-menu">
+              <li><a href="../teachings/philosophy.html">Teaching Philosophy</a></li>
+              <li><a href="../teachings/math-164-ta.html">MATH 164 TA Materials</a></li>
+              <li><a href="../teachings/foundations-higher-math.html">Foundations of Higher Math</a></li>
+              <li><a href="../teachings/algebra-i-aops.html">Algebra I Supplements</a></li>
+              <li><a href="../teachings/course-design.html">Course Design</a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../music.html">Music</a>
+            <ul class="nav-menu">
+              <li><a href="../music/performances.html">Performances</a></li>
+              <li><a href="../music/compositions.html">Compositions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/ileoliang" aria-label="LinkedIn"><img src="../images/icons/linkedinicon.png" alt="" class="nav-icon"></a>
+          <a class="email-link" href="#" hidden aria-label="Email"><img src="../images/icons/emailicon.png" alt="" class="nav-icon"></a>
+          <a href="https://github.com/lleoliang" aria-label="GitHub"><img src="../images/icons/githubicon.png" alt="" class="nav-icon"></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+
+    <a class="proj-back" href="../projects.html">← Projects</a>
+
+    <section class="proj-hero">
+      <p class="tl-date">June 2025 – August 2025</p>
+      <h2 class="proj-title">Simulation Calibration for Autonomous Vehicles</h2>
+      <p class="tl-sub">Research & Development · Machine Learning · Python</p>
+      <p class="proj-lead">An standalone system that utilizes machine learning to reduce prediction error for autonomous vehicles by calibrating the parameters of their simulation models.</p>
+
+      <figure class="proj-figure">
+        <video class="proj-video proj-video--full"
+          src="../images/agv/AGV_3_point_turn.mp4"
+          controls muted playsinline preload="metadata">
+        </video>
+        <figcaption class="proj-caption">Autonomous vehicle performing a three-point turn</figcaption>
+      </figure>
+
+      <div class="proj-figures">
+        <figure class="proj-figure">
+          <a href="../images/agv/maneuver_1_distance_error.png" target="_blank" rel="noopener">
+            <img class="proj-img" src="../images/agv/maneuver_1_distance_error.png" alt="Real AGV positions plotted against the piecewise line segments of the planned path">
+          </a>
+          <figcaption class="proj-caption">Distance Error</figcaption>
+        </figure>
+        <figure class="proj-figure">
+          <a href="../images/agv/maneuver_1_speeds.png" target="_blank" rel="noopener">
+            <img class="proj-img" src="../images/agv/maneuver_1_speeds.png" alt="Real speed and hypothetical speed plotted against projected arc length">
+          </a>
+          <figcaption class="proj-caption">Real vs. Hypothetical Speed</figcaption>
+        </figure>
+        <figure class="proj-figure">
+          <a href="../images/agv/maneuver_1_time_error.png" target="_blank" rel="noopener">
+            <img class="proj-img" src="../images/agv/maneuver_1_time_error.png" alt="Real time and hypothetical time plotted against projected arc length">
+          </a>
+          <figcaption class="proj-caption">Real vs. Hypothetical Time</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Description</h3>
+      <p>This work was done in the summer after my junior year in college. It was my first and only formal research experience—of which I absolutely loved. This experience made me realize my passion for research, and my regret of not having done more before. It has had a lasting impact on my personal and professional life.</p>
+  
+      <p>I was funded by the DAAD RISE Scholarship and lived in Germany for the summer. I had the opportunity to work with a great team of researchers and engineers at SLAPStack GmbH, an automated warehouse logistics startup. Outside of work, on Tuesday nights I was a bartender at the local student bar #Figgestube.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Technical Topics</h3>
+      <p>Robotics, Machine Learning, Internet of Things, NURBS Curves, VDA5050</p>
+    </section>
+
+  </main>
+
+  <button id="backToTop" class="button back-to-top small" type="button" aria-label="Back to top">Top</button>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-row">
+      <div>© <span id="year"></span> Leo Liang</div>
+      <div><a href="../index.html">leo-liang</a></div>
+    </div>
+  </footer>
+</body>
+</html>

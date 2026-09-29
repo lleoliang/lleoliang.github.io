@@ -1,0 +1,864 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\usepackage{graphicx}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+% writing lines
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+\begin{center}
+  {\Large\bfseries Homework 3}\\[4pt]
+  Introduction to Functions\\[6pt]
+  Name:\;\underline{\hspace{6.5cm}}\quad
+\end{center}
+\hrule\bigskip
+% =============================================================================
+\section*{Instructions}
+Use a \textbf{pen}. Write questions and surprises in the margin in a different color.
+Some statements in this homework are intentionally imprecise, and some contradict what you already
+know --- find them and flag them in the margin. If a topic confuses you, you can use the internet or AI to
+help. AI can be a good teacher if you ask it specific questions. \textbf{DO NOT} use AI to solve the problems
+without trying yourself first.
+
+Remember to write comments in the margin and answer the entire question. You are a mathematician, your answers should be detailed and convincing to anyone that reads it. \textbf{Do not leave ambiguity} (remember what ambiguous means? if not, search it up).
+
+% =============================================================================
+\section*{Part 1 --- Foundation}
+
+\textbf{1.}\quad Let $f(x) = 3x + 4$. Fill in the table, then answer the questions.
+
+\medskip
+\renewcommand{\arraystretch}{2.4}
+\begin{tabular}{|C{4cm}|C{4cm}|}
+\hline
+$x$ & $f(x)$ \\
+\hline
+$0$ & \\
+\hline
+$1$ & \\
+\hline
+$-1$ & \\
+\hline
+$2$ & \\
+\hline
+$\tfrac{1}{3}$ & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textbf{(a)}\quad What is $f(f(1))$? \hfill Answer:\;\underline{\hspace{3cm}}
+
+\medskip
+\textbf{(b)}\quad Find $x$ such that $f(x) = 10$. \hfill Answer:\;\underline{\hspace{3cm}}
+
+\medskip
+\textbf{(c)}\quad Find $x$ such that $f(x) = 0$. \hfill Answer:\;\underline{\hspace{3cm}}
+
+\bigskip
+\textbf{2.}\quad For each rule, decide whether it defines a valid function from $A$ to $B$. If it
+does, state whether it is injective and/or surjective. If it does not, explain why not.
+
+\medskip
+\textbf{(a)}\quad $A = \{1,2,3\}$, $B = \{1,2,3,4,5\}$:\quad $1 \mapsto 2$, $2 \mapsto 4$, $3 \mapsto 5$.
+\wls{2}
+
+\textbf{(b)}\quad $A = \{1,2,3\}$, $B = \{1,2,3,4,5\}$:\quad $1 \mapsto 3$, $2 \mapsto 3$, $3 \mapsto 3$.
+\wls{2}
+
+\textbf{(c)}\quad $A = \{1,2,3\}$, $B = \{1,2,3,4,5\}$:\quad $1 \mapsto 2$, $2 \mapsto 4$, $2 \mapsto 5$.
+\wls{2}
+
+\textbf{(d)}\quad $A = \{1,2,3\}$, $B = \{1,2,3\}$:\quad each number maps to one more than itself,
+$x \mapsto x+1$.
+\wls{2}
+
+\textbf{(e)}\quad $A = \{1,2,3\}$, $B = \{a,b,c\}$:\quad $1 \mapsto a$, $2 \mapsto b$.
+\wls{2}
+
+\bigskip
+\textbf{3.}\quad Domain, codomain, and range.
+
+\medskip
+\textbf{(a)}\quad $g\colon \mathbb{R} \to \mathbb{R}$ defined by $g(x) = x^2 + 2$.
+State the domain, codomain, and range.
+\wls{2}
+
+\textbf{(b)}\quad $h\colon \{1,2,3\} \to \{3,6,11\}$ defined by $h(x) = x^2 + 2$.
+State the domain, codomain, and range. Is $h$ surjective? You used the same formula as (a) ---
+explain why the answers differ.
+\wls{3}
+
+\textbf{(c)}\quad \textit{No formula required.}\quad A Minecraft furnace smelts each input into one output:
+\[
+  \text{smelt}\colon \{\text{iron ore},\,\text{gold ore},\,\text{sand},\,\text{raw beef}\}
+  \longrightarrow \{\text{iron ingot},\,\text{gold ingot},\,\text{glass},\,\text{steak}\},
+\]
+\[
+  \text{iron ore}\mapsto\text{iron ingot},\;\;
+  \text{gold ore}\mapsto\text{gold ingot},\;\;
+  \text{sand}\mapsto\text{glass},\;\;
+  \text{raw beef}\mapsto\text{steak}.
+\]
+State the domain, codomain, and range of smelt. Can you write smelt as a formula $\text{smelt}(x) = \ldots$?
+What does your answer say about the claim ``every function is a formula''?
+\wls{3}
+
+\bigskip
+\textbf{4.}\quad Fill in the blanks, then answer the True/False items (justify each in one sentence).
+
+\medskip
+\textbf{(a)}\quad The range of a function is always a \underline{\hspace{3cm}} of its codomain.
+
+\textbf{(b)}\quad In symbols, for $f\colon A \to B$, the range $R(f)$ satisfies $R(f) \subseteq \underline{\hspace{2.5cm}}$.
+
+\textbf{(c)}\quad A function is surjective exactly when its range equals its \underline{\hspace{3cm}}.
+
+\medskip
+T\,/\,F\quad For every function, the range is a subset of the codomain.
+\wl
+
+T\,/\,F\quad For every function, the range equals the codomain.
+\wl
+
+T\,/\,F\quad Every function is surjective onto its own range (shrink the codomain to the range and it becomes surjective).
+\wl
+
+\textbf{(d)}\quad Give a function $f\colon \{1,2\} \to \{a,b,c\}$ whose range is a \textbf{proper} subset of its codomain. Write it as ordered pairs, and state the range.
+\wls{2}
+
+\bigskip
+\textbf{5.}\quad For finite sets, the sizes $|A|$ and $|B|$ alone determine what kinds of functions can exist. Answer True/False and justify each in one sentence.
+
+\medskip
+T\,/\,F\quad If $|A| > |B|$, then no function $f\colon A \to B$ can be injective.
+\wl
+
+T\,/\,F\quad It is possible for $f\colon A \to B$ to be injective when $|A| \ge |B|$.
+\wl
+
+T\,/\,F\quad If $|A| < |B|$, then no function $f\colon A \to B$ can be surjective.
+\wl
+
+T\,/\,F\quad If $|A| = |B|$ (finite) and $f$ is injective, then $f$ must also be surjective.
+\wl
+
+T\,/\,F\quad If $f\colon A \to B$ is bijective, then $|A| = |B|$.
+\wl
+
+\medskip
+\textbf{(a)}\quad Complete the table. For each pair of sizes, circle whether each type of function from $A$ to $B$ is \textbf{possible}.
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{3.2cm}|C{3.2cm}|C{3.2cm}|C{3.2cm}|}
+\hline
+Sizes & Injective possible? & Surjective possible? & Bijective possible? \\
+\hline
+$|A|=2,\ |B|=4$ & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+$|A|=4,\ |B|=2$ & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+$|A|=3,\ |B|=3$ & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\bigskip
+\textbf{6.}\quad \textbf{One Function, Four Outfits.}\quad
+A function can be dressed four ways --- an \textbf{arrow diagram}, a set of \textbf{ordered pairs}, a \textbf{table}, and a \textbf{graph}. Here is one function, given as ordered pairs:
+\[
+  f\colon \{-1,0,1,2\} \to \mathbb{Z}, \qquad f = \{(-1,\,1),\,(0,-1),\,(1,-3),\,(2,-5)\}.
+\]
+
+\textbf{(a)}\quad Complete the table.
+
+\medskip
+\renewcommand{\arraystretch}{2.4}
+\begin{tabular}{|C{2.4cm}|C{2.2cm}|C{2.2cm}|C{2.2cm}|C{2.2cm}|}
+\hline
+$x$ & $-1$ & $0$ & $1$ & $2$ \\
+\hline
+$f(x)$ & & & & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\newpage
+
+\medskip
+\textbf{(b)}\quad Draw the arrow diagram, and plot the points on a grid.
+
+\medskip
+\begin{tabular}{|p{0.46\linewidth}|p{0.46\linewidth}|}
+\hline
+\textbf{Arrow diagram} & \textbf{Graph} \\
+& \\[2.8cm]
+\hline
+\end{tabular}
+
+\medskip
+\textbf{(c)}\quad Find the \textbf{rule}. $f(x) = \underline{\hspace{4cm}}$
+
+\medskip
+\textbf{(d)}\quad Is $f$ injective? Is $f$ surjective onto $\mathbb{Z}$? For each, name the representation that made it easiest to see, and say why.
+\wls{3}
+
+\bigskip
+\textbf{7.}\quad \textbf{Is It a Function? Reading the Graph.}\quad
+The \textbf{vertical line test}: a graph in the $xy$-plane defines $y$ as a function of $x$ exactly when no vertical line meets it more than once. For each, decide whether it defines $y$ as a function of $x$ --- that is, whether there is a function $f$ with $y = f(x)$. Circle Yes / No and justify in one sentence.
+
+\medskip
+\textbf{(a)}\quad The points $\{(1,2),\,(2,4),\,(1,5),\,(3,4)\}$. \hfill Yes\quad No
+\wl
+
+\textbf{(b)}\quad The horizontal line $y = 3$. \hfill Yes\quad No
+\wl
+
+\textbf{(c)}\quad The vertical line $x = 3$. \hfill Yes\quad No
+\wl
+
+\textbf{(d)}\quad The parabola $y = x^2 - 1$. \hfill Yes\quad No
+\wl
+
+\textbf{(e)}\quad The sideways parabola $x = y^2$. \hfill Yes\quad No
+\wl
+
+\textbf{(f)}\quad The circle $x^2 + y^2 = 16$. \hfill Yes\quad No
+\wl
+
+\textbf{(g)}\quad In your own words, why does the vertical line test work? (What does a vertical line hitting the graph twice say about a single input?)
+\wls{2}
+
+\bigskip
+\textbf{Reading --- The Two Arrows: $\to$ and $\mapsto$}
+
+\medskip
+Function statements use two different arrows, and they are \textbf{not} interchangeable (do you know what interchangeable means?).
+
+\medskip
+\textbf{The long arrow $\to$ joins two \emph{sets}.}\quad Writing $f\colon A \to B$ says ``$f$ is a function from the set $A$ to the set $B$.'' It names the domain and the codomain. Read it ``$f$, from $A$ to $B$.''
+
+\medskip
+\textbf{The bar arrow $\mapsto$ joins two \emph{elements}.}\quad Writing $1 \mapsto a$ says ``the input $1$ is sent to the output $a$'' --- the very same statement as $f(1) = a$. Read it ``$1$ maps to $a$.'' The little bar at the tail reminds you it starts at one specific element.
+
+\medskip
+So one fact can be written three equivalent ways:
+\[
+  f(1) = a \qquad\Longleftrightarrow\qquad 1 \mapsto a \qquad\Longleftrightarrow\qquad (1,a) \in f.
+\]
+
+Putting it together, a line like
+\[
+  p\colon \{1,2,3\} \to \{a,b,c,d\}, \qquad 1 \mapsto a,\;\; 2 \mapsto b,\;\; 3 \mapsto c
+\]
+first declares the domain and codomain (the $\to$ part), then lists where each input goes (the $\mapsto$ part). It is the same function as the ordered-pair set $\{(1,a),(2,b),(3,c)\}$.
+
+\bigskip
+\textbf{8.}\quad \textbf{Injective, Surjective, Bijective --- Spot Them, Then Build Them.}
+
+\medskip
+\textbf{Part 1 --- Label} each function as \textbf{injective}, \textbf{surjective}, \textbf{bijective}, or \textbf{none}.
+
+\medskip
+\textbf{(a)}\quad $p\colon \{1,2,3\}\to\{a,b,c,d\}$:\quad $1\mapsto a,\;2\mapsto b,\;3\mapsto c$.
+\wl
+
+\textbf{(b)}\quad $q\colon \{1,2,3\}\to\{a,b\}$:\quad $1\mapsto a,\;2\mapsto b,\;3\mapsto a$.
+\wl
+
+\textbf{(c)}\quad $r\colon \{1,2,3\}\to\{a,b,c\}$:\quad $1\mapsto c,\;2\mapsto a,\;3\mapsto b$.
+\wl
+
+\textbf{(d)}\quad $s\colon \{1,2,3\}\to\{a,b,c\}$:\quad $1\mapsto a,\;2\mapsto a,\;3\mapsto b$.
+\wl
+
+\medskip
+\textbf{Part 2 --- Build your own} (write each as a set of ordered pairs).
+
+\medskip
+\textbf{(e)}\quad An \textbf{injective but not surjective} function $\{1,2\}\to\{a,b,c\}$.
+\wl
+
+\textbf{(f)}\quad A \textbf{surjective but not injective} function $\{1,2,3\}\to\{a,b\}$.
+\wl
+
+\textbf{(g)}\quad A \textbf{bijective} function $\{1,2,3\}\to\{x,y,z\}$.
+\wl
+
+\newpage
+\textbf{(h)}\quad $\bigstar$\quad Try to build a \textbf{bijective} function $\{1,2,3\}\to\{a,b\}$. Explain exactly what goes wrong.
+\wls{2}
+
+% =============================================================================
+\section*{Part 2 --- Application}
+
+\textbf{1.}\quad \textbf{Three Bedrooms.}\quad
+Back to the Minecraft build. You are now carpeting \textbf{three} bedrooms. Every room is $10$ blocks long.
+Bedroom~1 is $6$ blocks wide and Bedroom~2 is $8$ blocks wide --- both finished. Bedroom~3 has an
+undecided width $w$. Each floor block needs one carpet block, and each carpet block takes $2$ wool.
+
+\medskip
+\textbf{(a)}\quad Write a function $f(w)$ giving the \textbf{total} wool needed for all three rooms.
+\wls{2}
+
+\textbf{(b)}\quad Evaluate $f(5)$. What does this number mean in context?
+\wls{2}
+
+\textbf{(c)}\quad You have collected exactly $480$ wool and want to use all of it. Find $w$ such that
+$f(w) = 480$. What does this answer mean in context?
+\wls{2}
+
+\newpage
+\textbf{(d)}\quad State the natural domain of $f$ in the Minecraft context. Is $f$ surjective onto the positive
+integers $\mathbb{Z}^+$? Explain, and give one positive integer that is never an output.
+\wls{3}
+
+\bigskip
+\textbf{2.}\quad \textbf{Speaking Functions.}
+
+\medskip
+\textbf{(a)}\quad Read $f(x) = 2x^2 - 5$ aloud as one complete English sentence. Write what you would say.
+\wls{2}
+
+\textbf{(b)}\quad A classmate says: ``$f(x)$ means $f$ times $x$.'' Are they right? Correct them in one sentence.
+\wl
+
+\textbf{(c)}\quad Read $f(g(x))$ aloud as a complete English sentence. What do you think this expression means?
+\wls{2}
+
+\newpage
+\bigskip
+\textbf{3.}\quad \textbf{Functions Live Inside $A \times B$.}\quad
+Last week you learned the Cartesian product $A \times B$. A function $f\colon A \to B$ is a special subset of $A \times B$ in which each
+element of $A$ appears as a first coordinate exactly once.
+
+Let $A = \{1,2\}$ and $B = \{p,q,r\}$.
+
+\medskip
+\textbf{(a)}\quad List every element of $A \times B$.
+\wl
+
+\textbf{(b)}\quad How many ordered pairs are in $A \times B$? (Recall $|A \times B| = |A|\cdot|B|$.)
+\wl
+
+\textbf{(c)}\quad For each subset, circle whether it is a function from $A$ to $B$. For each that is not, say why.
+
+\medskip
+\hspace{1.5em}(i)\quad $\{(1,p),(2,r)\}$ \hfill function?\quad Yes\quad No
+\wl
+
+\hspace{1.5em}(ii)\quad $\{(1,p),(1,q)\}$ \hfill function?\quad Yes\quad No
+\wl
+
+\hspace{1.5em}(iii)\quad $\{(1,p)\}$ \hfill function?\quad Yes\quad No
+\wl
+
+\textbf{(d)}\quad $\bigstar$\quad How many functions are there from $A=\{1,2\}$ to $B=\{p,q,r\}$ in total?
+Explain your count --- do not just guess.
+\wls{2}
+
+\newpage
+% =============================================================================
+\section*{Looking Ahead --- Why Functions, and Where We Go Next}
+\textit{Read this. Some of it is meant to feel unfinished --- that is the point. It also contains at least
+one statement that is not quite right; find it and flag it in the margin. Where you get stuck, write the
+question down and we will resolve it next class.}
+
+\medskip
+Here is the story so far. We started with \textbf{sets} (collections of objects), built \textbf{ordered pairs}
+and the \textbf{Cartesian product} $A \times B$, and discovered that a \textbf{function} is just a special
+subset of $A \times B$. Then we learned to measure functions with \textbf{domain}, \textbf{codomain}, and
+\textbf{range}, and to classify them as \textbf{injective}, \textbf{surjective}, or \textbf{bijective}. Next we
+ask three new questions: how do functions \textit{combine}, how do we \textit{undo} them, and how can they be
+used to \textit{measure infinity}?
+
+\subsection*{1. Combining Functions --- Composition}
+Think of two machines in a line. A furnace turns \textbf{ore} into an \textbf{ingot}; a crafting table turns an
+\textbf{ingot} into a \textbf{tool}. Feed ore in one end and a tool comes out the other --- you have chained two
+functions. If $f$ is ``smelt'' and $g$ is ``craft,'' the combined machine is the \textbf{composition}
+$g \circ f$, read ``$g$ of $f$,'' where $(g \circ f)(x) = g(f(x))$.
+
+\medskip
+\textbf{Try it.}\quad Let $f(x) = x + 1$ and $g(x) = 2x$. Compute $(g \circ f)(3)$, then $(f \circ g)(3)$.
+Did you get the same answer both ways?
+\wls{2}
+
+\subsection*{2. Undoing Functions --- Inverses}
+In the Three Bedrooms problem you ran the wool function \textit{backwards}: you knew the output ($480$ wool) and recovered the
+input ($w$). That ``backwards machine'' is called the \textbf{inverse}, written $f^{-1}$. An inverse takes each
+output back to the input it came from. Because every function can be undone, every function has an inverse.
+
+\medskip
+\textbf{Try it.}\quad For $f(w) = 20w + 280$, describe in words the steps of the backwards machine that turns a
+wool count back into a width.
+\wls{2}
+
+\medskip
+\textbf{Answer this.}\quad What if two different inputs gave the \textit{same} output? Could the
+backwards machine still know which input to return to? Explain.
+\wls{3}
+
+% =============================================================================
+\section*{Reading --- Proofs and Why a Picture Is Not Enough}
+
+\textit{Read this before Part 3. The Challenge problems ask you to \textbf{prove} things. So first, what is a proof, and why do mathematicians insist on them instead of just drawing a picture?}
+
+\subsection*{A claim about a function is a claim about \emph{every} input}
+When we say ``$f$ is injective'' we are promising something about \textbf{every} pair of inputs: no matter which two different inputs you pick, their outputs differ. When we say ``$f$ is surjective'' we promise that \textbf{every} element of the codomain gets hit. These are ``for all'' statements --- they sweep over the whole domain or codomain, which may be infinite.
+
+An arrow diagram, a table, or a sketched graph shows you only the cases you actually drew. For a function on a tiny finite set like $\{1,2,3\}$ you can draw \textbf{all} the arrows, and then the picture really does check every case --- that is an honest proof by exhaustion, because you looked at everything. But the moment the domain is large or infinite --- $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{R}$ --- you can never draw all the arrows or plot the whole graph. The picture becomes a \textbf{sample}, and a sample cannot settle a claim about infinitely many inputs.
+
+\subsection*{Pictures can fool you}
+
+A picture is where \textbf{ideas} come from --- it shows you what to believe and where to hunt for trouble. A \textbf{proof} is what makes you \textbf{certain}: a chain of logical steps, built from \textbf{definitions}, that forces the conclusion for every case at once.
+
+\subsection*{The engine: reason about an \emph{arbitrary} element}
+Here is the trick that lets a few lines of writing cover infinitely many cases. Instead of testing specific inputs, we say ``let $a$ and $b$ be \textbf{arbitrary}'' --- we assume nothing about which elements they are. Whatever we then prove about $a$ and $b$ must hold for \textbf{all} of them, because we never used anything special about them. One argument, every case. This is the whole reason a proof can beat infinitely many pictures.
+
+\textbf{A note on the $\square$.}\quad The little box at the end of a proof is a full stop for arguments: it announces ``the proof is finished. Everything we promised has now been shown.'' It is shorthand for \textbf{QED}, the Latin \textit{quod erat demonstrandum}, meaning ``which was to be demonstrated.'' Mathematicians once spelled out the letters Q.E.D.; today most use the hollow box $\square$ (or a filled-in $\blacksquare$), a habit popularized by the mathematician Paul Halmos, who borrowed it from magazine typography. The symbol carries no mathematical content --- it is purely a sign to the reader, marking exactly where the reasoning ends so that nothing after it gets mistaken for part of the argument.
+
+\subsection*{Proving injectivity}
+\textbf{Definition.}\quad $f$ is injective if $f(a) = f(b)$ forces $a = b$ (recall this is the contrapositive of the definition of injectivity).
+
+\textbf{Blueprint.}\quad We approach this by first supposing $f(a) = f(b)$ for arbitrary $a,b$ in the domain. Then we manipulate using the rule of $f$. Then if we can conclude $a = b$, we have proved $f$ is injective.
+
+\medskip
+\textbf{Worked example.}\quad Let $f\colon \mathbb{R} \to \mathbb{R}$, $f(x) = 3x + 4$.
+
+Claim: $f$ is injective.
+
+\textbf{Proof.}\quad Suppose $f(a) = f(b)$. Then $3a + 4 = 3b + 4$, so $3a = 3b$, therefore $a = b$. Since $a,b$ were arbitrary, $f$ is injective. $\square$
+
+\medskip
+Notice what no picture could do: this single argument covered every one of the infinitely many pairs of real numbers.
+
+\medskip
+\textbf{Disproving injectivity takes only ONE counterexample.}\quad To show $g(x) = x^2$ is \textbf{not} injective we need no general argument --- just one clash: $g(2) = 4 = g(-2)$, yet $2 \ne -2$. A single counterexample destroys a ``for all'' claim.
+
+\subsection*{Proving surjectivity}
+\textbf{Definition.}\quad $f\colon A \to B$ is surjective if for every $b \in B$ there exists some $a \in A$ with $f(a) = b$.
+
+\textbf{Template.}\quad Take an \textit{arbitrary} target $y \in B$. \textit{Produce} an input $x \in A$ (usually by solving $f(x) = y$) and check that $f(x) = y$.
+
+\medskip
+\textbf{Worked example.}\quad Let $f\colon \mathbb{R} \to \mathbb{R}$, $f(x) = 3x + 4$.
+
+\textit{Claim: $f$ is surjective.}
+
+\textbf{Proof.}\quad Let $y \in \mathbb{R}$ be arbitrary. Set $x = \dfrac{y - 4}{3}$, which is a real number, so it lies in the domain. Then
+\[
+  f(x) = 3 \cdot \frac{y - 4}{3} + 4 = (y - 4) + 4 = y.
+\]
+So every target $y$ has a corresponding element in the domain. Therefore $f$ is surjective. $\square$
+
+You may want to re-read the example above several times and convince yourself that it is true (ask yourself questions like ``why did we need to show $f(x) = y$?'')
+
+\medskip
+\textbf{Surjectivity depends on the codomain.}\quad Suppose we defined $g\colon \mathbb{R} \to \mathbb{R}$, $g(x) = x^2$. Then $g$ is \textbf{not} surjective because the target $y = -1$ has no real corresponding input $x$ with $x^2 = -1$. So $-1$ is never hit (one unreachable target is enough to disprove ``onto''). If we shrunk the codomain to $[0,\infty)$ then our function $g$ becomes surjective. A surjectivity proof is always a statement about the \textbf{declared} codomain.
+
+\subsection*{Proving bijectivity}
+\textbf{Definition.}\quad $f$ is bijective if it is both injective and surjective.
+
+So a bijectivity proof is simply \textbf{two} proofs stacked: prove injective, then prove surjective. Our $f(x) = 3x + 4$ is both, so it is a bijection --- and that is exactly the condition under which $f$ has an inverse (the ``undo'' machine from the preview).
+
+\newpage
+% =============================================================================
+\section*{Part 3 --- Challenge}
+
+\textbf{1.}\quad \textbf{Proving the Wool Function.}\quad
+In Part~2 you built the three-bedroom wool function $f(w) = 20w + 280$. Take both the domain and codomain to be the positive integers $\mathbb{Z}^+$ (whole blocks of width, whole counts of wool).
+
+\medskip
+\textbf{(a)}\quad Is $f$ injective? Prove it.
+\wls{4}
+
+\textbf{(b)}\quad Is $f$ surjective? Prove or disprove.
+\wls{4}
+
+\textbf{(c)}\quad Is $f$ bijective? Prove or disprove.
+\wls{2}
+
+\newpage
+\textbf{(d)}\quad In one sentence, say what injectivity means \textbf{in the Minecraft context}: what does it guarantee about the relationship between a width and a wool count?
+\wls{2}
+
+\bigskip
+\textbf{2.}\quad \textbf{Odd One Out.}\quad
+Consider $f\colon \mathbb{Z} \to \mathbb{Z}$ defined by $f(n) = 2n + 1$.
+
+\medskip
+\textbf{(a)}\quad Is $f$ injective? Prove it.
+\wls{3}
+
+\textbf{(b)}\quad Is $f$ surjective? Prove or disprove. Remember that finding a counterexample counts as a disproof.
+\wls{3}
+
+\textbf{(c)}\quad Describe the range of $f$ in words. If you kept the same rule but shrank the codomain to make $f$ surjective, what set would the new codomain be?
+\wls{2}
+
+\newpage
+\bigskip
+\textbf{3.}\quad \textbf{The Finite Trap.}\quad
+Try to build a function $f\colon \{1,2,3,4\} \to \{1,2,3,4\}$ that is injective but \textbf{not} surjective. Explain what happened and why.
+\wls{4}
+
+\bigskip
+\textbf{4.}\quad \textbf{The Collatz Function.}\quad
+Define $C\colon \mathbb{N} \to \mathbb{N}$ by
+\[
+  C(n) =
+  \begin{cases}
+    n/2 & \text{if } n \text{ is even} \\
+    3n + 1 & \text{if } n \text{ is odd.}
+  \end{cases}
+\]
+Starting from any positive integer, apply $C$ over and over.
+
+\medskip
+\textbf{(a)}\quad Compute the sequence starting at $n = 7$. Stop when you reach $1$. You can use a calculator.
+\wls{3}
+
+\textbf{(b)}\quad Compute the first $10$ terms starting at $n = 27$. (Just list them; you do not need to reach $1$.)
+\wls{2}
+
+\newpage
+\textbf{(c)}\quad Is $C$ injective? Either prove it or find a counterexample. (Hint: can an even number and an
+odd number ever land on the same output?)
+\wls{3}
+
+\textbf{(d)}\quad Write a \textbf{conjecture} about what always seems to happen when you apply $C$ repeatedly,
+starting from any positive integer.
+\wls{2}
+
+\bigskip
+\textbf{5.}\quad $\bigstar$\quad \textbf{As Many Evens as Whole Numbers?}\quad
+Let $E = \{2,4,6,8,\ldots\}$ be the set of positive even numbers. Define the function $f\colon \mathbb{N} \to E$ by
+$f(n) = 2n$.
+
+\medskip
+\textbf{(a)}\quad Is $f$ injective? Prove it.
+\wls{4}
+
+\newpage
+\textbf{(b)}\quad Is $f$ surjective onto $E$? Prove it.
+\wls{4}
+
+\textbf{(c)}\quad We will say that a bijection between two sets means they have the same size. But $E$ is only \textit{part} of
+$\mathbb{N}$. What strange thing does this say about the size of $\mathbb{N}$ compared to $E$?
+\wls{5}
+
+\newpage
+\medskip
+\textbf{(d)}\quad $\bigstar$\quad For \textbf{finite} sets, a proper subset always has strictly fewer
+elements --- so if $B \subset A$ you would expect no way to match $A$ one-to-one into $B$. In parts (a)--(b) you matched $\mathbb{N}$ one-to-one with $E$, the even numbers, even though $E$ is a proper subset of $\mathbb{N}$ (it leaves out every odd number). What does this mapping show about the rule ``a proper subset is strictly smaller'' for infinite sets? What does it suggest about judging the size
+of an infinite set?
+\wls{5}
+
+% =============================================================================
+\section*{Part 4 --- Notebook Artifact}
+
+\bigskip
+\textbf{1.}\quad If you used the internet or AI for help, describe how you used it:
+\wls{5}
+
+% =============================================================================
+% =============================================================================
+% =============================================================================
+\newpage
+\begin{center}
+{\large\bfseries ANSWER KEY --- DO NOT DISTRIBUTE}\\[4pt]
+Homework 3: Introduction to Functions
+\end{center}
+\hrule\bigskip
+
+\textit{Grading note: there are no point values --- score by the proportion of correct answers. Credit full marks
+for correct mathematical reasoning even if notation differs from the key. Require justification for Yes/No,
+True/False, injective/surjective, and proof questions. The recurring misconception to listen for: students who
+think ``two inputs sharing an output'' breaks a function, or that ``the output never changes'' disqualifies a
+constant function. Neither is true --- reinforce at Foundation~2(b) and at the furnace in 3(c).}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 1 --- Foundation}
+
+\textbf{1.}\quad $f(x) = 3x+4$. Table: $f(0)=4$, $f(1)=7$, $f(-1)=1$, $f(2)=10$, $f(\tfrac{1}{3})=5$.
+
+(a)\; $f(1)=7$, so $f(f(1)) = f(7) = 3(7)+4 = \mathbf{25}$.
+
+(b)\; $3x+4 = 10 \Rightarrow 3x = 6 \Rightarrow x = \mathbf{2}$.
+
+(c)\; \textit{Curveball (non-integer).} $3x+4 = 0 \Rightarrow x = -\tfrac{4}{3}$. Students expecting a whole
+number may stall --- remind them the domain here is $\mathbb{R}$.
+
+\bigskip
+\textbf{2.}
+
+(a)\; \textbf{Valid.} Injective (three distinct outputs); \textbf{not} surjective ($1,3 \in B$ are never hit).
+
+(b)\; \textbf{Valid.} \textit{Constant function.} NOT injective (all three inputs share output $3$); NOT
+surjective. \textit{Push back if a student says ``the output never changes, so it is not a function'' --- each
+input still has exactly one output, which is all a function requires. Analogy: a vending machine with one button
+that always drops the same snack is still a working machine.}
+
+(c)\; \textbf{Not a function.} The input $2$ maps to both $4$ and $5$ --- one input, two outputs.
+
+(d)\; \textbf{Not a function from this $B$.} \textit{Curveball.} The rule sends $3 \mapsto 4$, but
+$4 \notin B = \{1,2,3\}$. The output escapes the declared codomain. (Socratic: ``What is $3+1$? Is it in $B$?'')
+
+(e)\; \textbf{Not a function.} The domain element $3$ is never assigned an output. Every element of $A$ must map.
+
+\bigskip
+\textbf{3.}
+
+(a)\; $g(x) = x^2+2$, $g\colon \mathbb{R}\to\mathbb{R}$. Domain $\mathbb{R}$; codomain $\mathbb{R}$; range
+$[2,\infty)$ (since $x^2 \ge 0$, so $x^2+2 \ge 2$, and every value $\ge 2$ is achieved).
+
+(b)\; $h\colon \{1,2,3\}\to\{3,6,11\}$, $h(x)=x^2+2$. Outputs: $h(1)=3$, $h(2)=6$, $h(3)=11$. Domain
+$\{1,2,3\}$; codomain $\{3,6,11\}$; range $\{3,6,11\}$. \textbf{Surjective} (range $=$ codomain). Same formula as
+(a), but here the codomain was declared to be exactly the outputs, so nothing is left unhit. \textit{Key insight:
+surjectivity is about the function and its declared codomain, not the formula.}
+
+(c)\; Domain $= \{\text{iron ore, gold ore, sand, raw beef}\}$; codomain $= \{\text{iron ingot, gold ingot,
+glass, steak}\}$; range $=$ all four outputs (every output is used --- smelt is actually a bijection). There is
+\textbf{no} algebraic formula: the inputs are not numbers. \textit{This refutes ``every function is a formula''
+--- a formula is one way to describe some functions, not a requirement.}
+
+\bigskip
+\textbf{4.}
+
+(a)\; \textbf{subset}.\quad (b)\; $R(f) \subseteq B$ (the codomain).\quad (c)\; \textbf{codomain}.
+
+T/F: \textbf{True} (range is always a subset of the codomain); \textbf{False} (range $=$ codomain only when $f$
+is surjective); \textbf{True} (shrinking the codomain to the range always yields a surjection --- this is why
+``surjective'' is a statement about the \textit{declared} codomain).
+
+(d)\; e.g. $f = \{(1,a),(2,b)\}$; range $= \{a,b\}$, a proper subset of $\{a,b,c\}$ since $c$ is unhit. Any map
+missing at least one codomain element works.
+
+\bigskip
+\textbf{5.}
+
+\textbf{True} --- $|A|>|B|$ forces two inputs to share an output (Pigeonhole), so not injective.
+
+\textbf{Curveball.} ``Injective possible when $|A|\ge|B|$'': only in the boundary case $|A|=|B|$. Injectivity
+needs $|A|\le|B|$, so the only overlap with $|A|\ge|B|$ is equality (and then $f$ is forced bijective). Whenever
+$|A|>|B|$ strictly, impossible. Accept ``true, but only when $|A|=|B|$'' with that reasoning.
+
+\textbf{True} --- $|A|<|B|$ leaves at least one element of $B$ unhit, so not surjective.
+
+\textbf{True} --- the Finite Trap, general form: on equal finite sets, injective $\Rightarrow$ surjective.
+
+\textbf{True} --- a bijection pairs each element of $A$ with exactly one of $B$ and back, so equal size.
+
+(a)\; Table: $|A|=2,|B|=4$ --- Injective \textbf{Yes}, Surjective \textbf{No}, Bijective \textbf{No}.\;
+$|A|=4,|B|=2$ --- Injective \textbf{No}, Surjective \textbf{Yes}, Bijective \textbf{No}.\;
+$|A|=3,|B|=3$ --- \textbf{Yes}, \textbf{Yes}, \textbf{Yes}.
+
+\bigskip
+\textbf{6.}\quad One Function, Four Outfits. $f = \{(-1,1),(0,-1),(1,-3),(2,-5)\}$.
+
+(a)\; Table: $f(-1)=1$, $f(0)=-1$, $f(1)=-3$, $f(2)=-5$.
+
+(b)\; Arrow diagram: $-1\mapsto 1$, $0\mapsto -1$, $1\mapsto -3$, $2\mapsto -5$. Graph: the four points
+$(-1,1),(0,-1),(1,-3),(2,-5)$ lie on a straight line of slope $-2$.
+
+(c)\; $f(x) = -2x - 1$. (Check: $-2(-1)-1 = 1$, etc.)
+
+(d)\; \textbf{Injective} --- all four outputs are distinct (easiest to see from the ordered pairs / table).
+\textbf{Not} surjective onto $\mathbb{Z}$ --- only four integers are ever output, so the vast majority of
+$\mathbb{Z}$ is missed (easiest to see from the arrow diagram or by noting the domain is finite).
+
+\bigskip
+\textbf{7.}\quad Reading the Graph (vertical line test).
+
+(a)\; \textbf{No} --- $x=1$ appears with both $y=2$ and $y=5$ (one input, two outputs).
+
+(b)\; \textbf{Yes} --- $y=3$ for every $x$; each input has exactly one output (a constant function).
+
+(c)\; \textbf{No} --- the vertical line $x=3$ has every $y$ at once; the input $3$ has infinitely many outputs.
+
+(d)\; \textbf{Yes} --- each $x$ gives one $y$ ($y = x^2-1$).
+
+(e)\; \textbf{No} --- e.g. $x=1$ gives $y=1$ and $y=-1$ (a vertical line meets it twice).
+
+(f)\; \textbf{No} --- e.g. $x=0$ gives $y=4$ and $y=-4$; the circle fails the vertical line test.
+
+(g)\; A vertical line at $x=c$ collects every point of the graph with input $c$. If it meets the graph twice,
+the input $c$ has two different outputs --- which violates ``exactly one output per input.''
+
+\bigskip
+\textbf{8.}\quad Injective / Surjective / Bijective.
+
+(a)\; \textbf{Injective} only (distinct outputs $a,b,c$; $d$ is never hit, so not surjective).
+
+(b)\; \textbf{Surjective} only ($a,b$ both hit; $1$ and $3$ share $a$, so not injective).
+
+(c)\; \textbf{Bijective} (a perfect pairing).
+
+(d)\; \textbf{None} ($1,2$ share $a$ so not injective; $c$ unhit so not surjective).
+
+Build-your-own (answers vary):
+
+(e)\; e.g. $\{(1,a),(2,b)\}$ --- injective, and $c$ is unhit so not surjective.
+
+(f)\; e.g. $\{(1,a),(2,b),(3,a)\}$ --- surjective ($a,b$ both hit), not injective ($1,3$ share $a$).
+
+(g)\; e.g. $\{(1,x),(2,y),(3,z)\}$.
+
+(h)\; \textbf{Impossible.} A bijection needs $|A|=|B|$, but $|\{1,2,3\}| = 3 \ne 2 = |\{a,b\}|$. With three
+inputs and two outputs, two inputs must share an output (Pigeonhole), so no injection --- hence no bijection.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 2 --- Application}
+
+\textbf{1.}\quad Three bedrooms. Bedroom~1: $2 \times 10 \times 6 = 120$ wool. Bedroom~2:
+$2 \times 10 \times 8 = 160$ wool. Bedroom~3: $2 \times 10 \times w = 20w$ wool.
+
+(a)\; $f(w) = 20w + 280$ \;(since $120 + 160 = 280$).
+
+(b)\; $f(5) = 20(5) + 280 = \mathbf{380}$. Meaning: if Bedroom~3 is $5$ blocks wide, you need $380$ wool total.
+
+(c)\; $20w + 280 = 480 \Rightarrow 20w = 200 \Rightarrow w = \mathbf{10}$. Meaning: to use exactly $480$ wool,
+make Bedroom~3 ten blocks wide. \textit{This ``given the output, find the input'' move is the inverse, previewed
+in Looking Ahead.}
+
+(d)\; Natural domain: positive integers (whole blocks, $w \ge 1$). \textbf{Not} surjective onto $\mathbb{Z}^+$:
+the outputs are $300, 320, 340, \ldots$ --- only multiples of $20$ starting at $300$. Any other positive integer
+(e.g. $\mathbf{301}$, or $290$) is never an output. (Socratic: ``Is $400$ possible? $20w+280=400 \Rightarrow w=6$,
+yes. Is $410$? $\Rightarrow w=6.5$, no.'')
+
+\bigskip
+\textbf{2.}\quad Speaking functions.
+
+(a)\; ``$f$ of $x$ equals two $x$ squared minus five.''
+
+(b)\; No. $f(x)$ means ``the output of $f$ when the input is $x$,'' not multiplication. The parentheses are
+function-application notation, not grouping.
+
+(c)\; ``$f$ of $g$ of $x$.'' Meaning: first apply $g$ to $x$, then apply $f$ to the result. This is function
+\textbf{composition} --- a preview of what is next.
+
+\bigskip
+\textbf{3.}\quad Functions live inside $A \times B$. $A=\{1,2\}$, $B=\{p,q,r\}$.
+
+(a)\; $A \times B = \{(1,p),(1,q),(1,r),(2,p),(2,q),(2,r)\}$.
+
+(b)\; $|A \times B| = 2 \cdot 3 = \mathbf{6}$.
+
+(c)\; (i) \textbf{Function} --- each of $1,2$ appears once as a first coordinate.\;
+(ii) \textbf{Not} --- input $1$ appears twice ($1\mapsto p$ and $1\mapsto q$).\;
+(iii) \textbf{Not} --- input $2$ never appears, so $2$ has no output.
+
+(d)\; $\mathbf{9} = 3^2$. Each of the $2$ inputs independently chooses one of $3$ outputs: $3 \times 3 = 9$.
+\textit{Analogy: same ``independent choices multiply'' logic as the $2^n$ subsets count from last week.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Looking Ahead --- In-line Answers}
+
+\textbf{Composition.}\; $f(x)=x+1$, $g(x)=2x$. $(g\circ f)(3)=g(4)=8$;\; $(f\circ g)(3)=f(6)=7$. \textbf{Not}
+the same --- order matters; composition is not commutative.
+
+\textbf{Inverse (Try it).}\; The backwards machine for $f(w)=20w+280$: subtract $280$, then divide by $20$
+(i.e. $w = \tfrac{(\text{wool}) - 280}{20}$).
+
+\textbf{Inverse (Answer this).}\; If two different inputs gave the same output, the backwards machine could
+\textbf{not} decide which input to return to --- so the inverse fails. This is exactly why injectivity is
+required for an inverse to exist.
+
+\textbf{Planted imprecision.}\; ``Because every function can be undone, every function has an inverse.''
+\textbf{False.} Only \textbf{bijective} functions have inverses: if two inputs share an output (not injective)
+the backwards machine cannot choose, and if some codomain value is never hit (not surjective) it has no input to
+return. The ``Answer this'' question is the hint that exposes it.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 3 --- Challenge}
+
+\textbf{1.}\quad Proving the wool function, $f(w)=20w+280$, with domain and codomain $\mathbb{Z}^+$.
+
+(a)\; \textbf{Injective.} Suppose $f(a)=f(b)$. Then $20a+280 = 20b+280$, so $20a=20b$, therefore $a=b$. Since
+$a,b$ were arbitrary, $f$ is injective. $\square$
+
+(b)\; \textbf{Not surjective.} The outputs are $300,320,340,\ldots$ (multiples of $20$ from $300$ up).
+Counterexample target: $1 \in \mathbb{Z}^+$ has no preimage, since $20w+280=1 \Rightarrow w=-\tfrac{279}{20}
+\notin \mathbb{Z}^+$. One unreachable target disproves ``onto.'' $\square$
+
+(c)\; \textbf{Not bijective}, because bijective requires both injective \emph{and} surjective, and (b) fails.
+
+(d)\; Injectivity means \textbf{no two different Bedroom-3 widths ever need the same total amount of wool} --- so
+a wool total pins down the width uniquely (which is why running it backwards in Part~2 worked).
+
+\bigskip
+\textbf{2.}\quad Odd One Out, $f\colon \mathbb{Z}\to\mathbb{Z}$, $f(n)=2n+1$.
+
+(a)\; \textbf{Injective.} Suppose $f(a)=f(b)$. Then $2a+1=2b+1$, so $2a=2b$, therefore $a=b$. $\square$
+
+(b)\; \textbf{Not surjective.} Every output $2n+1$ is odd, so no even target is hit. Counterexample: $2$ has no
+integer preimage, since $2n+1=2 \Rightarrow n=\tfrac12 \notin \mathbb{Z}$. $\square$
+
+(c)\; Range $=$ the \textbf{odd integers}. Shrinking the codomain to the odd integers makes $f$ surjective (and
+then bijective).
+
+\bigskip
+\textbf{3.}\quad The Finite Trap. \textbf{Impossible.} An injective $f\colon \{1,2,3,4\}\to\{1,2,3,4\}$ sends
+four distinct inputs to four distinct outputs --- but the codomain has only four elements, so all four must be
+used, making it surjective too. \textit{Pigeonhole Principle: four pigeons in four holes, one per hole, fills
+every hole. On finite sets of equal size, injective $\iff$ surjective $\iff$ bijective.}
+
+\bigskip
+\textbf{4.}\quad The Collatz Function.
+
+(a)\; Starting at $n=7$:
+\[
+  7 \to 22 \to 11 \to 34 \to 17 \to 52 \to 26 \to 13 \to 40 \to 20 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1.
+\]
+(16 steps.)
+
+(b)\; First $10$ terms from $n=27$: $\;27,\,82,\,41,\,124,\,62,\,31,\,94,\,47,\,142,\,71.$
+\textit{(The full run from $27$ takes $111$ steps and peaks at $9232$ before collapsing to $1$ --- a vivid
+reminder that checking examples is not the same as proving.)}
+
+(c)\; \textbf{Not injective.} Counterexample: $C(5) = 16$ (since $5$ is odd, $3(5)+1 = 16$) and $C(32) = 16$
+(since $32$ is even, $32/2 = 16$), but $5 \ne 32$. \textit{Students who hunt for a counterexample find this;
+those who try to prove injectivity get stuck --- the productive outcome.}
+
+(d)\; Conjecture: starting from any positive integer, repeated application of $C$ eventually reaches $1$. This is
+the \textbf{Collatz Conjecture}, open since 1937 and verified by computer for enormous ranges, but never proven.
+\textit{Ties to our terminology work: this is a conjecture, not a theorem.}
+
+\bigskip
+\textbf{5.}\quad As Many Evens as Whole Numbers? $f\colon \mathbb{N}\to E$, $f(n)=2n$.
+
+(a)\; \textbf{Injective.} If $2m = 2n$ then $m = n$.
+
+(b)\; \textbf{Surjective onto $E$.} Any even number $2k$ equals $f(k)$, and $k \in \mathbb{N}$.
+
+(c)\; So $f$ is a bijection, meaning $\mathbb{N}$ and $E$ have the \textbf{same size} --- even though $E$ leaves
+out every odd number. The strange consequence: an infinite set can be the same size as a proper subset of
+itself. \textit{This is the defining weirdness of infinity (Hilbert's Hotel).}
+
+(d)\; The rule ``a proper subset is strictly smaller'' is a \textbf{finite}-set fact; it \textbf{fails} for
+infinite sets, since $\mathbb{N}$ matches its proper subset $E$ one-to-one. So you cannot judge the size of an
+infinite set by whether it is a proper subset, or by counting --- you must compare by building a bijection.
+\textit{This is the on-ramp to next class: comparing infinite sizes via bijection (Cantor's idea).}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 4 --- Notebook Artifact}
+
+\textbf{1.}\quad Open response. Credit honest, specific descriptions of how the internet or AI was used (e.g.
+``asked what `surjective' means,'' ``checked my Collatz arithmetic''). Reinforce the instructions: AI is a
+teacher, not an answer key --- they must attempt first.
+
+\end{document}

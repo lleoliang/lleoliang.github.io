@@ -1,0 +1,276 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+\begin{center}
+  {\Large\bfseries Test 1}\\[4pt]
+  Speaking Math \;|\; Sets \;|\; Functions\\[6pt]
+  Name:\;\underline{\hspace{6cm}}\qquad Time: 1.5 hours
+\end{center}
+\hrule\bigskip
+% =============================================================================
+\section*{Instructions}
+Use a \textbf{pencil}. \textbf{Show all your work and explain your reasoning} --- you are a mathematician, so a bare answer with no justification will not earn points. Partial credit will be given, so explain your thought process as much as possible, even if you can't answer it. When a question asks you to \textit{explain in words}, write in full sentences. The test is worth 100 points (plus a $6$-point bonus). You have $1.5$ hours; manage your time, and do not get stuck on any one problem. If something is unclear, ask Leo.
+
+% =============================================================================
+\section*{Part 1 --- Speaking Math}
+
+\textbf{1.}\quad[6 pts]\quad Classify each of the following as an \textbf{expression}, an \textbf{equation}, or a \textbf{formula}.
+
+\medskip
+\textbf{(a)}\quad $2x - 7$ \hfill \underline{\hspace{4cm}}
+
+\medskip
+\textbf{(b)}\quad $y = 5x$ (assume no context is given) \hfill \underline{\hspace{4cm}}
+
+\medskip
+\textbf{(c)}\quad $\text{Volume} = \text{Base} \cdot \text{Height}$ \hfill \underline{\hspace{4cm}}
+
+\medskip
+\textbf{(d)}\quad $3x + 1 = 10$ \hfill \underline{\hspace{4cm}}
+
+\medskip
+\textbf{(e)}\quad $12$ \hfill \underline{\hspace{4cm}}
+
+\medskip
+In one sentence: what makes something a \textbf{formula} rather than an equation?
+\wls{2}
+
+\newpage
+\bigskip
+\textbf{2.}\quad[10 pts]\quad Consider the expression $\;5x^3 - x^2 y + 8x - 4$.
+
+\medskip
+\textbf{(a)}\quad How many terms does it have? \hfill Answer:\;\underline{\hspace{2.5cm}}
+
+\medskip
+\textbf{(b)}\quad Fill in the table.
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|C{3cm}|}
+\hline
+Term & Coefficient & Variable(s) & Exponent(s) \\
+\hline
+$5x^3$ & & & \\
+\hline
+$-x^2 y$ & & & \\
+\hline
+$8x$ & & & \\
+\hline
+$-4$ & & & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textbf{(c)}\quad Mark each True or False. If false, write the corrected version.
+
+\medskip
+T\,/\,F\quad The coefficient of the $x$-term is $1$.
+\wl
+
+T\,/\,F\quad $-4$ is a term.
+\wl
+
+T\,/\,F\quad $5x^3$ and $8x$ are like terms.
+\wl
+
+\newpage
+\bigskip
+\textbf{3.}\quad[6 pts]\quad Speaking math.
+
+\medskip
+\textbf{(a)}\quad Read this aloud and write down the complete English sentence you would say: \[\;(x+2)(x-3)^2 + 7\]
+\wls{3}
+
+\textbf{(b)}\quad Write the algebraic expression for: ``the quantity three $x$ minus one, over the quantity $x$ plus two.''
+
+\newpage
+% =============================================================================
+\section*{Part 2 --- Sets}
+
+Recall 
+\[
+\mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2, \ldots\} \quad \text{(the integers)}
+\]
+\[
+\mathbb{N} = \{1, 2, 3, 4, 5, \ldots\} \quad \text{(the natural numbers)}
+\]
+\[
+\mathbb{R} = \{\ldots, -3.24, 0, 1.99, \sqrt{2}, \pi, 10, \ldots\} \quad \text{(the real numbers)}
+\]
+
+\bigskip
+\textbf{4.}\quad[8 pts]\quad Let $S = \{3,\,6,\,9,\,12\}$.
+
+\medskip
+\textbf{(a)}\quad Fill in $\in$ or $\notin$:\qquad
+$6 \mathrel{\underline{\hspace{0.8cm}}} S$\qquad
+$7 \mathrel{\underline{\hspace{0.8cm}}} S$\qquad
+$12 \mathrel{\underline{\hspace{0.8cm}}} S$\qquad
+$0 \mathrel{\underline{\hspace{0.8cm}}} S$
+
+\medskip
+\textbf{(b)}\quad Write $S$ in set-builder notation (you can use words for the condition).
+\wl
+
+\textbf{(c)}\quad Write each in roster notation.
+
+\medskip
+\hspace{1.5em}(i)\quad $\{x \in \mathbb{Z} \mid -2 \le x \le 2\}$ \hfill $= \;\underline{\hspace{5cm}}$
+
+\medskip
+\hspace{1.5em}(ii)\quad $\{x \in \mathbb{N} \mid x^2 < 5\}$ \hfill $= \;\underline{\hspace{5cm}}$
+
+\bigskip
+\textbf{5.}\quad[4 pts]\quad Subsets.
+
+\medskip
+\textbf{(a)}\quad List \textbf{all} subsets of $\{p,\,q\}$ Which one is the \textbf{improper} subset?
+
+
+\newpage
+\bigskip
+\textbf{6.}\quad[8 pts]\quad Let $U = \{1,2,3,\ldots,10\}$,\quad $A = \{2,3,5,7\}$,\quad $B = \{1,2,3,4\}$. Fill out the following chart:
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{4cm}|C{9cm}|}
+\hline
+Expression & Result \\
+\hline
+$A \cup B$ & \\
+\hline
+$A \cap B$ & \\
+\hline
+$A \setminus B$ & \\
+\hline
+$A^c$ (in $U$) & \\
+\hline
+$|A|$ & \\
+\hline
+$|A \cup B|$ & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\bigskip
+\textbf{7.}\quad[4 pts]\quad Real-world sets.
+
+\medskip
+\textbf{(a)}\quad In a class of $28$ students, $15$ play guitar, $12$ play piano, and $5$ play \textbf{both}. How many play \textbf{at least one} instrument? Show your work.
+
+
+\newpage
+% =============================================================================
+\section*{Part 3 --- Functions}
+
+\medskip
+\textbf{8.}\quad[6 pts]\quad Let $f(x) = 3x - 5$.
+
+\medskip
+\textbf{(a)}\quad Fill in the table.
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{2.6cm}|C{2.6cm}|C{2.6cm}|C{2.6cm}|}
+\hline
+$x$ & $0$ & $2$ & $-1$ \\
+\hline
+$f(x)$ & & & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textbf{(b)}\quad Find $x$ such that $f(x) = 7$. \hfill Answer:\;\underline{\hspace{3cm}}
+
+\medskip
+\textbf{(c)}\quad Write $f$ as a set of \textbf{ordered pairs} for the inputs $\{0,\,2,\,-1\}$.
+\wl
+
+\bigskip
+\textbf{9.}\quad[8 pts]\quad For each rule, decide whether it is a valid function from $A$ to $B$. If it is, state whether it is \textbf{injective} and whether it is \textbf{surjective}. If it is not a function, explain why not.
+
+\medskip
+\textbf{(a)}\quad $A = \{1,2,3\}$, $B = \{1,2,3,4\}$:\quad $1 \mapsto 2,\ 2 \mapsto 3,\ 3 \mapsto 4$.
+\wls{2}
+
+\textbf{(b)}\quad $A = \{1,2,3\}$, $B = \{1,2,3,4\}$:\quad $1 \mapsto 2,\ 2 \mapsto 3,\ 1 \mapsto 4,\ 3 \mapsto 2$.
+\wls{2}
+
+\newpage
+\textbf{(c)}\quad $A = \{1,2,3\}$, $B = \{a,b\}$:\quad $1 \mapsto a,\ 2 \mapsto b,\ 3 \mapsto a$.
+\wls{2}
+
+\textbf{(d)}\quad $A = \{1,2,3\}$, $B = \{a,b,c\}$:\quad $1 \mapsto a,\ 2 \mapsto c$.
+\wls{2}
+
+\bigskip
+\textbf{10.}\quad[4 pts]\quad Domain, codomain, range.
+
+\medskip
+For $g\colon \mathbb{R} \to \mathbb{R}$ defined by $g(x) = x^2 + 1$, state the domain, the codomain, and the range.
+\wls{2}
+
+\textbf{11.}\quad[8 pts]\quad Injective, surjective, bijective.
+
+\medskip
+\textbf{(a)}\quad Write a function $\{1,2,3\} \to \{a,b,c\}$ that is \textbf{bijective}.
+\wls{2}
+
+\textbf{(b)}\quad Write a function $\mathbb{Z} \to \mathbb{Z}$ that is \textbf{injective but not surjective}.
+\wls{2}
+
+\newpage
+\textbf{12.}\quad[8 pts]\quad Prove that $f\colon \mathbb{R} \to \mathbb{R}$, $f(x) = 4x + 1$ is bijective.
+
+\newpage
+\textbf{13.}\quad[6 pts]\quad Prove that $g\colon \mathbb{R} \to \mathbb{R}$, $g(x) = x^2 + 1$ is \textbf{not} bijective.
+
+\newpage
+\textbf{14.}\quad[6 pts]\quad Real-world application. A water park charges \$8 to get in, plus \$4 for each ride ticket you buy. You buy $r$ ride tickets.
+
+\medskip
+\textbf{(a)}\quad Write a function $C(r)$ for the total cost (in dollars) of your visit. Give its signature ($C\colon A \to B$) and its rule.
+\wls{2}
+
+\textbf{(b)}\quad In one sentence, what would it mean \textbf{in this context} for $C$ to be injective?
+\wls{3}
+
+\textbf{(c)}\quad Is $C$ surjective onto all positive integers? 
+\wls{4}
+
+\newpage
+\textbf{15.}\quad[8 pts]\quad Big ideas about infinity. Answer each in words.
+
+\medskip
+\textbf{(a)}\quad We cannot finish counting an infinite set. So how do we decide whether two infinite sets have the \textbf{same size}?
+\wls{4}
+
+\textbf{(b)}\quad Who is the mathematician famous for the \textbf{diagonal argument} showing that $\mathbb{R}$ is larger than $\mathbb{N}$?
+\wls{2}
+
+\textbf{(c)}\quad What makes the \textbf{Collatz Conjecture} a conjecture, but not a theorem?
+\wls{4}
+
+\newpage
+\textbf{BONUS:}\quad[+6 pts]\quad Determine if $\mathbb{N}$ and $\mathbb{Z}$ are the same size. Explain your answer.
+
+\end{document}

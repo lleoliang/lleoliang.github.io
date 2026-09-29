@@ -55,6 +55,22 @@
   border-radius: 6px;
   display: block;
 }
+/* Responsive 16:9 box for an embedded video (e.g. YouTube) */
+.video-embed{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.video-embed iframe{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 .video-replay{
   position: absolute;
   bottom: 1rem;
@@ -70,3 +86,305 @@
   backdrop-filter: blur(4px);
 }
 .video-replay:hover{ background: #fff; }
+.video-caption{
+  width: 60%;
+  margin: 0.6rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Media at the top of a detail page: full-width video, then a strip of figures */
+.proj-video--full{ width: 100%; }
+.proj-figure{ margin: 1rem 0 0 0; }
+.proj-figure .proj-img{ margin-top: 0; display: block; }
+.proj-caption{
+  margin: 0.6rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: center;
+}
+.proj-figures{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.proj-figures .proj-figure{ margin-top: 0; }
+
+@media (max-width: 600px){
+  .proj-figures{ grid-template-columns: 1fr; }
+}
+
+/* Big-number callouts (e.g. the matching funnel) */
+.proj-stats{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.proj-stat{
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+.proj-stat-num{
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+.proj-stat-label{
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.proj-stat-arrow{
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+/* Lists inside a detail-page section */
+.proj-steps{ padding-left: 1.25rem; margin: 0.5rem 0 0.75rem 0; }
+.proj-steps li{ margin-bottom: 0.5rem; }
+
+@media (max-width: 600px){
+  .proj-stats{ grid-template-columns: 1fr; }
+  .proj-stat-arrow{ display: none; }
+}
+
+/* Small comparison table */
+.proj-table-wrap{ overflow-x: auto; margin: 0.75rem 0 1rem 0; }
+.proj-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.proj-table th,
+.proj-table td{
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.proj-table th{
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Results tiles: same look as .proj-stats, without the arrows between them */
+.proj-stats--plain{ grid-template-columns: repeat(3, 1fr); margin: 0.75rem 0 1rem 0; }
+
+/* Vertical flow chart */
+.flow{
+  max-width: 640px;
+  margin: 1rem auto 0 auto;
+}
+.flow-inputs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.flow-box{
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+.flow-box strong{ display: block; }
+.flow-box p{ margin: 0.25rem 0 0 0; color: var(--muted); font-size: 0.95rem; }
+.flow-box--io{
+  border-style: dashed;
+  text-align: center;
+}
+.flow-box--io span{ color: var(--muted); font-size: 0.9rem; }
+.flow-box--step{
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  border-color: var(--text);
+}
+.flow-num{
+  flex: 0 0 auto;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.flow-arrow{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.flow-arrow::before{ content: "\2193"; font-size: 1.4rem; line-height: 1; }
+
+@media (max-width: 600px){
+  .proj-stats--plain{ grid-template-columns: 1fr; }
+  .flow-inputs{ grid-template-columns: 1fr; }
+}
+
+/* Yellow folder cards linking to sub-pages (the Teachings collections), styled after the
+   Windows folder icon: a darker back panel with a tab, and a lighter front panel on top.
+   The count label doubles as the tab. */
+.proj-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));   /* auto-fill: one card stays card-sized */
+  gap: 2.25rem 1rem;
+  margin-top: 2.25rem;
+}
+.proj-card{
+  --folder-back: #e8b400;
+  --folder-front-top: #ffe07d;
+  --folder-front-bottom: #ffcb3d;
+  --folder-ink: #3d2f00;
+  position: relative;
+  display: block;
+  padding: 1.9rem 1.2rem 1.2rem 1.2rem;   /* top padding leaves the back panel showing above the front */
+  border-radius: 0 10px 10px 10px;
+  background: var(--folder-back);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.proj-card::before{                        /* front panel */
+  content: "";
+  position: absolute;
+  inset: 0.7rem 0 0 0;
+  border-radius: 8px 8px 10px 10px;
+  background: linear-gradient(to bottom, var(--folder-front-top), var(--folder-front-bottom));
+}
+.proj-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+}
+.proj-card > h4,
+.proj-card > p{ position: relative; }      /* keep text above the front panel */
+.proj-card h4{ margin: 0 0 0.4rem 0; font-size: 1.25rem; line-height: 1.15; }
+.proj-card p{ margin: 0; color: #3b3b3b; font-size: 0.95rem; }
+.proj-card-meta{
+  position: absolute;
+  left: 0;
+  bottom: 100%;              /* the tab sits on top of the back panel */
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.85rem 0.15rem 0.7rem;
+  border-radius: 8px 8px 0 0;
+  background: var(--folder-back);
+  color: var(--folder-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.proj-card-glyph{
+  width: 1.05em;
+  height: 1.05em;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+/* keep short link cells (PDF · LaTeX) on one line */
+.proj-table td.nw{ white-space: nowrap; }
+
+/* Sub-heading inside a section (e.g. groups within a Teachings section) */
+.proj-h4{
+  margin: 1.75rem 0 0.5rem 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.1px;
+  color: var(--muted);
+}
+
+/* Featured projects row (projects.html) */
+.feat-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+.feat-card{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color 120ms ease;
+}
+.feat-card:hover{ border-color: var(--text); }
+.feat-media{ display: block; }
+.feat-media img{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.feat-body{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem 1.1rem 1.1rem 1.1rem;
+}
+.feat-body .tl-title{ font-size: 1.4rem; }
+.feat-body .tl-text{ margin-bottom: 0.75rem; }
+.feat-body .tl-link{ margin-top: auto; align-self: flex-start; }   /* keeps "Read more" level across both cards */
+
+/* Two-way choice cards (e.g. Music -> Performances / Compositions) */
+.pick-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.pick-card{
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.4rem 1.5rem 1.4rem;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 120ms ease;
+}
+.pick-card:hover{ border-color: var(--text); }
+.pick-card h4{ margin: 0 0 0.4rem 0; font-size: 1.6rem; line-height: 1.1; letter-spacing: -0.3px; }
+.pick-card p{ margin: 0; color: var(--muted); }
+
+/* Score cards (Compositions page): one piece per card, grouped in a grid instead of a long stacked list */
+.score-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* fixed at 2 so each card, and its description, gets more width */
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+@media (max-width: 600px){
+  .score-grid{ grid-template-columns: 1fr; }
+}
+.score-card{
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem 1.3rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+}
+.score-card .tl-date{ margin-bottom: 0.2rem; }   /* year, above the title, matching the Projects timeline cards */
+.score-card h4{ margin: 0 0 0.3rem 0; font-size: 1.3rem; line-height: 1.2; letter-spacing: -0.2px; }
+.score-card .tl-sub{ margin: 0 0 0.6rem 0; }
+.score-card p:not(.tl-sub):not(.tl-date){ margin: 0 0 0.75rem 0; color: var(--muted); flex: 1; }
+.score-card p:not(.tl-sub):empty{ display: none; }   /* collapses the gap while a year or description is still a placeholder */
+.score-card .tl-link{ margin-top: auto; align-self: flex-start; }
+.score-pending{ color: var(--muted); font-size: 0.9rem; font-style: italic; }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leo Liang | Course Design</title>
+  <meta name="description" content="The pedagogy behind an open-source math curriculum: the Question Compass, the 3-week test cycle, note-taking, and lesson plans.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper header-inner">
+      <a class="brand" href="../index.html#about">
+        <h1>Leo Liang</h1>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <div class="nav-main">
+          <a href="../index.html#about">About</a>
+          <div class="nav-item">
+            <a href="../projects.html">Projects</a>
+            <ul class="nav-menu">
+              <li><a href="../projects/cvor.html">Cross-View Object Registration (CVOR)<span>January 2026 – Present</span></a></li>
+              <li><a href="../projects/claude-secretary.html">Claude Secretary<span>July 2026</span></a></li>
+              <li><a href="../projects/dynamic-memory-for-claude.html">Dynamic Memory for Claude<span>June 2026</span></a></li>
+              <li><a href="../projects/price-matching.html">Store Price-Matching Algorithm<span>December 2025</span></a></li>
+              <li><a href="../projects/simulation-calibration.html">Simulation Calibration for Autonomous Vehicles<span>June 2025 – August 2025</span></a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../teachings.html">Teachings</a>
+            <ul class="nav-menu">
+              <li><a href="../teachings/philosophy.html">Teaching Philosophy</a></li>
+              <li><a href="../teachings/math-164-ta.html">MATH 164 TA Materials</a></li>
+              <li><a href="../teachings/foundations-higher-math.html">Foundations of Higher Math</a></li>
+              <li><a href="../teachings/algebra-i-aops.html">Algebra I Supplements</a></li>
+              <li><a href="../teachings/course-design.html">Course Design</a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../music.html">Music</a>
+            <ul class="nav-menu">
+              <li><a href="../music/performances.html">Performances</a></li>
+              <li><a href="../music/compositions.html">Compositions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/ileoliang" aria-label="LinkedIn"><img src="../images/icons/linkedinicon.png" alt="" class="nav-icon"></a>
+          <a class="email-link" href="#" hidden aria-label="Email"><img src="../images/icons/emailicon.png" alt="" class="nav-icon"></a>
+          <a href="https://github.com/lleoliang" aria-label="GitHub"><img src="../images/icons/githubicon.png" alt="" class="nav-icon"></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+
+    <a class="proj-back" href="../teachings.html">← Teachings</a>
+
+    <section class="proj-hero">
+      <h2 class="proj-title">Course Design</h2>
+      <p class="tl-sub">Pedagogy · assessment · lesson plans</p>
+      <p class="proj-lead">The thinking behind the worksheets: how I structure assessment, note-taking, and individual lessons. This is the best place to start if you want to know why the materials are shaped the way they are.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The Question Compass</h3>
+      <p>A study tool built around one question: 'Do I really understand this?'. Here we take one idea and ask about it from six directions. If you can answer all six, you're likely heading in the right direction. If you can't, you've found exactly what to study, before a test finds it for you. This tool is to help students develop stronger metacognitive skills.</p>
+      <div class="proj-table-wrap">
+        <table class="proj-table">
+          <thead>
+            <tr><th>Direction</th><th>The move</th><th>Example (idea: coefficient)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What</td><td>What is it, in your own words?</td><td>What is a coefficient?</td></tr>
+            <tr><td>Example / non-example</td><td>Give one of each. Why is the non-example not one?</td><td>Why isn't the 2 in x² a coefficient?</td></tr>
+            <tr><td>Reverse</td><td>Start from an answer and work backwards.</td><td>Write an expression where the coefficient of y is −1.</td></tr>
+            <tr><td>Break it</td><td>Find the edge case. When does the idea get weird?</td><td>Is there a term with no coefficient? Are you sure?</td></tr>
+            <tr><td>Connect</td><td>How does it relate to another idea you know?</td><td>How do coefficients relate to terms?</td></tr>
+            <tr><td>Disguise</td><td>How would a test hide this idea inside a harder problem?</td><td>Where could a coefficient question hide inside an equation problem?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The Word document also includes a fill-in drill sheet. <a href="files/course-design/Question_Compass.docx">Download the Question Compass (.docx)</a></p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The 3-Week Test Cycle</h3>
+      <p>An assessment system meant to train students to generate questions, test themselves, and fool-proof their own work.</p>
+      <div class="proj-table-wrap">
+        <table class="proj-table">
+          <thead>
+            <tr><th>Week</th><th>Activity</th><th>Skill being trained</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="nw">1</td><td>Question Compass drills</td><td>Asking about one idea from different directions</td></tr>
+            <tr><td class="nw">2</td><td>Error autopsy and predict-the-test</td><td>Fool-proofing, and thinking like the examiner</td></tr>
+            <tr><td class="nw">3</td><td>Test swap: each student writes the other's test</td><td>Everything, with ownership</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="proj-steps">
+        <li><strong>The test swap.</strong> Each student writes a test for the other. Students are graded on how they did on the test they took and on the quality of the test they wrote.</li>
+        <li><strong>Error autopsy.</strong> Students get a fake student's worksheet with a few planted mistakes, including one subtle one, and have to find, explain, and fix each.</li>
+        <li><strong>The big test, redesigned.</strong> Students get a blueprint of question <em>types</em>, and about half the questions are adapted from their own predictions and swap-test questions.</li>
+      </ul>
+      <p><a href="files/course-design/The_3-Week_Test_Cycle.docx">Download the 3-Week Test Cycle (.docx)</a></p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Note-taking</h3>
+      <p>Taking notes is a skill in its own right. Good notes aren't a transcript: they record the exact definition (verbatim, because precision matters in math), the intuition in the student's own words, and a worked example to return to when stuck.</p>
+      <p>The plan releases responsibility gradually over three lessons. In the first, students fill in a guided sheet with labeled boxes. In the second, they get only the section headers. From the third lesson on they use blank paper, and each class opens with a five-minute comparison of notebooks. <a href="files/course-design/notetaking_plan.docx">Download the note-taking plan (.docx)</a></p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Unit and lesson plans</h3>
+      <div class="proj-table-wrap">
+        <table class="proj-table">
+          <thead>
+            <tr><th>Plan</th><th>What it covers</th><th>File</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Calculus unit plan</td><td>The planned arc for an intro calculus unit after functions: slope and rate of change, limits, the derivative, the integral, and the Fundamental Theorem. Intuition-first and graph-heavy, with polynomials only.</td><td class="nw"><a href="files/course-design/Calculus_Unit_Plan.docx">Word (.docx)</a></td></tr>
+            <tr><td>Lesson 1 — Math Terminology</td><td>A 90-minute first class: a card sort, expression vs. equation vs. formula, the anatomy of an expression, a peek at the quadratic formula, and the debut of the Question Compass.</td><td class="nw"><a href="files/course-design/Lesson_Plan_01_2026-06-11_Math_Terminology.docx">Word (.docx)</a></td></tr>
+            <tr><td>Lesson 4 — Functions: Applications, Multivariable, and Counting Infinity</td><td>A three-hour milestone class that wraps up the functions unit: a Socratic homework review, comparing infinite sets and Cantor's diagonal argument, real-world meaning of injective, surjective, and bijective, and functions of two inputs.</td><td class="nw"><a href="files/course-design/Lesson_Plan_04_2026-06-22_Functions_Applications_and_Infinity.docx">Word (.docx)</a></td></tr>
+            <tr><td>Lesson 4 (draft) — Finite and Infinite Sets</td><td>An earlier draft plan for the fourth class, focused on what "same size" means for infinite sets: bijections, Dedekind's definition of infinite, and Hilbert's Hotel.</td><td class="nw"><a href="files/course-design/Lesson_Plan_04_Finite_and_Infinite_Sets.docx">Word (.docx)</a></td></tr>
+            <tr><td>Calculus Lesson 1 — Limits</td><td>A three-hour intuition-first introduction to limits: a rate at a single instant, the hole in a graph, when limits fail to exist, and continuity.</td><td class="nw"><a href="files/course-design/Lesson_Plan_Calculus_T1_Limits.docx">Word (.docx)</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>These are working documents. They include timing, planned Socratic questions, and notes to myself, so expect some rough edges.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Reusing these</h3>
+      <p>Licensed <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> with attribution to Leo Liang.</p>
+    </section>
+
+  </main>
+
+  <button id="backToTop" class="button back-to-top small" type="button" aria-label="Back to top">Top</button>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-row">
+      <div>© <span id="year"></span> Leo Liang</div>
+      <div><a href="../index.html">leo-liang</a></div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,668 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+
+
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% writing lines
+\newcommand{\wl}{\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+
+\begin{center}
+  {\Large\bfseries Homework I}\\[4pt]
+  Math Terminology $\cdot$ Speaking Math\\[6pt]
+  Name:\;\underline{\hspace{6.5cm}}\quad
+\end{center}
+\hrule\bigskip
+
+% =============================================================================
+\section*{Instructions}
+Complete the homework using \textbf{PEN}! If you have any questions or thoughts, write them down using a different color pen next to the problem/concept. Some homework questions are written intentionally vague, you should try to find them. Some information written may also contradict what you've already learned, you should try to find them. 
+
+\section*{Part 1 --- Terminology Practice \hfill [100 pts]}
+
+\subsection*{Foundation (45 pts)}
+
+\textbf{1.}~[20 pts]\quad
+Fill in the table for each term in $4x^3 - 3x^2y + 7x - 5$.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{1.4cm}|C{2.3cm}|C{2.3cm}|C{2.5cm}|C{2.2cm}|}
+\hline
+\textbf{Term} & \textbf{Coefficient} & \textbf{Variable(s)}
+              & \textbf{Exponent(s)} \\
+\hline
+$4x^3$   & & &  \\ \hline
+$-3x^2y$ & & &  \\ \hline
+$7x$     & & &  \\ \hline
+$-5$     & & &  \\ \hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+
+\bigskip
+\textbf{2.}~[15 pts]\quad
+Underline each term. Write the number of terms in the blank.
+
+\medskip
+(a)\quad $3a^2b - a + 4b^3 - 1$
+\hfill Number of terms:\;\underline{\hspace{2cm}}
+
+\medskip
+(b)\quad $x^2 + x + 1$
+\hfill Number of terms:\;\underline{\hspace{2cm}}
+
+\bigskip
+\textbf{3.}~[10 pts]\quad
+True or False. If false, write the corrected version on the line.
+
+\medskip
+(a)\quad T\,/\,F\quad $x$ has a coefficient of 1. \hrulefill
+
+(b)\quad T\,/\,F\quad The expression $-15$ has no terms.
+\hrulefill
+
+(c)\quad T\,/\,F\quad A constant is not a term.
+\hrulefill
+
+(d)\quad T\,/\,F\quad $12x^3$ and $12x^2$ are like terms.
+\hrulefill
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Application (35 pts)}
+
+\textbf{4.}~[10 pts]\quad
+Read the expression below out loud as one complete English sentence.
+Write what you would say.
+\[
+  (x+2)(x-1)^2 + 12
+\]
+
+\wls{3}
+
+\bigskip
+\textbf{5.}~[15 pts]\quad
+Write an algebraic expression for each description.
+
+\medskip
+(a)\quad ``Five times a number, squared''
+
+\wl
+
+(b)\quad ``Three terms: negative four times $y^3$, twice $y$, and one''
+
+\wl
+
+(c)\quad ``A number times itself, minus the same number''
+
+\wl
+
+\clearpage 
+\bigskip
+\textbf{6.}~[10 pts]\quad
+A classmate says: \textit{``In $x^2 + x + 1$, the $x$-term has no
+coefficient --- there's no number written in front of it.''}
+Are they right? Explain.
+
+\wls{2}
+
+
+% =============================================================================
+\section*{Part 2 --- Speaking: How to Say Algebra Out Loud}
+
+\textit{Read this section carefully.
+You will write expressions in English at the end.}
+
+\bigskip
+You can write algebra faster than you can say it. That's fine --- but if you
+can't say an expression out loud, you don't fully own it yet. Reading your work
+aloud is one of the best ways to catch mistakes, and every math class from here
+on will expect you to communicate verbally. This section teaches you the
+conventions that mathematicians actually use.
+
+\bigskip
+\noindent\textbf{Rule 1 --- Saying Powers}
+
+Single-variable powers: $x^2$ = \textit{``x squared,''} $x^3$ = \textit{``x cubed,''}
+$x^4$ = \textit{``x to the fourth.''} When there is a coefficient, say it first:
+$3x^2$ = \textit{``three x squared.''} Coefficient, then variable, then power ---
+same order as left to right.
+
+\bigskip
+\noindent\textbf{Rule 2 --- The Word ``Quantity''}
+
+Whenever you see a \textbf{group} --- something inside parentheses --- you say
+\textbf{``the quantity''} before it.
+\[
+  (x+2) \;=\; \textit{``the quantity } x \textit{ plus two''}
+\]
+``The quantity'' tells your listener: what I'm about to say is grouped together.
+Think of it as speaking the open parenthesis in words.
+\[
+  (x+2)(x+1) \;=\;
+  \textit{``the quantity } x \textit{ plus two, times the quantity }
+  x \textit{ plus one''}
+\]
+Pay attention to where the comma is! This is crucial in both speaking and writing.
+
+\bigskip
+\noindent\textbf{Rule 3 --- Powers on Groups}
+
+When an exponent sits on a whole group, say the group first, then the power at
+the end. The exponent attaches to the group immediately in front of it.
+\begin{align*}
+  (x+1)^2 &\;=\; \textit{``the quantity } x \textit{ plus one, squared''} \\[4pt]
+  (x+2)(x+1)^2 &\;=\;
+    \textit{``the quantity } x \textit{ plus two, times the quantity }
+    x \textit{ plus one, squared''} 
+\end{align*}
+\textbf{Note:} ``squared'' attaches to $(x+1)$ only. If the entire expression
+were squared you would say ``\ldots\,all squared.'' Like this:
+\begin{align*}
+    \bigl[(x+2)(x+1)\bigr]^2 &\;=\;
+    \textit{``the quantity } x \textit{ plus two, times the quantity }
+    x \textit{ plus one, all squared''}
+\end{align*}
+
+\bigskip
+\noindent\textbf{Rule 4 --- Fractions}
+
+Fractions are read as \textit{``numerator over denominator.''} If either part is
+a group, it gets ``the quantity.''
+\begin{align*}
+  \frac{x}{x+1} &\;=\;
+    \textit{``}x\textit{ over the quantity }x\textit{ plus one''} \\[6pt]
+  \frac{2x+1}{x^2-1} &\;=\;
+    \textit{``the quantity two }x\textit{ plus one, over the quantity }
+    x\textit{ squared minus one''}
+\end{align*}
+
+\bigskip
+\noindent\textbf{Putting It Together}
+
+Let's read $(x+2)(x+1)^2+12$ step by step:
+
+\medskip
+\begin{center}
+\begin{tabular}{r @{\quad$\to$\quad} l}
+\toprule
+\textbf{Piece} & \textbf{What you say} \\
+\midrule
+$(x+2)$   & \textit{``the quantity $x$ plus two''} \\
+$\times$  & \textit{``times''} \\
+$(x+1)^2$ & \textit{``the quantity $x$ plus one, squared''} \\
+$+\;12$   & \textit{``plus twelve''} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\textbf{Full reading:}
+\textit{``The quantity $x$ plus two, times the quantity $x$ plus one,
+squared, plus twelve.''}
+
+\medskip
+One more:\quad
+$\dfrac{x(x+3)}{x^2+1}$ is read as 
+\textit{``$x$ times the quantity $x$ plus three, over the quantity
+$x$ squared plus one.''}
+
+\bigskip
+\subsection*{Now You Try}
+
+Write a complete English sentence for each expression.
+
+\medskip
+\textbf{1.}\quad $(x+1)^2$
+
+\wls{2}
+
+\textbf{2.}\quad $\dfrac{x}{x+1}$
+
+\wls{2}
+
+\textbf{3.}\quad $(2x+1)(x-3)$
+
+\wls{2}
+
+\textbf{4.}\quad $\dfrac{x+2x}{x^2}$
+
+\wls{2}
+
+\textbf{5.}\quad $\dfrac{x^2+1}{(x-1)^2}$
+
+\wls{2}
+
+\bigskip
+\textbf{6. Reverse.}
+
+(a)\quad ``The quantity $2x$ minus one, squared.''
+
+\wl
+
+(b)\quad ``The quantity $x$ plus three, over the quantity $x$ minus three.''
+
+\wl
+
+(c)\quad ``Negative the quantity $x$ squared plus one.''
+
+\wl
+
+(c)\quad ``Negative $x$ squared plus one.''
+
+\wl
+
+(d)\quad ``The quantity $x$ plus one, times the quantity $x$ minus one,
+all squared, over $x$.''
+
+\wl
+
+(e)\quad ``The quantity $x$ plus $h$, squared, minus $x$ squared, all over $h$.''
+
+\wl
+
+\section*{Diagnostic Problems}
+Factor the following expressions. You may want to use a piece of scratch paper.
+
+\textbf{(a)}\quad $x^2 - 16$
+
+\wl
+
+\clearpage
+\textbf{(b)}\quad $2x^2 + 5x - 3$
+
+\wl
+
+\textbf{(c)}\quad $x^4 - 81$
+
+\wl
+
+\textbf{(d)}\quad $(x^2 + 3x)^2 - 2(x^2 + 3x) - 8$
+
+\wl
+
+\textbf{(e)}\quad $x^4 + x^2 + 1$
+
+\wl
+
+\textbf{(f)}\quad $x^4 + 4$
+
+\wl
+
+%============================
+
+\section*{Part 3 --- The Language of Math}
+
+\textit{Read carefully. These words appear in every math class from here on.}
+
+\bigskip
+Math uses ordinary English words in precise ways. When a problem says
+\textit{evaluate}, it means something different from \textit{simplify}.
+When you \textit{define} a variable, you are making a promise about what
+that symbol means for the rest of your work. Here are the words you will
+see most often:
+
+\bigskip
+\noindent\textbf{Let} --- introduces a variable.
+``Let $x$ be the width of the room'' means: for everything that follows,
+$x$ stands for that width. You are naming an unknown.
+
+\bigskip
+\noindent\textbf{Define} --- give an exact, unambiguous meaning to a symbol or term.
+Defining $x = 5$ means $x$ cannot also be 7. A definition is a commitment.
+If a problem asks you to \textit{define a variable}, respond with a
+\textbf{let} statement: ``Let $x$ be the width of the room.''
+
+\bigskip
+\noindent\textbf{Given} --- a fact that has been established or handed to you as true.
+You did not choose it; the problem did.
+\textit{``Given $x=4$, find $2x$.''} means: this equation is true --- now work from it.
+
+\bigskip
+\noindent\textbf{Suppose/Assume} --- temporarily accept something as true
+in order to explore what follows.
+``Suppose the width is 10'' does not mean it is 10 --- it means
+\textit{what would happen if it were?} 
+
+\noindent\textbf{Suppose/Assume \ldots\ Then} --- temporarily accept something
+as true in order to explore what follows. \textit{Then} delivers the consequence.
+``Suppose the width is 10 blocks --- then the total area is $5(10+3) = 65$.''
+The \textit{suppose} sets up the condition; the \textit{then} is what you conclude from it.
+This is the skeleton of almost every mathematical argument you will ever write.
+
+\begin{center}
+    \begin{tabular}{@{} p{5cm} p{8cm} @{}}
+    \toprule
+    \textbf{Sentence} & \textbf{What it signals} \\
+    \midrule
+    \textit{Given that it is raining, bring an umbrella.}
+      & It is actually raining. This is a known fact. Act on it. \\[6pt]
+    \textit{Suppose it rains tomorrow, then bring an umbrella.}
+      & We do not know if it will rain. We are planning for the possibility. \\[6pt]
+    \textit{Assume the store is open, then we can buy wool tonight.}
+      & We are temporarily treating this as true to figure out what to do next.
+        It might be wrong. \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+
+\bigskip
+\noindent\textbf{Evaluate} --- substitute a value and compute a number.
+``Evaluate $3x + 1$ when $x = 4$'' means replace $x$ with 4 and get 13.
+The answer is always an expression.
+
+\bigskip
+\noindent\textbf{Simplify} --- rewrite an expression in a cleaner equivalent form.
+The answer is still an expression, not necessarily a number.
+$3x + 2x$ simplifies to $5x$; you have not changed the value, only the form.
+
+\bigskip
+\noindent\textbf{Determine} --- find with certainty, and show why.
+Stronger than ``guess'' or ``find'' --- it implies your answer must be justified. An example questions could be, ``Determine the value of $x$ such that $2x + 3 = 11$.''
+
+\bigskip
+\noindent\textbf{Such that} --- a condition or constraint.
+``Find $x$ such that $2x = 8$'' means find the $x$ that makes that statement true. Notice we could've also asked ``Determine $x$ such that $2x = 8$.''
+
+\bigskip
+\noindent\textbf{Hence / Therefore / Thus} --- what comes next follows
+logically from what just came before.
+These are not filler words. Writing ``therefore'' is a claim that
+the next line is forced by the previous one. An example would be ``$2x = 8$, therefore $x = 4$.'' 
+
+\bigskip
+\noindent\textbf{Conjecture} --- an educated guess you believe is true but have not yet proven.
+Mathematicians make conjectures all the time. Some stay unproven for centuries. You could be the next person to prove an important conjecture :)
+
+\bigskip
+\hrule
+\bigskip
+\noindent\textit{Quick check --- answer in one sentence each:}
+
+\medskip
+\textbf{1.}\quad What is the difference between \textit{evaluate} and \textit{simplify}?
+
+\wls{2}
+
+\textbf{2.}\quad A classmate writes ``let $x = 5$'' at the top of their work,
+then uses $x = 7$ two lines later. What rule did they break?
+
+\wls{2}
+
+\textbf{3.}\quad Write a sentence using the word \textit{such that} about anything ---
+it does not have to be about math.
+
+\wls{2}
+
+\textbf{4.}\quad Rewrite this using the word \textit{therefore}:
+``It is raining. I should bring an umbrella.''
+
+\wls{2}
+
+\newpage
+\textbf{5.}\quad Write a \textit{suppose \ldots\ then} sentence about anything.
+
+\wls{2}
+
+\textbf{6.}\quad Write a conjecture about even numbers.
+You do not need to prove it.
+
+\wls{2}
+
+\textbf{7.}\quad Your friend says: ``I assumed the store was open,
+so I walked over but found out it was actually closed.''
+Did your friend use \textit{assumed} correctly? Explain.
+
+\wls{2}
+
+
+\textbf{8.}\quad Your friend says: ``I defined $n$ as an even number,
+but then I realized it was odd, so I changed it in the middle of the problem.''
+What rule did they break?
+
+\wls{2}
+
+% =============================================================================
+\newpage
+\section*{Part 4 --- Real Life Application}
+
+You and a friend are building two bedrooms in Minecraft and need to
+figure out how much wool to collect to carpet both rooms.
+Each floor block needs exactly one carpet block, and each carpet block
+takes two wool to craft.
+
+\medskip
+Both rooms are 10 blocks long and share a wall.
+Bedroom~2 will be 8 blocks wide.
+You haven't decided how wide Bedroom~1 will be yet.
+
+\medskip
+\textbf{1.}\quad How many carpet blocks do you need for Bedroom~2? \hrulefill
+
+\textbf{2.}\quad How much wool do you need for Bedroom~2? \hrulefill
+
+\textbf{3.}\quad How many carpet blocks do you need for Bedroom~1? \hrulefill
+
+\textbf{4.}\quad How much wool do you need for Bedroom~1? \hrulefill
+
+\textbf{5.}\quad How much wool do you need in total for both rooms? \hrulefill
+
+
+\medskip
+$\bigstar$\;\textit{Make sure to take notes in a different color pen of where your brain might be setting warning lights off!}
+
+
+
+% =============================================================================
+\newpage
+
+\newpage
+\begin{center}
+  {\large\bfseries ANSWER KEY --- DO NOT DISTRIBUTE}\\[4pt]
+  Homework 1 --- Math Terminology / Speaking Math
+\end{center}
+\hrule\bigskip
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 1 --- Terminology Practice}
+
+\textbf{Q1.}
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|C{1.4cm}|C{2.3cm}|C{2.3cm}|C{2.5cm}|C{2.2cm}|}
+\hline
+\textbf{Term} & \textbf{Coefficient} & \textbf{Variable(s)}
+              & \textbf{Exponent(s)} & \textbf{Type} \\
+\hline
+$4x^3$   & $4$  & $x$    & $3$                    & variable \\
+\hline
+$-3x^2y$ & $-3$ & $x,y$  & $2$ on $x$; $1$ on $y$ & variable \\
+\hline
+$7x$     & $7$  & $x$    & $1$                    & variable \\
+\hline
+$-5$     & $-5$ & none   & none (or $x^0$)        & constant \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+
+\medskip
+\textbf{Q2.}\quad
+(a)~4 terms: $\underline{3a^2b}$, $\underline{-a}$, $\underline{4b^3}$, $\underline{-1}$\quad
+(b)~3 terms: $\underline{x^2}$, $\underline{x}$, $\underline{1}$
+
+\textit{Note: $-a$ has coefficient $-1$. The minus sign belongs to the term, not the separator.}
+
+\medskip
+\textbf{Q3.}\quad
+(a)~\textbf{TRUE} --- $x = 1\cdot x$, coefficient is 1 by convention.\\
+(b)~\textbf{FALSE} --- $-15$ is a constant term. It has one term.\\
+(c)~\textbf{FALSE} --- a constant is a term (it has a coefficient and no variable).\\
+(d)~\textbf{FALSE} --- like terms require identical variable parts; $x^3 \neq x^2$.
+
+\medskip
+\textbf{Q4.}\quad
+\textit{``The quantity $x$ plus two, times the quantity $x$ minus one, squared, plus twelve.''}
+
+Key points: ``the quantity'' before each grouped expression; ``squared'' attaches to $(x-1)$ only, not the whole product.
+
+\medskip
+\textbf{Q5.}\quad
+(a)~$5x^2$ \textbf{or} $(5x)^2$ --- genuinely ambiguous. Both are defensible.
+Good Socratic target: ask them which they chose and why.\\
+(b)~$-4y^3 + 2y + 1$\\
+(c)~$x^2 - x$
+
+\medskip
+\textbf{Q6.}\quad
+No. The coefficient of $x$ is $1$ because $x = 1 \cdot x$.
+A coefficient of 1 is invisible by convention, not absent.
+Students must explain the \textit{why}, not just assert ``it's 1.''
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 2 --- Speaking Math}
+
+\textbf{Now You Try:}
+
+\textbf{1.}\quad \textit{``The quantity $x$ plus one, squared.''}
+
+\textbf{2.}\quad \textit{``$x$ over the quantity $x$ plus one.''}
+
+\textbf{3.}\quad \textit{``The quantity two $x$ plus one, times the quantity $x$ minus three.''}
+
+\textbf{4.}\quad \textit{``The quantity $x$ plus two $x$, over $x$ squared.''}
+Accept \textit{``three $x$ over $x$ squared''} if they simplified $x + 2x$ first.
+
+\textbf{5.}\quad \textit{``The quantity $x$ squared plus one, over the quantity $x$ minus one, squared.''}
+
+\medskip
+\textbf{Reverse (Q6):}
+
+(a)\quad $(2x-1)^2$
+
+(b)\quad $\dfrac{x+3}{x-3}$
+
+(c)\quad $-(x^2+1)$
+
+(c)\quad $-x^2 + 1$\quad
+\textit{Key distinction from the line above: no parentheses means the negative only applies to $x^2$.}
+
+(d)\quad $\dfrac{\bigl[(x+1)(x-1)\bigr]^2}{x}$
+
+(e)\quad $\dfrac{(x+h)^2 - x^2}{h}$\quad
+\textit{This is the difference quotient --- the foundational expression of calculus.
+If either student recognizes it or asks about it, tell them what it becomes.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Diagnostic --- Factoring}
+
+\textbf{(a)}\quad $x^2 - 16 = (x+4)(x-4)$\quad [difference of squares]
+
+\textbf{(b)}\quad $2x^2 + 5x - 3 = (2x - 1)(x + 3)$
+
+\textit{Method: find two numbers that multiply to $2\times(-3)=-6$ and add to $5$: those are $6$ and $-1$.
+Then split: $2x^2 + 6x - x - 3 = 2x(x+3) - 1(x+3) = (2x-1)(x+3)$.}
+
+\textbf{(c)}\quad $x^4 - 81 = (x^2+9)(x^2-9) = (x^2+9)(x+3)(x-3)$
+
+\textit{Apply difference of squares twice. Note $x^2+9$ does not factor further over the reals.}
+
+\textbf{(d)}\quad $(x^2+3x)^2 - 2(x^2+3x) - 8$
+
+Let $u = x^2 + 3x$:
+\[
+u^2 - 2u - 8 = (u-4)(u+2) = (x^2+3x-4)(x^2+3x+2)
+\]
+Factor each quadratic:
+\[
+= (x+4)(x-1)(x+2)(x+1)
+\]
+
+\textit{Students who get here have strong Algebra 1 instincts. The substitution step is the key insight.}
+
+\textbf{(e)}\quad $x^4 + x^2 + 1$
+
+Add and subtract $x^2$:
+\[
+x^4 + x^2 + 1 = x^4 + 2x^2 + 1 - x^2 = (x^2+1)^2 - x^2 = (x^2+x+1)(x^2-x+1)
+\]
+
+\textbf{(f)}\quad $x^4 + 4$\quad [Sophie Germain Identity]
+
+Add and subtract $4x^2$:
+\[
+x^4 + 4 = x^4 + 4x^2 + 4 - 4x^2 = (x^2+2)^2 - (2x)^2 = (x^2+2x+2)(x^2-2x+2)
+\]
+
+\textit{Neither quadratic factors further over the reals.
+If a student cracks either (e) or (f), they are thinking at a competition level.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 3 --- Language of Math (Quick Check)}
+
+\textbf{1.}\quad \textit{Evaluate} means substitute a specific value and produce a \textbf{number}.
+\textit{Simplify} means rewrite in a cleaner equivalent form --- the result is still an \textbf{expression}.
+
+\textit{Note: there is a typo in the reading --- it says ``evaluate always gives an expression.''
+It should say ``number.'' See if they catch it. (This is one of the intentional contradictions flagged in the instructions.)}
+
+\textbf{2.}\quad They broke the rule that \textbf{let} (and \textbf{define}) is a commitment.
+Once you write ``let $x = 5$,'' $x$ is 5 for the entire problem. You cannot change it.
+
+\textbf{3.}\quad Open-ended. Any grammatically correct sentence using ``such that'' as a constraint.
+\textit{Example: ``Find a number such that doubling it gives 10.''} 
+Watch for students who use it as decoration rather than as a condition.
+
+\textbf{4.}\quad \textit{``It is raining, therefore I should bring an umbrella.''}
+
+\textbf{5.}\quad Open-ended. Look for correct structure: a condition followed by a consequence.
+\textit{Example: ``Suppose school is cancelled, then I can sleep in.''}
+
+\textbf{6.}\quad Open-ended. Any claim about even numbers not yet proven.
+\textit{Strong examples: ``The sum of any two even numbers is even.''
+``Every even number greater than 2 is the sum of two primes.'' (That one is Goldbach's Conjecture.)}
+
+\textbf{7.}\quad \textbf{Yes}, they used it correctly.
+\textit{Assume} means accepting something as true without certainty in order to act.
+It turned out to be wrong --- and that is fine. \textit{Assume} does not promise correctness, only temporary acceptance.
+
+\textbf{8.}\quad They broke the rule that \textbf{define} is a commitment.
+Once $n$ is defined as even, it cannot become odd mid-problem.
+If they needed $n$ to be odd, they should have defined it that way from the start or used a different variable.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 3 --- Real Life Application}
+
+\textbf{1.}\quad $10 \times 8 = \mathbf{80}$ carpet blocks
+
+\textbf{2.}\quad $80 \times 2 = \mathbf{160}$ wool
+
+\textbf{3.}\quad Cannot be a number --- the width is unknown.
+Accept any representation: $10w$, $10 \times ?$, ``$10$ times the width.''
+The key move: did they \textbf{name} the unknown? Award full credit only if they introduce a symbol or label.
+
+\textbf{4.}\quad $2 \times 10w = \mathbf{20w}$ wool (using whatever variable they defined)
+
+\textbf{5.}\quad $20w + 160$ wool total
+
+\textit{Diagnostic note: a student who writes $20w + 160$ without prompting
+has independently constructed a linear function. That is the bridge to Lesson 2.}
+
+\end{document}

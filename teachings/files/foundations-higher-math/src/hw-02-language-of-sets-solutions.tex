@@ -1,0 +1,827 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\usepackage{graphicx}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+% writing lines
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+\begin{center}
+  {\Large\bfseries Homework 2 --- The Language of Sets}\\[4pt]
+  Week 2\\[6pt]
+  Name:\;\underline{\hspace{6.5cm}}\quad
+\end{center}
+\hrule\bigskip
+% =============================================================================
+\section*{Instructions}
+Use \textbf{pen}. Write questions and surprises in the margin in a different color.
+Some things in the reading are intentionally imprecise --- find them. This reading is difficult,
+if there are topics you don't understand, you should use the internet or AI to help. AI can be a good teacher
+if you ask it specific questions. \textbf{DO NOT} use AI
+to solve the problems without trying yourself first.
+% =============================================================================
+\section{Readings}
+Take notes in your notebook on important definitions and examples that you find helpful. Taking notes
+is a skill in itself. As you read the following content, ask questions in your head (using what you learned from the \textbf{question
+compass}) and try answering it. If you can't answer your own question, re-read the text. If you still can't
+answer it after re-reading, write your question down in a \textbf{different color pen} in the margins and we will go over in it class.
+% =============================================================================
+% DROP-IN SECTION: Maximal Interpretation
+% =============================================================================
+\subsection*{Maximal Interpretation}
+\noindent\textbf{Every Clue Earns Its Place}
+
+In class we looked at a problem about two Minecraft bedrooms.
+One student understood the problem so that Bedroom 2's width (8 blocks) was also the
+length of the shared wall --- a perfectly valid logical interpretation.
+But in that reading, the last sentence of the problem
+(``you haven't decided how wide Bedroom 1 will be yet'')
+was doing nothing. No variable was needed. No unknown existed.
+
+That interpretation wasn't \textit{wrong} --- it just wasn't \textbf{maximal}.
+
+\medskip
+\noindent\textbf{\textit{Definition.}}\quad An interpretation is \textbf{maximal}
+if every piece of given information is used.
+An interpretation that leaves a clue unused is called \textbf{wasteful}.
+
+\medskip
+In a well-written problem, every sentence is there for a reason.
+Before you commit to a reading, ask yourself:
+\textit{Is every piece of given information doing something in my interpretation?}
+If a sentence is just sitting there, look for a better reading.
+
+\medskip
+There is a hierarchy of how badly an interpretation can fail:
+
+\medskip
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{} p{3.5cm} p{9.5cm} @{}}
+\toprule
+\textbf{Type} & \textbf{What it means} \\
+\midrule
+Contradiction   & Your interpretation makes two clues logically impossible
+                  at the same time. Ruled out entirely. \\
+Wasteful        & Your interpretation is consistent, but leaves at least one
+                  clue unused. Probably wrong --- keep looking. \\
+Maximal         & Every clue is active. This is the interpretation to work with. \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textit{Note:} A maximal interpretation is not always unique.
+If two different readings each use all the given information,
+both deserve consideration --- and the problem itself may be ambiguous.
+That is worth flagging too. Often times it is just a poorly written question.
+
+\bigskip
+\hrule
+\subsection*{Interpretation Practice}
+
+\textbf{I1.}\quad
+Write a problem or statement such that there exists a maximal interpretation and wasteful interpretation (can be more than two). Explain the possible interpretations
+and what makes them maximal versus wasteful.
+\wls{3}
+
+\subsection*{What Is a Set?}
+\textit{\textbf{Definition.}}\quad A \textbf{set} is an unordered collection of \textbf{distinct} objects.
+Each object is called an \textbf{element} (or \textbf{member}) of the set.
+\[
+  a \in A \quad \text{means} \quad \text{``}a\text{ is an element of }A\text{''}
+\]
+\[
+  a \notin A \quad \text{means} \quad \text{``}a\text{ is NOT an element of }A\text{''}
+\]
+\textbf{Example.} Let $S = \{1, 3, 5\}$. Then $3 \in S$, but $4 \notin S$.
+
+One important fact: a set has \textbf{no repeated elements} and \textbf{no order}.
+The sets $\{1,2,3\}$, $\{3,1,2\}$, and $\{1,1,2,3\}$ are all the same set.
+
+\bigskip
+\subsection*{Two Ways to Write a Set}
+\textbf{Roster notation} --- list the elements explicitly:
+\[
+  A = \{2, 4, 6, 8\}
+\]
+\textbf{Set-builder notation} --- describe the property elements must satisfy:
+\[
+  A = \{x \in \mathbb{Z} \mid x \text{ is even and } 0 < x \leq 8\}
+\]
+Read the vertical bar $\mid$ as \textbf{``such that.''} The full phrase:
+\textit{``the set of all $x$ in $\mathbb{Z}$ such that $x$ is even and between 0 and 8.''}
+
+\textbf{Example.}\quad $\{x \in \mathbb{R} \mid x^2 = 9\} = \{-3,\; 3\}$.
+Why are there two elements? Because both $(-3)^2 = 9$ and $3^2 = 9$.
+
+\newpage
+\subsection*{The Number Sets You Will See Constantly}
+\medskip
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{} p{1.4cm} p{4.2cm} p{8cm} @{}}
+\toprule
+Symbol & Name & Description \\
+\midrule
+$\mathbb{N}$ & Natural numbers    & $\{1,\, 2,\, 3,\, 4,\, \ldots\}$ \\
+$\mathbb{Z}$ & Integers           & $\{\ldots,\, {-2},\, {-1},\, 0,\, 1,\, 2,\, \ldots\}$ \\
+$\mathbb{Q}$ & Rational numbers   & All fractions $\tfrac{p}{q}$ with $p,q \in \mathbb{Z}$, $q \neq 0$ \\
+$\mathbb{R}$ & Real numbers       & Every point on the number line \\
+$\emptyset$  & The empty set      & $\{\;\}$ --- a perfectly valid set containing nothing \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+These sets are \textbf{nested}:
+$\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}$.
+Every natural number is an integer, every integer is rational, and so on.
+
+\medskip
+\begin{center}
+    \textit{[Number-classification diagram omitted from the public release.]}
+\end{center}
+
+\bigskip
+\newpage
+\subsection*{Subsets}
+Set $A$ is a \textbf{subset} of set $B$, written $A \subseteq B$,
+if every element of $A$ is also in $B$.
+
+Formally: $A \subseteq B$ means: for all $x$, if $x \in A$ then $x \in B$.
+
+\textbf{Examples:}
+\begin{itemize}
+  \item $\{2,4\} \subseteq \{1,2,3,4,5\}$? \textbf{Yes.} Both 2 and 4 appear.
+  \item $\{2,7\} \subseteq \{1,2,3,4,5\}$? \textbf{No.} $7 \notin \{1,2,3,4,5\}$.
+  \item $\{1,2,3\} \subseteq \{1,2,3\}$? \textbf{Yes}. they are equal in this case.
+  \item $\emptyset \subseteq \{1,2,3\}$? \textbf{Yes}. All sets have nothing in it.
+\end{itemize}
+
+\subsection*{Set Operations}
+Given sets $A$ and $B$:
+
+\medskip
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{@{} p{3.5cm} p{3cm} p{7cm} @{}}
+\toprule
+Operation & Notation & Meaning \\
+\midrule
+Union        & $A \cup B$ & Everything in $A$ OR $B$ (or both) \\
+Intersection & $A \cap B$ & Everything in BOTH $A$ AND $B$ \\
+Difference   & $A \setminus B$ & In $A$ but NOT in $B$ \\
+Complement   & $A^c$      & Everything in $U$ that is NOT in $A$ \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\textit{\textbf{Definition.}}\quad A \textbf{universal set} $U$ is a declared set that contains every object
+under consideration. All other sets in the problem satisfy $A \subseteq U$.
+
+\medskip
+\textbf{Example.}\quad If we are working with integers from 1 to 10,
+we write $U = \{1, 2, 3, \ldots, 10\}$.
+Any set we discuss --- say $A = \{2, 4, 6\}$ --- must be a subset of $U$.
+
+\medskip
+\textbf{Why it matters.}\quad Union, intersection, and set difference
+depend only on $A$ and $B$. But complement depends on $U$:
+\[
+  A^c = \{x \in U \mid x \notin A\}
+\]
+Change $U$, and $A^c$ changes. Without declaring $U$, the complement is undefined.
+
+\medskip
+\textbf{Example.}\quad Let $U = \{1,2,3,4,5\}$, $A = \{1,2,3\}$, $B = \{2,3,4\}$.
+\[
+  A \cup B = \{1,2,3,4\},\qquad
+  A \cap B = \{2,3\},\qquad
+  A \setminus B = \{1\},\qquad
+  A^c = \{4,5\}
+\]
+
+\medskip
+\textbf{\textit{Definition}.}\quad The \textbf{cardinality} of a set $A$,
+written $|A|$, is the number of elements in $A$.
+
+Using the example above, fill in each cardinality:
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{3.5cm}|C{3.5cm}|C{3.5cm}|C{3.5cm}|}
+\hline
+$|A|$ & $|B|$ & $|A \cup B|$ & $|A \cap B|$ \\
+\hline
+& & & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\bigskip
+\subsection*{Cartesian Products}
+\textbf{\textit{Definition.}}\quad The \textbf{Cartesian product} $A \times B$ (read ``$A$ cross $B$'') is
+the set of ALL ordered pairs $(a,b)$ where $a \in A$ and $b \in B$:
+\[
+  A \times B = \{(a,b) \mid a \in A \text{ and } b \in B\}
+\]
+\textbf{Example.}\quad $A = \{1,2\}$, $B = \{\text{red},\, \text{blue},\, \text{green}\}$:
+\[
+  A \times B = \{(1,\text{red}),\,(1,\text{blue}),\,(1,\text{green}),\,
+                 (2,\text{red}),\,(2,\text{blue}),\,(2,\text{green})\}
+\]
+So $|A \times B| = 2 \times 3 = 6$.
+
+\medskip
+\textbf{You already know one Cartesian product:} the coordinate plane is
+$\mathbb{R} \times \mathbb{R} = \mathbb{R}^2$.
+Every point $(x, y)$ is an ordered pair --- one from each copy of $\mathbb{R}$.
+
+\medskip
+\textbf{Big preview.}\quad In the next worksheet, we define a
+\textit{function} $f\colon A \to B$ as a special subset of $A \times B$ ---
+a set of ordered pairs where each $a \in A$ appears exactly once on the left.
+Keep that in mind. By the end of next class, this sentence will make complete sense.
+
+\subsection*{Why You Cannot Just Add}
+Suppose 13 students like Math and 9 students like Science.
+Can you conclude that 22 students like at least one subject?
+
+Not necessarily --- some students might like \textit{both}.
+If 5 students like both, then adding $13 + 9 = 22$ counts those
+5 students twice: once in the Math group and once in the Science group. To fix the overcount, subtract the overlap once. In this situation, there are $13 + 9 - 5 = 17$ students that like at least one subject.
+Notice mathematically what we did was:
+\[
+  |\text{Math} \cup \text{Science}|
+  \;=\;
+  |\text{Math}| + |\text{Science}| - |\text{Math} \cap \text{Science}|
+  \;=\;
+  13 + 9 - 5
+  \;=\;
+  17
+\]
+Also notice that the phrase ``students that like \textbf{at least} one subject'' translates to \[|\text{Math} \cup \text{Science}|.\]
+
+\subsubsection*{The Inclusion-Exclusion Formula}
+The previous problem demonstrates an important formula in set theory, the \textbf{inclusion-exclusion formula}.
+This works for any two sets:
+\[
+  |A \cup B| = |A| + |B| - |A \cap B|
+\]
+\textbf{Why it works.}\quad Every element of $A \cap B$
+gets added in $|A|$, added again in $|B|$, then subtracted once.
+Net result: counted exactly once.
+Every element in only $A$ or only $B$ is never subtracted.
+Net result: also counted exactly once.
+
+\medskip
+\textbf{Example.}\quad
+On a Minecraft server, 13 players have built a house and 9 have
+defeated the Ender Dragon. 5 players have done both.
+How many players have done at least one?
+\[
+  |H \cup D| = 13 + 9 - 5 = 17
+\]
+If there are 25 players total, then $25 - 17 = 8$ have done neither.
+
+\medskip
+\textbf{Practice.}\quad
+At a summer camp, 24 campers went hiking and 19 went swimming.
+8 campers did both. There are 40 campers total.
+
+(a)\quad How many campers did at least one activity?
+\wls{2}
+
+(b)\quad How many campers did neither?
+\wl
+
+\vspace{4cm}
+\newpage
+
+% =============================================================================
+\subsection*{Foundation Practice}
+
+\textbf{1.}\quad
+Membership, Notation, and Set-Builder Form.
+
+\textbf{(a)}\quad Let $S = \{3,\, 6,\, 9,\, 12,\, 15\}$.
+Fill in $\in$ or $\notin$:
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{3.5cm}|C{3.5cm}|C{3.5cm}|C{3.5cm}|}
+\hline
+$6 \mathrel{\underline{\hspace{0.8cm}}} S$ &
+$0 \mathrel{\underline{\hspace{0.8cm}}} S$ &
+$9 \mathrel{\underline{\hspace{0.8cm}}} S$ &
+$18 \mathrel{\underline{\hspace{0.8cm}}} S$ \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textbf{(b)}\quad Write $S$ from (a) in set-builder notation using $\mathbb{N}$.
+(Hint: what property do ALL elements of $S$ share?)
+\wls{2}
+
+\textbf{(c)}\quad Write each in roster notation.
+
+\medskip
+\hspace{1.5em}(i)\quad $\{x \in \mathbb{Z} \mid -2 \leq x \leq 2\}$
+\hfill $= \;\underline{\hspace{6cm}}$
+
+\medskip
+\hspace{1.5em}(ii)\quad $\{x \in \mathbb{Z} \mid x^2 < 10\}$
+\hfill $= \;\underline{\hspace{6cm}}$
+
+\medskip
+\hspace{1.5em}(iii)\quad $\{x \in \mathbb{N} \mid x \text{ divides } 12\}$
+\hfill $= \;\underline{\hspace{6cm}}$
+
+\textbf{(d)}\quad Write $\{x \in \mathbb{R} \mid x^2 = 4\}$ in roster notation.
+\[
+  \{x \in \mathbb{R} \mid x^2 = 4\} \;=\; \underline{\hspace{5cm}}
+\]
+
+\bigskip
+\textbf{2.}\quad Subsets.
+
+\textbf{(a)}\quad List ALL subsets of $\{p,\, q,\, r\}$. Include the empty set.
+\wls{3}
+
+How many subsets are there total? \;\hrulefill
+
+If you see a pattern, try to state it in terms of the number of elements in the original set.
+\wl
+
+\textbf{(b)}\quad Answer T\,/\,F and justify in one sentence.
+
+\medskip
+T\,/\,F\quad $\emptyset \subseteq \{1,2,3\}$
+\wl
+
+T\,/\,F\quad $\{1,2,3\} \subseteq \{1,2,3\}$
+\wl
+
+T\,/\,F\quad $\{1,2\} \subseteq \{1,\{2\}\}$ \hfill \textit{(Look carefully at the second set.)}
+\wl
+
+\textbf{(c)}\quad Fill in the blanks, ordering $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$ from ``smallest'' to ``largest'' using $\subseteq$:
+\[
+  \underline{\hspace{1.8cm}}
+  \;\subseteq\;
+  \underline{\hspace{1.8cm}}
+  \;\subseteq\;
+  \underline{\hspace{1.8cm}}
+  \;\subseteq\;
+  \underline{\hspace{1.8cm}}
+\]
+
+Circle all that apply for each number:
+
+\medskip
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{2.5cm}|C{3.5cm}|C{3.5cm}|C{3.5cm}|}
+\hline
+Number & $\in \mathbb{N}$? & $\in \mathbb{Z}$? & $\in \mathbb{Q}$? \\
+\hline
+$-5$          & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+$\tfrac{1}{3}$ & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+$\sqrt{2}$     & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+$0$            & Yes \quad No & Yes \quad No & Yes \quad No \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\newpage
+\textbf{3.}\quad Cardinality.
+
+\textbf{(a)}\quad Compute the cardinality of each set.
+
+\medskip
+\renewcommand{\arraystretch}{2.8}
+\begin{tabular}{|C{4.5cm}|C{4.5cm}|C{4.5cm}|}
+\hline
+$\bigl|\{a,\, e,\, i,\, o,\, u\}\bigr|$ &
+$|\emptyset|$ &
+$|\{\emptyset\}|$ \\
+\hline
+ & & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textit{Note:} $\emptyset$ is a set with zero elements. $\{\emptyset\}$ is a set that \textbf{contains} the empty set --- it has exactly one element. Are they the same set? Explain.
+\wls{2}
+
+\textbf{(b)}\quad Suppose $|A| = 4$ and $|B| = 6$.
+Use $|A \cup B| = |A| + |B| - |A \cap B|$.
+
+\medskip
+\hspace{1.5em}(i)\quad What is the \textbf{maximum} possible $|A \cup B|$?
+When does this happen?
+\wl
+
+\hspace{1.5em}(ii)\quad What is the \textbf{minimum} possible $|A \cup B|$?
+When does this happen?
+\wl
+
+\textbf{(c)}\quad $\bigstar$\;\textit{Preview.}\quad
+If $|A| = m$ and $|B| = n$, give a formula for $|A \times B|$.
+Explain why the formula makes sense --- don't just guess.
+\wls{2}
+
+\newpage
+% =============================================================================
+\section*{Part 2 --- Application}
+
+\textbf{4.}\quad Set Operations.
+
+Let $U = \{1,2,3,4,5,6,7,8,9,10\}$,\quad
+$A = \{1,2,3,4,5,6\}$,\quad
+$B = \{2,4,6,8\}$.
+
+\textbf{(a)}\quad Complete the table.
+
+\medskip
+\renewcommand{\arraystretch}{2.4}
+\begin{tabular}{|C{4cm}|C{9.5cm}|}
+\hline
+Expression & Result (roster notation) \\
+\hline
+$A \cup B$ & \\
+\hline
+$A \cap B$ & \\
+\hline
+$A \setminus B$ & \\
+\hline
+$B \setminus A$ & \\
+\hline
+$A^c$ (in $U$) & \\
+\hline
+$(A \cup B)^c$ (in $U$) & \\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+\medskip
+\textbf{(b)}\quad Is $A \setminus B$ the same as $B \setminus A$? Answer and explain.
+\wl
+
+\textbf{(c)}\quad Verify the formula $|A \cup B| = |A| + |B| - |A \cap B|$ using your table.
+Show the arithmetic.
+\wl
+
+\textbf{(d)}\quad The reading defined complement as
+``everything NOT in $A$.''
+But question 4(a) says ``$A^c$ in $U$'' --- why did we need to specify $U$?
+What would $A^c$ mean if we used $U' = \mathbb{N}$ as the universal set instead?
+\wls{2}
+
+\bigskip
+\textbf{5.}\quad Real Life Application --- Minecraft Achievement Board.
+
+You manage the achievement board for a Minecraft server with 30 active players.
+After a big weekend event, you collect the following data:
+\begin{itemize}
+  \item 18 players have built a house. Call this set $H$.
+  \item 14 players have defeated the Ender Dragon. Call this set $D$.
+  \item 6 players have done \textbf{both}.
+\end{itemize}
+
+\textbf{(a)}\quad How many players earned at least one achievement?
+\wls{2}
+
+\textbf{(b)}\quad How many players earned \textbf{neither} achievement?
+\wl
+
+\textbf{(c)}\quad Write an expression in set notation for
+``players who built a house but did NOT defeat the Ender Dragon,''
+then compute the count.
+\[
+  \underline{\hspace{4.5cm}} \;=\; \underline{\hspace{1.2cm}} \text{ players}
+\]
+
+\textbf{(e)}\quad A third achievement is added: Nether Portal (set $P$) with $|P| = 10$.
+The server rules require having a house before you can build a portal, so $P \subseteq H$.
+
+\medskip
+\hspace{1.5em}(i)\quad Can you simplify $P \cup H$? What is it equal to? Explain.
+\wl
+
+\hspace{1.5em}(ii)\quad What do you know about $P \cap H$? Can you simplify it?
+\wl
+
+\newpage
+\hspace{1.5em}(iii)\quad What is the minimum possible value of $|P \cap D|$?
+The maximum? (You do not have information about $P$ and $D$ specifically ---
+think about what's possible.)
+\wls{3}
+
+% =============================================================================
+\section*{Part 3 --- Challenge}
+
+\textbf{6.}\quad Cartesian Products.
+
+Let $A = \{0,\, 1,\, 2\}$ and $B = \{\text{red},\, \text{blue}\}$.
+
+\textbf{(a)}\quad List all elements of $A \times B$.
+\wls{2}
+
+\textbf{(b)}\quad List all elements of $B \times A$.
+\wls{2}
+
+\textbf{(c)}\quad Is $A \times B = B \times A$? If not, give a specific element that is in one but not the other.
+\wl
+
+\textbf{(d)}\quad The coordinate plane is $\mathbb{R} \times \mathbb{R} = \mathbb{R}^2$.
+Every point $(x,y)$ on the grid is an element of $\mathbb{R}^2$.
+Write the $x$-axis as a \textit{subset} of $\mathbb{R}^2$ in set-builder notation.
+\[
+  x\text{-axis} = \bigl\{\;\underline{\hspace{8cm}}\;\bigr\}
+\]
+
+\textbf{(e)}\quad \textit{Preview.}\quad
+Consider the function $f\colon \{1,2,3\} \to \{x,y,z\}$ defined by
+$f(1) = x$, $f(2) = x$, $f(3) = z$.
+Write $f$ as a subset of $\{1,2,3\} \times \{x,y,z\}$ --- just list the ordered pairs.
+\[
+  f = \bigl\{\;\underline{\hspace{9cm}}\;\bigr\}
+\]
+
+\bigskip
+\textbf{7.}\quad \textbf{Your First Set Theory Proof.}
+
+We are going to prove that for any sets $A$ and $B$,\quad $A \cap B \;\subseteq\; A$.
+
+\textbf{(a)}\quad Fill in the blanks to complete the proof.
+
+\noindent\textbf{Proof.}
+
+\medskip
+\textit{Let} $x \in A \cap B$.
+\hfill \textit{(We introduce an arbitrary element of $A \cap B$.)}
+
+\medskip
+By the definition of intersection,\;
+$x \in \underline{\hspace{2cm}}$\; and\; $x \in \underline{\hspace{2cm}}$.
+
+\medskip
+Therefore,\; $x \in \underline{\hspace{2cm}}$.
+\hfill \textit{(This is what we needed.)}
+
+\medskip
+Since $x$ was arbitrary,\; $A \cap B \subseteq A$. Q.E.D.
+
+\smallskip
+\noindent\rule{\linewidth}{0.4pt}
+
+\textbf{(b)}\quad Write the analogous proof that $A \cap B \subseteq B$.
+(Same template --- do it yourself from scratch.)
+\wls{4}
+
+\newpage
+\textbf{(c)}\quad Is $A \subseteq A \cap B$ always true?
+Give a \textbf{proof} if yes, or a \textbf{counterexample} if no.
+A counterexample means you find specific sets $A$ and $B$ that break it.
+\wls{2}
+
+\bigskip
+\textbf{8.}\quad What does it mean for something to be \textbf{countable}? Provide a formal mathematical \textbf{definition} on what it means to be countable?
+\wls{3}
+
+% =============================================================================
+\section*{Part 4 --- Notebook Artifact}
+
+\textbf{N1.}\quad For the notes you took while doing the readings/homework (I hope you did), write at least 5 questions about any topic
+today in a different color pen in your notebook.
+
+\bigskip
+
+\textbf{N2.}\quad If you used the internet or AI for help, describe how you used it:
+
+\wls{3}
+
+% =============================================================================
+% =============================================================================
+% =============================================================================
+\newpage
+\begin{center}
+{\large\bfseries ANSWER KEY --- DO NOT DISTRIBUTE}\\[4pt]
+Worksheet I-B: The Language of Sets
+\end{center}
+\hrule\bigskip
+
+\textit{Grading notes: credit full marks for correct mathematical reasoning
+even if notation differs from key. Require justification for T/F and proof questions.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Reading --- In-line Answers}
+
+\textbf{I1 (Interpretation Practice).}\;
+Open-ended. Accept any problem with a clear maximal interpretation and at least one wasteful alternative.
+A strong response names the specific clue that goes unused in the wasteful reading and explains why the maximal reading requires it.
+
+\textbf{Cardinality fill-in (reading table).}\;
+From the example $U = \{1,2,3,4,5\}$, $A = \{1,2,3\}$, $B = \{2,3,4\}$:
+$|A| = 3$,\quad $|B| = 3$,\quad $|A \cup B| = 4$,\quad $|A \cap B| = 2$.
+
+\textbf{Inclusion-Exclusion Practice (summer camp).}\;
+$U$ = all 40 campers at the summer camp.
+
+(a)\; $|H \cup S| = 24 + 19 - 8 = \mathbf{35}$ campers.
+
+(b)\; $40 - 35 = \mathbf{5}$ campers did neither.
+
+Venn diagram regions: hiking only $= 16$, both $= 8$, swimming only $= 11$, neither $= 5$.
+Check: $16 + 8 + 11 + 5 = 40$. \checkmark
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Reading Planted Imprecision}
+
+\textbf{Complement without $U$:} The operations table lists complement as ``everything NOT in $A$'' without mentioning $U$.
+The complement is only well-defined relative to a universal set.
+Q4(d) forces students to confront this.
+
+\textbf{$\mathbb{N}$ includes 0?} The reading states $\mathbb{N} = \{1,2,3,\ldots\}$ (no 0).
+Some textbooks define $\mathbb{N}$ to include 0 (especially in logic and computer science).
+This is a legitimate ambiguity. Neither definition is universally ``correct.''
+Good class discussion: what happens to the $\mathbb{N} \subseteq \mathbb{Z}$ chain if 0 is in $\mathbb{N}$?
+(Nothing breaks --- $0 \in \mathbb{Z}$ either way.)
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Foundation}
+
+\bigskip
+\textbf{Q1.}
+
+(a)\; $6 \in S$,\quad $0 \notin S$,\quad $9 \in S$,\quad $18 \notin S$
+
+(b)\; $S = \{x \in \mathbb{N} \mid x \text{ is a multiple of 3 and } x \leq 15\}$
+
+(c)
+
+\hspace{1.5em}(i)\; $\{-2,-1,0,1,2\}$
+
+\hspace{1.5em}(ii)\; $\{-3,-2,-1,0,1,2,3\}$ \quad ($(-3)^2 = 9 < 10$, so $\pm 3$ qualify)
+
+\hspace{1.5em}(iii)\; $\{1,2,3,4,6,12\}$
+
+(d)\; \textbf{Curveball.} $x^2 = 4$ has two solutions: $x = 2$ and $x = -2$.
+Answer: $\{-2,\; 2\}$.
+Students who write only $\{2\}$ forgot negative solutions.
+
+\bigskip
+\textbf{Q2.}
+
+(a)\; $\emptyset,\; \{p\},\; \{q\},\; \{r\},\; \{p,q\},\; \{p,r\},\; \{q,r\},\; \{p,q,r\}$
+
+Total: \textbf{8} subsets. Pattern: a set with $n$ elements has $2^n$ subsets.
+\textit{Why $2^n$: for each element, independently choose include or exclude ---
+2 choices per element, $n$ elements, so $2^n$ total.}
+
+(b)
+
+T\,/\,F\quad $\emptyset \subseteq \{1,2,3\}$: \textbf{TRUE.}
+The empty set is a subset of every set --- there are no elements in $\emptyset$
+that fail to be in $\{1,2,3\}$.
+(Vacuously true.)
+
+T\,/\,F\quad $\{1,2,3\} \subseteq \{1,2,3\}$: \textbf{TRUE.}
+Every set is a subset of itself.
+
+T\,/\,F\quad $\{1,2\} \subseteq \{1,\{2\}\}$: \textbf{FALSE.}
+\textit{Curveball.} The set $\{1,\{2\}\}$ has two elements: the number $1$ and the
+\textit{set} $\{2\}$. The number $2$ is not an element of $\{1,\{2\}\}$.
+
+(c)\; $\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}$
+
+Table:
+$-5$: No, Yes, Yes.\quad
+$\tfrac{1}{3}$: No, No, Yes.\quad
+$\sqrt{2}$: No, No, No (irrational).\quad
+$0$: No (per our definition), Yes, Yes.
+
+\bigskip
+\textbf{Q3.}
+
+(a)\; $|\{a,e,i,o,u\}| = 5$;\quad $|\emptyset| = 0$;\quad $|\{\emptyset\}| = 1$.
+
+$\{\emptyset\}$ contains exactly one element: the empty set itself. $\emptyset \neq \{\emptyset\}$.
+\textit{Analogy: an empty bag and a bag containing an empty bag are different objects.}
+
+(b)
+
+(i) Maximum $|A \cup B| = 10$. Happens when $A \cap B = \emptyset$ (disjoint).
+
+(ii) Minimum $|A \cup B| = 6$. Happens when $A \subseteq B$.
+
+(c)\; $|A \times B| = m \cdot n$.
+For each of the $m$ elements of $A$, pair with each of the $n$ elements of $B$:
+$n$ pairs per element, $m$ elements total $\Rightarrow m \cdot n$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 2 --- Application}
+
+\bigskip
+\textbf{Q4.}
+
+(a)
+\medskip
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{} p{4cm} p{10cm} @{}}
+\toprule
+Expression & Answer \\
+\midrule
+$A \cup B$          & $\{1,2,3,4,5,6,8\}$ \\
+$A \cap B$          & $\{2,4,6\}$ \\
+$A \setminus B$     & $\{1,3,5\}$ \\
+$B \setminus A$     & $\{8\}$ \\
+$A^c$ (in $U$)      & $\{7,8,9,10\}$ \\
+$(A \cup B)^c$ (in $U$) & $\{9,10\}$ \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+(b)\; No. $A \setminus B = \{1,3,5\}$, $B \setminus A = \{8\}$. Set difference is not commutative.
+
+(c)\; $|A \cup B| = 7$. Formula: $6 + 4 - 3 = 7$. \checkmark
+
+(d)\; \textbf{Planted imprecision.}
+If $U = \mathbb{N}$, then $A^c = \{7,8,9,10,11,12,\ldots\}$ --- an infinite set.
+The complement changes completely depending on $U$.
+
+\bigskip
+\textbf{Q5.}
+
+(a)\; $|H \cup D| = 18 + 14 - 6 = \mathbf{26}$ players.
+
+(b)\; $30 - 26 = \mathbf{4}$ players.
+
+(c)\; $H \setminus D = 18 - 6 = \mathbf{12}$ players.
+
+(d)
+
+(i)\; $P \cup H = H$.
+Since $P \subseteq H$, every element of $P$ is already in $H$.
+
+(ii)\; $P \cap H = P$.
+Since $P \subseteq H$, every element of $P$ is in both.
+
+(iii)\; Minimum $|P \cap D| = \max(0,\; 10+14-30) = 0$.
+Maximum $|P \cap D| = \min(10,14) = 10$.
+So $0 \leq |P \cap D| \leq 10$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Part 3 --- Challenge}
+
+\bigskip
+\textbf{Q6.}
+
+(a)\; $A \times B = \{(0,\text{red}),(0,\text{blue}),(1,\text{red}),(1,\text{blue}),(2,\text{red}),(2,\text{blue})\}$
+
+(b)\; $B \times A = \{(\text{red},0),(\text{red},1),(\text{red},2),(\text{blue},0),(\text{blue},1),(\text{blue},2)\}$
+
+(c)\; No. $(0,\text{red}) \in A \times B$ but $(0,\text{red}) \notin B \times A$.
+
+(d)\; $x\text{-axis} = \{(x,0) \mid x \in \mathbb{R}\}$
+
+(e)\; $f = \{(1,x),(2,x),(3,z)\}$.\quad $y$ is NOT in the range.
+
+\bigskip
+\textbf{Q7.}
+
+(a)\; Blanks: $A$ and $B$; therefore $A$.
+
+(b)\; \textit{Let} $x \in A \cap B$.
+By the definition of intersection, $x \in A$ and $x \in B$.
+Therefore, $x \in B$. $\square$
+
+(c)\; \textbf{FALSE.} Counterexample: $A = \{1,2\}$, $B = \{2,3\}$.
+$A \cap B = \{2\}$, but $1 \in A$ and $1 \notin A \cap B$.
+So $A \not\subseteq A \cap B$.
+
+\textit{Note: $A \subseteq A \cap B \iff A \subseteq B$.}
+
+\bigskip
+\textbf{Q8.}\; A set $S$ is \textbf{countable} if there exists an injective function
+$f\colon S \to \mathbb{N}$ --- the elements of $S$ can be listed without repetition.
+Finite sets are countable. $\mathbb{Z}$ and $\mathbb{Q}$ are countable.
+$\mathbb{R}$ is \textbf{not} countable (Cantor's diagonal argument --- see historian sheet).
+
+\end{document}

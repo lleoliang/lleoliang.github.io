@@ -1,0 +1,419 @@
+\documentclass[11pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\usepackage{graphicx}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\wl}{\par\vspace{3mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Teacher Notes --- Introduction to Functions}\\[6pt]
+{\large Worksheet II\quad|\quad \textbf{DO NOT DISTRIBUTE}\quad|\quad 3 Hours}
+\end{center}
+
+\bigskip
+
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries What students already know coming in}\\
+\small
+$\bullet$\enspace Set theory: sets, membership, Cartesian product $A \times B$, subsets, set operations, cardinality $|A|$.\\
+$\bullet$\enspace Cantor sheet: bijections informally, countable vs.\ uncountable
+(may not be fully internalized yet).\\
+$\bullet$\enspace The maximal interpretation habit --- use this when introducing
+injective/surjective.\\[2pt]
+$\bullet$\enspace $f(x)$ notation is \textbf{brand new}. Do not assume any prior exposure.
+\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip\bigskip
+
+% ─── HOUR 1 ──────────────────────────────────────────────────────────────────
+
+\section*{Hour 1 --- What Is a Function? (\textasciitilde 60 min)}
+
+\subsection*{Concept block answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Function (Definition 1.1.6, Bartle \& Sherbert):}\enspace
+Let $A$ and $B$ be sets. A \textbf{function} from $A$ to $B$ is a set $f$ of ordered
+pairs in $A \times B$ such that for each $a \in A$ there exists a \emph{unique}
+$b \in B$ with $(a, b) \in f$.\\[4pt]
+\textit{Note for class: this is the set-theoretic definition. The informal version ---
+``a rule that assigns to each element of $A$ exactly one element of $B$'' --- is
+intuitive but imprecise. B\&S use the ordered-pairs form to make the definition
+unambiguous. This is also why Cartesian products came first.}\\[4pt]
+$\bullet$\enspace Written $f : A \to B$ (read ``$f$ maps $A$ to $B$'').\\[4pt]
+\textbf{Intuition:}\enspace Every input gets exactly one output.
+No input is left out; no input gets two answers.\\[4pt]
+\textbf{Notation blank:}\enspace $f : A \to B$
+\par\smallskip\end{minipage}}
+
+\bigskip
+
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Introduce with the Minecraft bridge}\\[3pt]
+\small Start with the Minecraft bedroom example the students already know.
+A function is a rule that takes a room name and gives back exactly one property.\\[3pt]
+``What if a room could have two different numbers of beds?
+Then the rule breaks --- it isn't a function anymore.''\\[3pt]
+This directly mirrors: one input $\to$ two outputs $=$ NOT a function.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{Four representations --- what to put in each box}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Arrow diagram:}\enspace Draw two ovals; draw one arrow from each
+element of $A$ to exactly one element of $B$.\\[4pt]
+\textbf{Ordered pairs:}\enspace List as a set $\{(1,a),(2,b),(3,a)\}$ ---
+connects directly to Cartesian product from Set Theory.\\[4pt]
+\textbf{Table:}\enspace Input column $\mid$ output column.
+Each input row has exactly one output.\\[4pt]
+\textbf{Graph:}\enspace Plot $(x, f(x))$ pairs on coordinate axes.
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Cartesian product connection --- say this explicitly}\\[3pt]
+\small A function $f : A \to B$ is a \emph{subset} of $A \times B$.\\[3pt]
+Special condition: every element of $A$ appears as a first element \emph{exactly once}.\\[3pt]
+Non-function in ordered-pair form: $\{(1,a),(1,b),(2,c)\}$ ---
+the element $1$ appears twice (two arrows from one input).\\[3pt]
+``This is why we built Cartesian products last week. They'll feel the payoff here.''\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{What breaks the definition}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+The only thing that breaks it: one input mapping to \textbf{two or more outputs}.\\[4pt]
+$\bullet$\enspace One input with no output is also invalid, but focus on
+the two-output case first --- it's more intuitive.\\[4pt]
+$\bullet$\enspace Two \emph{different} inputs mapping to the \emph{same} output
+is fine. (This is the injective distinction --- preview it briefly.)
+\par\smallskip\end{minipage}}
+
+\bigskip
+
+\subsection*{Vertical Line Test answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Definition:}\enspace A graph represents a function if and only if
+every vertical line intersects it \emph{exactly once}.\\[4pt]
+\textit{Note: B\&S use ``exactly once,'' not ``at most once.'' Since every $a \in A$
+must produce an output, a vertical line at any $x = a$ in the domain must hit
+the graph --- so ``at most once'' would allow missing inputs, which violates the definition.
+``Exactly once'' is the correct form.}\\[4pt]
+\textbf{Intuition:}\enspace Each $x$-value (input) has exactly one $y$-value (output).
+A vertical line at $x = 3$ hitting the graph twice means $x = 3$ gives
+two outputs --- not a function.\\[4pt]
+\textbf{Passing examples:}\enspace $y = mx + b$;\enspace $y = x^{2}$ (parabola opening up or down).\\[4pt]
+\textbf{Failing example:}\enspace Circle $x^{2} + y^{2} = 1$ ---
+at $x = 0$ both $y = 1$ and $y = -1$ lie on the curve.
+\par\smallskip\end{minipage}}
+
+\subsection*{Set theory fill-in answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+A function $f : A \to B$ is a subset of $A \times B$.\\[4pt]
+Special because: each first element appears \textbf{exactly once}.
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Timing check --- end of Hour 1}\\[3pt]
+\small By the 60-min mark students should have: the definition, all four
+representations drawn in their notes, 2--3 non-examples discussed,
+and the Cartesian product connection filled in.\\[3pt]
+\textbf{If running long:} cut to just arrow diagrams and ordered pairs;
+skip tables and graphs (they appear in Hour 2 practice).\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip\bigskip
+
+% ─── HOUR 2 ──────────────────────────────────────────────────────────────────
+
+\newpage
+
+\section*{Hour 2 --- Notation, Domain, Codomain, Range (\textasciitilde 60 min)}
+
+\subsection*{$f(x)$ notation --- concept block answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Definition:}\enspace $f(x)$ is the output of function $f$ when the
+input is $x$. Read as ``$f$ of $x$''.\\[4pt]
+$\bullet$\enspace $f$ is the \textbf{name} of the function (label on a machine).\\[2pt]
+$\bullet$\enspace $x$ is the \textbf{input} (goes in).\\[2pt]
+$\bullet$\enspace $f(x)$ is the \textbf{output} (comes out).\\[4pt]
+\textbf{Intuition:}\enspace $f(x) = 2x + 1$ means ``take $x$, double it,
+add 1.'' The name $f$ just tells us which machine we're using.
+\par\smallskip\end{minipage}}
+
+\bigskip
+
+\subsection*{Evaluation practice answers\quad $f(x) = 2x+1$}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+$f(0) = 2(0)+1 = 1$\hfill
+$f(3) = 2(3)+1 = 7$\hfill
+$f(-2) = 2(-2)+1 = -3$\hfill
+$f(a) = 2a+1$\\[4pt]
+Key point on $f(a)$: $x$ is just a placeholder; any variable works.
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Misconception alert --- $f(x)$ vs.\ multiplication}\\[3pt]
+\small Students sometimes read $f(x)$ as $f \times x$. Address this early.\\[3pt]
+Say: ``$f(x)$ is not multiplication. The parentheses here mean \emph{input}, not multiply.''\\[3pt]
+Analogy: think of $f$ as a machine's name.
+$f(3)$ means ``run the machine named $f$ on input 3.''\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{Domain / Codomain / Range --- answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Domain (B\&S):}\enspace The set $A$ of first elements of $f$, denoted $D(f) = A$.
+Every element of the domain must appear as a first element in $f$ --- no input
+is allowed to be missing.\\[4pt]
+\textbf{Codomain (B\&S):}\enspace The set $B$ in $f : A \to B$.
+B\&S do \emph{not} give the codomain a special name --- they simply call it $B$ and
+note separately that $R(f) \subseteq B$.
+The codomain is \emph{declared} when you write $f : A \to B$;
+it is not determined by the formula alone.\\[4pt]
+\textbf{Range / Image (B\&S):}\enspace The set of all second elements in $f$:
+$R(f) := \{f(a) : a \in A\}$.
+The range is always a subset of the codomain, $R(f) \subseteq B$,
+but need not equal it.\\[4pt]
+\textbf{Key:}\enspace $R(f) \subseteq B$.
+They are equal precisely when $f$ is surjective (preview this for Hour 3).
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Set Theory payoff moment --- make this explicit}\\[3pt]
+\small Stop and say: ``Look what we just wrote: Range $\subseteq$ Codomain.
+That's a subset relationship --- exactly what we studied last week.''\\[3pt]
+This is the moment the two worksheets connect.
+the students should feel the vocabulary clicking into place.\\[3pt]
+If they fill in Range $\subseteq$ Codomain confidently, the set theory learning transferred.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{Practice table answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+$f:\{1,2,3\}\to\{A,B,C,D\}$,\quad $f(1)=A,\ f(2)=A,\ f(3)=B$\\[2pt]
+\quad Domain $= \{1,2,3\}$\enspace|\enspace
+Codomain $= \{A,B,C,D\}$\enspace|\enspace Range $= \{A,B\}$\\[2pt]
+\quad Note: $C$ and $D$ are in the codomain but not the range --- fine.\\[6pt]
+$g:\mathbb{R}\to\mathbb{R}$,\quad $g(x) = x^{2}$\\[2pt]
+\quad Domain $= \mathbb{R}$\enspace|\enspace
+Codomain $= \mathbb{R}$\enspace|\enspace Range $= [0,\infty)$\\[2pt]
+\quad Note: negative numbers are in the codomain but not the range.\\[6pt]
+$h:\{\text{cats},\text{dogs}\}\to\{0,1,2\}$,\quad
+$h(\text{cats})=2$,\quad $h(\text{dogs})=2$\\[2pt]
+\quad Domain $= \{\text{cats},\text{dogs}\}$\enspace|\enspace
+Codomain $= \{0,1,2\}$\enspace|\enspace Range $= \{2\}$\\[2pt]
+\quad Note: 0 and 1 are in the codomain but not the range. Range is a singleton!
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Timing check --- end of Hour 2}\\[3pt]
+\small By the 2-hour mark: $f(x)$ notation, evaluation, domain/codomain/range
+distinctions, and the subset relationship should all be in students' notes.\\[3pt]
+The practice table is the real test.
+If $h$ above confuses them (range $= \{2\}$ only), spend extra time before moving on.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip\bigskip
+
+% ─── HOUR 3 ──────────────────────────────────────────────────────────────────
+
+\newpage
+
+\section*{Hour 3 --- Injective, Surjective, Bijective (\textasciitilde 60 min)}
+
+\subsection*{Concept block answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{Injective (one-to-one) --- B\&S Definition 1.1.9a:}\\[2pt]
+\textit{Primary form:} $f$ is injective if whenever $x_1 \neq x_2$,
+then $f(x_1) \neq f(x_2)$.
+In other words, distinct inputs always produce distinct outputs.\\[2pt]
+\textit{Proof form (contrapositive):} $f(a) = f(b) \Rightarrow a = b$.
+This is logically equivalent to the primary form, but is what we use in proofs
+because it is easier to work with equalities than inequalities.
+To prove injectivity: assume $f(x_1) = f(x_2)$ and show $x_1 = x_2$.\\[2pt]
+Intuition: no two arrows point to the same target.
+Every element of $B$ has \emph{at most} one arrow hitting it.\\[2pt]
+Diagram: $A=\{1,2,3\}$, $B=\{a,b,c,d\}$.
+Arrows: $1\to a$, $2\to b$, $3\to c$. Each target hit at most once. $d$ is unhit --- fine.\\[8pt]
+\textbf{Surjective (onto) --- B\&S Definition 1.1.9b:}\\[2pt]
+Definition: $f$ is surjective if $f(A) = B$ (the range equals the codomain).
+Equivalently: for every $b \in B$, there exists $a \in A$ such that $f(a) = b$.\\[2pt]
+Intuition: no element of $B$ is left without an arrow. Every target is covered.\\[2pt]
+Diagram: $A=\{1,2,3,4\}$, $B=\{a,b,c\}$.
+Arrows: $1\to a$, $2\to b$, $3\to c$, $4\to a$. Every element of $B$ hit.\\[8pt]
+\textbf{Bijective:}\\[2pt]
+Definition: both injective and surjective.\\[2pt]
+Intuition: a perfect one-to-one pairing.
+Every input has a unique output AND every output is covered.\\[2pt]
+Requires $|A| = |B|$.
+Diagram: $A=\{1,2,3\}$, $B=\{a,b,c\}$.
+Arrows: $1\to a$, $2\to b$, $3\to c$. Perfect pairing.
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Draw arrow diagrams BEFORE introducing the vocabulary}\\[3pt]
+\small Draw these three diagrams on the board first, then ask ``What's different about each one?''
+\emph{Then} introduce the formal names.\\[3pt]
+\textbf{Diagram 1:} $A=\{1,2\}\to B=\{a,b,c\}$.\quad Arrows: $1\to a$, $2\to b$. Element $c$ unhit.\\[2pt]
+\textbf{Diagram 2:} $A=\{1,2,3\}\to B=\{a,b\}$.\quad Arrows: $1\to a$, $2\to a$, $3\to b$.\\[2pt]
+\textbf{Diagram 3:} $A=\{1,2,3\}\to B=\{a,b,c\}$.\quad Arrows: $1\to a$, $2\to b$, $3\to c$.\\[3pt]
+This is the maximal interpretation habit applied to math: look at all the structure before naming it.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{Quick-check diagram answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+Diagram 1 --- $A=\{1,2\}\to B=\{a,b,c\}$.\quad $1\to a$, $2\to b$. $c$ unhit.
+\textbf{Label: Injective, not surjective.}\\[4pt]
+Diagram 2 --- $A=\{1,2,3\}\to B=\{a,b\}$.\quad $1\to a$, $2\to a$, $3\to b$.
+\textbf{Label: Surjective, not injective.}\\[4pt]
+Diagram 3 --- $A=\{1,2,3\}\to B=\{a,b,c\}$.\quad $1\to a$, $2\to b$, $3\to c$.
+\textbf{Label: Bijective.}
+\par\smallskip\end{minipage}}
+
+\bigskip
+
+\subsection*{Cantor connection fill-in answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+A bijection between two sets means they have the same \textbf{cardinality} (size).\\[4pt]
+Cantor used this idea to compare the sizes of \textbf{infinite} sets.\\[4pt]
+$\bullet$\enspace $\mathbb{Z}$ is countable: there exists a bijection $f : \mathbb{N} \to \mathbb{Z}$
+(list: $0, 1, -1, 2, -2, \ldots$).\\[2pt]
+$\bullet$\enspace $\mathbb{R}$ is uncountable: no such bijection exists
+(Cantor's diagonal argument, see historian sheet).
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- Optional 5-min Cantor discussion}\\[3pt]
+\small If time allows, revisit the historian sheet briefly.\\[3pt]
+``Last week we read that Cantor showed $\mathbb{R}$ is bigger than $\mathbb{N}$.
+Now we have the language to say what that means: there is no bijection from $\mathbb{N}$ to $\mathbb{R}$.''\\[3pt]
+Not required for the homework, but rewards students who engaged with the sheet.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip
+
+\subsection*{Challenge problem answers}
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{C1.}\enspace $A = \{1,2,3\}$, $B = \{a,b,c,d\}$. $|A| = 3 < |B| = 4$.\\[6pt]
+(a)\enspace Can $f : A \to B$ be surjective?\\[2pt]
+\textbf{No.} Surjective requires every element of $B$ to be hit.
+$|A| = 3 < |B| = 4$, so at least one element of $B$ will always be left without an arrow.\\[6pt]
+(b)\enspace Can $f : A \to B$ be injective?\\[2pt]
+\textbf{Yes.} Example: $f(1)=a$, $f(2)=b$, $f(3)=c$.
+Each input maps to a different target. ($d$ is unhit --- fine for injectivity.)
+\par\smallskip\end{minipage}}
+
+\bigskip
+
+\medskip\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip{\small\bfseries ANSWER}\par\smallskip
+\textbf{C2.}\enspace $f : \mathbb{R} \to \mathbb{R}$,\quad $f(x) = x^{2}$.\\[6pt]
+(a)\enspace Is $f$ injective?\\[2pt]
+\textbf{No.} Counterexample: $f(2) = 4 = f(-2)$, but $2 \neq -2$.
+One output (4) is hit by two different inputs.\\[6pt]
+(b)\enspace Is $f$ surjective?\\[2pt]
+\textbf{No.} $f(x) = x^{2} \geq 0$ for all real $x$.
+So $-1 \in \mathrm{Codomain}$ but has no preimage.
+Range $= [0,\infty) \neq \mathbb{R} =$ Codomain.
+\par\smallskip\end{minipage}}
+
+\medskip
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries\sffamily TEACHER NOTE --- C2 follow-up is the key lesson of Hour 3}\\[3pt]
+\small After reviewing C2, ask: ``What if we changed the codomain to $[0,\infty)$?''\\[2pt]
+$\to$ Then $f$ would be surjective but still not injective.\\[3pt]
+Then ask: ``What if we also changed the domain to $[0,\infty)$?''\\[2pt]
+$\to$ Then $f$ would be bijective. Same formula, different sets, different classification.\\[3pt]
+This shows that injective/surjective/bijective are \emph{relationships} between a function
+AND its domain/codomain --- not properties of the formula alone.\\[2pt]
+\hline
+\end{tabular}
+
+\bigskip\bigskip
+
+\begin{tabular}{|p{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+\hline
+{\small\bfseries End-of-class debrief\quad (5 min)}\\[3pt]
+\small
+Ask each student to close their notes and answer from memory:\\[4pt]
+1.\enspace What is the one thing that makes something \emph{not} a function?\\[2pt]
+2.\enspace What is the difference between codomain and range?\\[2pt]
+3.\enspace Give me one example of a function that is injective but not surjective.\\[4pt]
+If they can answer all three without looking, the concepts landed.
+Send C1 and C2 home if not finished; they appear on the homework.
+\\[2pt]
+\hline
+\end{tabular}
+
+\end{document}

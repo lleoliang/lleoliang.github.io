@@ -1,0 +1,255 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+\begin{center}
+{\Large\bfseries TEACHER NOTES --- DO NOT DISTRIBUTE}\\[4pt]
+{\large Class 4 --- Composition, Inverses, Applications \& Multivariable Functions}\\[6pt]
+Math Summer Camp
+\end{center}
+\hrule\bigskip
+
+% =============================================================================
+
+Talk about the domain/codomain fix: we can \textbf{not} leave elements out of the domain.
+
+\section*{Comparing the Infinite --- Teacher Talking Points}
+
+\subsection*{1. How to compare infinite sets}
+\hrule
+\textbf{Open on the gap.}\quad For finite sets, ``same size'' is easy: count both, compare the numbers. But you can never finish counting $\mathbb{N}$ --- counting is useless for infinite sets. We need a different tool, and we have secretly used it all homework: \textbf{pairing}.
+
+\textit{Shepherd analogy: match each sheep to one pen-spot; if none are left standing and no spot is empty, the flocks are equal --- and you never counted.}
+
+\textbf{The precision point (theorem vs definition).}\quad For \emph{finite} sets, ``a bijection exists $\iff$ equal count'' is a \textbf{theorem} (prove it by pairing / Pigeonhole) --- and notice the pairing never uses a number. That number-free test is exactly what still works once counting dies, so for \emph{infinite} sets we \textbf{adopt} ``same size $=$ a bijection exists'' as the \textbf{definition} (Cantor's move). Do not try to prove the infinite version --- that is a category error. Prove it where you can (finite), see it needs no counting, and promote it to the definition everywhere else.
+
+\textbf{Theorem.}\quad For finite sets $A$ and $B$, there is a bijection $A \to B$ if and only if $A$ and $B$ have the same number of elements ($|A| = |B|$).
+
+\textbf{What ``count'' means.}\quad Saying $|A| = n$ is \emph{itself} defined by a bijection: $A$ has $n$ elements means there is a bijection $\alpha\colon A \to \{1,2,\dots,n\}$ (a labeling of the elements $1$ through $n$). So ``count'' is just ``can be paired with the standard set $\{1,\dots,n\}$.'' The theorem then rests on two facts:
+\begin{itemize}
+  \item[(i)] a composition of bijections is a bijection, and the inverse of a bijection is a bijection;
+  \item[(ii)] \textbf{Pigeonhole:} if $m > n$, no function $\{1,\dots,m\} \to \{1,\dots,n\}$ can be injective.
+\end{itemize}
+
+\textbf{Proof.}
+
+\textbf{($\Leftarrow$)}\quad Suppose $|A| = |B| = n$. Then there are bijections $\alpha\colon A \to \{1,\dots,n\}$ and $\beta\colon B \to \{1,\dots,n\}$. By (i), the composite $\beta^{-1} \circ \alpha \colon A \to B$ is a bijection. So a bijection $A \to B$ exists.
+
+\textbf{($\Rightarrow$)}\quad Suppose $f\colon A \to B$ is a bijection, with $|A| = m$ and $|B| = n$ via labelings $\alpha\colon A \to \{1,\dots,m\}$ and $\beta\colon B \to \{1,\dots,n\}$. Then
+\[
+  \beta \circ f \circ \alpha^{-1} \colon \{1,\dots,m\} \to \{1,\dots,n\}
+\]
+is a bijection (a composition of bijections). It remains to show such a bijection forces $m = n$:
+\begin{itemize}
+  \item it is injective, so by Pigeonhole (ii) we cannot have $m > n$; hence $m \le n$;
+  \item its inverse $\{1,\dots,n\} \to \{1,\dots,m\}$ is also injective, so likewise $n \le m$.
+\end{itemize}
+Therefore $m = n$, i.e.\ $|A| = |B|$. $\square$
+
+\textbf{Remark.}\quad The whole argument is pure pairing --- it never counts anything by hand. That is exactly why the criterion ``same size $=$ a bijection exists'' survives into the infinite case, where Pigeonhole (and the uniqueness of $n$) no longer applies.
+
+\textbf{Definition.}\quad Two sets have the \textbf{same size} (same \emph{cardinality}) if there is a \textbf{bijection} between them --- a perfect pairing, nothing doubled up, nothing left over. It never counts anything; it only asks whether every element of one can be matched with exactly one of the other.
+
+\subsection*{3. The proper-subset paradox (resolving the homework itch)}
+\hrule
+\textbf{Start from their result.}\quad $f(n) = 2n$ is a bijection from $\mathbb{N}$ onto the evens $E$, so $\mathbb{N}$ and $E$ are the \textbf{same size} --- even though $E$ throws away every odd number.
+
+\textbf{The resolution.}\quad That collides with the planted imprecision, ``a set always has strictly more elements than any of its proper parts.'' It is \textbf{true for finite sets only}; for infinite sets it is false, and $\mathbb{N} \leftrightarrow E$ is the counterexample.
+
+\textbf{Reframe it as a feature, not a bug.}\quad Being able to match one-to-one with a proper part of itself is precisely what \textbf{defines} an infinite set (Dedekind). Finite sets cannot (that is the Finite Trap from the homework); infinite sets always can.
+
+\textit{Honesty note so they do not over-generalize:} the rule ``if $|A| > |B|$ then no injection'' still holds even for infinite sets --- it is the definition of $>$. What breaks is the finite intuition ``proper subset $\Rightarrow$ smaller.'' Takeaway: you cannot judge the size of an infinite set by containment or by counting --- only by building a bijection.
+
+\bigskip
+\subsection*{2. Cantor's argument --- countable vs.\ uncountable}
+\hrule
+\textbf{Definition.}\quad A set is \textbf{countable} if you can arrange all of it in one endless list $a_1, a_2, a_3, \ldots$ with no repeats and nothing missing. (The list \emph{is} a bijection with $\mathbb{N}$.)
+
+\begin{itemize}
+  \item $\mathbb{Z}$ \textbf{is countable:} list it $0,\,1,\,-1,\,2,\,-2,\,3,\,-3,\ldots$ --- every integer appears once.
+  \item $\mathbb{Q}$ \textbf{is countable (the surprise):} put every fraction in a grid (numerator $\times$ denominator) and sweep diagonally, skipping repeats --- every fraction is eventually reached. So the rationals, which \emph{feel} far denser, are the same size as $\mathbb{N}$.
+  \item \textit{Hilbert's Hotel:} a full hotel still fits a newcomer by shifting room $n \to n+1$. ``Always room for one more'' is the signature of a countable infinity.
+\end{itemize}
+
+\textbf{The reveal --- $\mathbb{R}$ is uncountable (the diagonal argument).}\quad Suppose someone hands you a \emph{complete} list of all reals in $[0,1]$ as decimals. Build a brand-new number by walking down the diagonal and \emph{changing} each digit: make the $n$th digit of the new number differ from the $n$th digit of the $n$th listed number (e.g.\ use $5$, or $6$ if it is already $5$). This new number differs from every listed number in at least one place, so it cannot be on the list. No list can hold all the reals, so $\mathbb{R}$ is a \textbf{strictly bigger} infinity --- not all infinities are equal; there is a whole ladder of them. \textit{(The $5/6$ digit trick dodges the $0.4999\ldots = 0.5$ ambiguity.)}
+
+\bigskip
+
+% =============================================================================
+\section*{Part 1 --- Building and Undoing Functions} 
+
+\textit{Teaching notes.}\quad Socratic opener: ``You needed $2$ wool per block and $10x$ blocks --- did you do that in one leap or two steps?'' Surface the hidden composition. Order matters: $g \circ f \ne f \circ g$ in general --- reuse the homework numbers $f(x)=x+1$, $g(x)=2x$: $(g\circ f)(3)=8$ but $(f\circ g)(3)=7$. Curveball comes after the example. 
+
+\subsection*{Composition}
+\hrule
+\textbf{DEFINITION.}\quad Given $f\colon A \to B$ and $g\colon B \to C$, the \textbf{composition} $g \circ f \colon A \to C$ is defined by
+\[
+  (g \circ f)(x) = g\bigl(f(x)\bigr).
+\]
+Apply the inside function first. Read it ``$g$ of $f$.'' (The outputs of $f$ must lie in the domain of $g$, or the chaining is undefined.)
+
+\textbf{INTUITION.}\quad Two machines in a line: the first machine's output is fed straight into the second.
+
+\textbf{EXAMPLE (the one they already did without noticing).}\quad A room is $10$ blocks long and $x$ blocks wide.
+\[
+  c(x) = 10x \quad(\text{carpet blocks needed}), \qquad w(b) = 2b \quad(\text{wool for } b \text{ blocks}).
+\]
+Total wool as a function of width is the composition
+\[
+  (w \circ c)(x) = w\bigl(c(x)\bigr) = w(10x) = 2(10x) = 20x.
+\]
+The ``$20x$'' they wrote in one step IS $w \circ c$ --- they composed two machines (blocks-per-width, then wool-per-block) without naming it.
+
+\textit{Curveball --- ask for the other order, $(c \circ w)(x)$.}\quad
+The legitimate composition is $w \circ c$: width $\to$ blocks $\to$ wool, with $(w \circ c)(x) = w(10x) = 20x$. Each machine's output type matches the next machine's input: $c$ hands out ``blocks,'' and $w$ accepts ``blocks'' --- the hose connects. Now reverse it: feed $x$ into $w$ first, then into $c$:
+\[
+  (c \circ w)(x) = c\bigl(w(x)\bigr) = c(2x) = 10 \cdot (2x) = 20x.
+\]
+\textbf{The trap:} the algebra gives $20x$ --- the \emph{same number} as $w \circ c$ --- so a student watching only the arithmetic concludes ``same answer, order does not matter, both fine.'' But $c \circ w$ is \textbf{meaningless}: $w(x)$ outputs \emph{wool}, while $c$ expects a \emph{width}. So $c \circ w$ shoves a wool amount into a slot that only accepts widths --- ``the width of a room, measured in wool'' is nonsense.
+
+\textbf{Formally:} for $g \circ f$ to even be defined, the inner function's outputs must land in the outer function's domain --- $\text{range}(f) \subseteq \text{domain}(g)$. Here $\text{range}(w)$ is wool amounts and $\text{domain}(c)$ is widths, and wool amounts are not widths, so the composition does not exist --- no matter what the algebra spits out. \textit{(The numbers coincide only because $c$ and $w$ are both ``multiply by a constant''; do not let them generalize that composition is commutative --- contrast with $f(x)=x+1$, $g(x)=2x$, where $g \circ f \ne f \circ g$.)}
+
+\subsection*{Inverse}
+\hrule
+\textbf{DEFINITION.}\quad If $f\colon A \to B$ is a \textbf{bijection}, its \textbf{inverse} $f^{-1}\colon B \to A$ sends each output back to the input it came from:
+\[
+  f^{-1}(y) = x \quad\text{exactly when}\quad f(x) = y.
+\]
+\textbf{Only bijections have inverses.}
+
+\textbf{INTUITION.}\quad The ``undo'' machine --- run the function backwards.
+
+\textbf{EXAMPLE (bedroom).}\quad Single-room wool $f(x) = 20x$. Given a wool count $W$, recover the width: $f^{-1}(W) = W/20$. The original did ``$\times 10$ then $\times 2$''; the inverse undoes in \emph{reverse order}: ``$\div 2$ then $\div 10$'' ($= \div 20$). For the three-bedroom $f(w) = 20w + 280$: the inverse subtracts $280$, then divides by $20$.
+
+\textit{Socks-and-shoes:} to undo ``socks then shoes,'' you take off shoes then socks --- the inverse of a composition reverses the order: $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+
+\textit{Why only bijections (tie to the homework planted imprecision).}\quad If $f$ is not injective, two inputs share an output and the undo machine cannot choose; if $f$ is not surjective, some codomain value is never produced and the undo machine has no input for it. This is exactly why ``every function can be undone, so every function has an inverse'' (HW Looking Ahead) was \textbf{false}. Connect to the HW ``Answer this'' question.
+
+% =============================================================================
+\section*{Part 2 --- Functions in the Real World}
+
+\textit{Injective / surjective / bijective were defined in Class 3. Here we interpret them, and ask what \textbf{proving} each one actually buys you.}
+
+\subsection*{Injective in the wild}
+\hrule
+\textbf{MEANING.}\quad Different inputs give different outputs --- no two inputs collide; each input has a unique fingerprint.
+
+\textbf{WHAT PROVING IT GUARANTEES.}\quad You can always tell inputs apart by their output; the output is a reliable identifier; distinct things stay distinct.
+
+\textbf{EXAMPLES.}\quad Unique student IDs; fingerprints; a price list where each item has its own price (so a price names the item). \textit{Curveball non-example:} ``assign each person their birth month'' is NOT injective ($12$ outputs, many collisions) --- you cannot identify a person from their birth month.
+
+\subsection*{Surjective in the wild}
+\hrule
+\textbf{MEANING.}\quad Every element of the codomain is hit --- every target is achievable; full coverage.
+
+\textbf{WHAT PROVING IT GUARANTEES.}\quad Nothing in the declared target is unreachable.
+
+\textbf{EXAMPLES.}\quad A vending machine where every product can be dispensed by some code; a grading rule that can output every grade A--F. \textit{Non-example:} the wool function with codomain $\mathbb{Z}^+$ is NOT surjective (only multiples of $20$ from $300$ up) --- most wool counts are impossible totals.
+
+\subsection*{Bijective in the wild}
+\hrule
+\textbf{MEANING.}\quad A perfect one-to-one pairing (injective \emph{and} surjective) --- a reversible code.
+
+\textbf{WHAT PROVING IT GUARANTEES.}\quad The process can be perfectly undone: it \textbf{has an inverse}. You can encode AND decode with no loss and no ambiguity. (\,$f$ bijective $\iff$ $f$ invertible.)
+
+\textbf{EXAMPLES.}\quad A Caesar cipher / ROT13 (each message $\leftrightarrow$ exactly one ciphertext, decodable); a seat $\leftrightarrow$ ticket assignment.
+
+\subsection*{Application problems (use for the EXAMPLE slots).}
+\begin{itemize}
+  \item A locker system gives each of $30$ students a distinct $4$-digit code. Injective? \textbf{Yes} (distinct). Surjective onto all $10000$ codes? \textbf{No}. Bijective? \textbf{No}. What does injectivity buy you here? No two students share a code --- a code identifies its student.
+  \item A machine shifts every letter forward by $3$ (Caesar cipher). Bijective? \textbf{Yes} --- undo by shifting back $3$. Why does that matter? It is exactly what makes the message decodable.
+\end{itemize}
+
+\textbf{Problem A --- build one function.}\quad
+A taco truck charges a flat \$4 to park on your street, plus \$2.50 for each taco you order. Write a function $f$ for the total cost (in dollars) of ordering $t$ tacos. Describe it fully: give the definition ($f\colon A \to B$, naming the domain and codomain) and the rule.
+
+\textit{Solution.}\quad $f\colon \mathbb{N} \to \mathbb{R}$ (domain $=$ whole numbers of tacos $\{0,1,2,\ldots\}$ --- you cannot order half a taco; codomain $=$ dollars). Rule: $f(t) = 4 + 2.5\,t$. \textit{Talking point: the rule looks like a straight line, but because the domain is discrete the graph is just isolated dots, and the range is the discrete set $\{4,\,6.5,\,9,\,\ldots\}$ --- a clean domain/codomain check.}
+
+\medskip
+\textbf{Problem B --- build two functions, then compose.}\quad
+In Minecraft, $1$ log crafts into $4$ planks, and each plank crafts into $2$ sticks. You start with $L$ logs.
+\textbf{(a)} Write a function $p$ for the planks from $L$ logs, and a function $s$ for the sticks from $P$ planks --- define each ($\to$ and rule).
+\textbf{(b)} Use composition to write a single function for the sticks from $L$ logs. Is it $s \circ p$ or $p \circ s$, and why?
+
+\textit{Solution.}\quad
+(a) $p\colon \mathbb{N} \to \mathbb{N}$, $p(L) = 4L$ (planks from logs);\quad $s\colon \mathbb{N} \to \mathbb{N}$, $s(P) = 2P$ (sticks from planks).
+(b) Sticks-from-logs is $s \circ p$: $(s \circ p)(L) = s(4L) = 8L$. It must be $s \circ p$, not $p \circ s$ --- $p$ outputs \emph{planks}, which is exactly what $s$ takes in; doing $p \circ s$ would feed \emph{sticks} into the planks-machine (the same type-mismatch as the $c \circ w$ curveball).
+
+\newpage
+% =============================================================================
+\section*{Part 3 --- Multivariable Functions}
+
+\subsection*{Multivariable function (two inputs)}
+\hrule
+\textbf{DEFINITION.}\quad A function $f\colon A \times B \to C$ takes an \textbf{ordered pair} $(x,y)$ as input and returns one output, written $f(x,y)$. The domain is a set of ordered pairs --- a subset of a Cartesian product (callback to the sets unit).
+
+\textbf{INTUITION.}\quad A machine with \textbf{two input slots}. The bedroom with two undecided widths: the total wool depends on both.
+
+\textbf{EXAMPLE.}\quad Two rooms, each $10$ long, widths $w_1, w_2$:
+\[
+  f(w_1, w_2) = 20w_1 + 20w_2, \qquad f(3,5) = 20(3) + 20(5) = 160.
+\]
+Domain $= \mathbb{Z}^+ \times \mathbb{Z}^+$ (pairs of positive integers).
+
+\subsection*{Domain, codomain, range (two inputs)}
+\hrule
+\textbf{Domain} $=$ the allowed input \emph{pairs} (here $\mathbb{Z}^+ \times \mathbb{Z}^+$).\quad
+\textbf{Codomain} $=$ the declared outputs (e.g.\ $\mathbb{Z}^+$).\quad
+\textbf{Range} $=$ the totals actually achievable (multiples of $20$ that are $\ge 40$). Same trio as before --- the only new thing is that the domain lives inside a Cartesian product.
+
+\subsection*{Graphing a two-input function (a 3D surface)}
+\hrule
+\textbf{INTUITION.}\quad The input pair $(x,y)$ is a point on a flat floor (the $xy$-plane); the output is the \textbf{height} above that point. The graph is a \textbf{surface} (a landscape), not a curve. \textit{Analogy: temperature at each spot on a map, or elevation on a topographic map.}
+
+\textbf{EXAMPLE.}\quad $f(x,y) = 20x + 20y$ is a tilted flat plane: pick a few floor points $(x,y)$, plot the height, see it rise as you move in either direction.
+
+\subsection*{Injective / surjective / bijective with pairs}
+\hrule
+
+\textit{Teaching note.}\quad Let them \emph{discover} $f(1,2) = f(2,1)$ themselves --- it lands the whole arc (composition $\to$ multivariable $\to$ injectivity $\to$ inverses) in one concrete example. This caps the Functions milestone.
+
+\textbf{INTUITION.}\quad ``Different inputs'' now means different \emph{pairs}.
+
+\textbf{EXAMPLE (the key curveball).}\quad Is $f(w_1, w_2) = 20w_1 + 20w_2$ injective? \textbf{No.}
+\[
+  f(1,2) = 60 = f(2,1), \quad\text{but}\quad (1,2) \ne (2,1).
+\]
+Trading width between the two rooms gives the same total --- many different pairs share an output.
+
+\textbf{CONSEQUENCE (ties back to inverses).}\quad Because it is not injective, you \emph{cannot} recover both widths from the total wool alone --- there is no inverse. Two-input functions are usually not injective, which is exactly why you generally cannot ``undo'' them to a single input pair.
+
+
+\textbf{A multivariable function that IS injective (contrast the bedroom).}\quad
+The bedroom function $f(w_1,w_2)=20w_1+20w_2$ was \emph{not} injective --- it crushes a pair down to one number. Here is a three-in, three-out function that \emph{is} injective:
+\[
+  f(x,y,z) = (x+y,\; x-y,\; z), \qquad f\colon \mathbb{R}^3 \to \mathbb{R}^3.
+\]
+
+\textbf{Why it works.}\quad Injective means different input points must give different output points. Suppose instead two inputs share an output, $f(x_1,y_1,z_1) = f(x_2,y_2,z_2)$. Matching the three coordinates:
+\[
+  \begin{aligned}
+    x_1 + y_1 &= x_2 + y_2, \\
+    x_1 - y_1 &= x_2 - y_2, \\
+    z_1 &= z_2.
+  \end{aligned}
+\]
+Adding the first two equations: $2x_1 = 2x_2$, so $x_1 = x_2$. Subtracting the second from the first: $2y_1 = 2y_2$, so $y_1 = y_2$. And $z_1 = z_2$ directly. Hence $(x_1,y_1,z_1) = (x_2,y_2,z_2)$ --- the two inputs were the same after all. Therefore $f$ is injective. $\square$
+
+\textit{Teaching note.}\quad Unlike the bedroom function, this one loses no information: you can recover $(x,y,z)$ from the outputs (add and subtract the first two, read off the third), so it is actually a bijection and \emph{has an inverse}. It is also a \textbf{linear map} --- a clean bridge into next week's Linear Algebra.
+
+\end{document}

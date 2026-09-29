@@ -1,0 +1,488 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% writing lines
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+
+\begin{center}
+  {\Large\bfseries Worksheet II}\\[4pt]
+  Introduction to Functions\\[6pt]
+  Name:\;\underline{\hspace{6.5cm}}\quad
+\end{center}
+\hrule\bigskip
+
+% =============================================================================
+\section*{Instructions}
+
+Use \textbf{pen}. Write questions and surprises in the margin in a different color.
+Some things in the reading are intentionally imprecise --- find them.
+
+% =============================================================================
+\section*{Part 1 --- What Is a Function? \hfill [45 pts]}
+
+\subsection*{Reading}
+
+\textit{Read this section before attempting any problems.}
+
+\bigskip
+\noindent\textbf{The Definition}
+
+A \textbf{function} $f$ from set $A$ to set $B$, written $f\colon A \to B$,
+is a rule that assigns to each element of $A$ exactly one element of $B$.
+
+Think of a vending machine: you enter a code (input) and always receive exactly one
+item (output). A machine that sometimes gives you nothing, or sometimes gives two items
+for the same code, is broken. A function is a vending machine that is never broken.
+
+Three things to name:
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{@{} p{3cm} p{9cm} @{}}
+\toprule
+\textbf{Term} & \textbf{Meaning} \\
+\midrule
+Domain ($A$)    & The set of allowed inputs. \\
+Codomain ($B$)  & The set of declared outputs. \\
+Range           & The set of outputs actually produced. \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+
+\medskip
+The range is always a subset of the codomain, but they are not always equal.
+Most textbooks blur this distinction. We will not.
+
+\bigskip
+\noindent\textbf{Notation}
+
+$f(x)$ is read \textit{``f of x''} --- the output of $f$ when $x$ is the input.
+It is \textbf{not} $f$ times $x$.
+
+\medskip
+\textbf{Example.}\quad Let $f\colon \mathbb{R} \to \mathbb{R}$ be defined by
+$f(x) = x^2$.
+\begin{align*}
+  f(3)  &= 9 \\
+  f(-2) &= 4 \\
+  f(0)  &= 0
+\end{align*}
+Domain: $\mathbb{R}$.\quad
+Codomain: $\mathbb{R}$.\quad
+Range: all positive real numbers.
+
+\bigskip
+\noindent\textbf{Injective Functions}
+
+A function $f$ is \textbf{injective} (also called one-to-one) if different inputs
+always produce different outputs. Formally:
+\[
+  f(a) = f(b) \implies a = b
+\]
+
+\textbf{Is $f(x) = x^2$ injective?}\quad No. $f(2) = 4$ and $f(-2) = 4$,
+but $2 \neq -2$. Two different inputs produced the same output.
+
+\textbf{Is $f(x) = 2x + 1$ injective?}\quad Suppose $f(a) = f(b)$.
+Then $2a + 1 = 2b + 1$, so $2a = 2b$, therefore $a = b$. \textbf{Yes.}
+
+Notice the proof structure: \textit{suppose} the outputs are equal, derive that
+the inputs must be equal. This is your template.
+
+\bigskip
+\noindent\textbf{Surjective Functions}
+
+A function $f\colon A \to B$ is \textbf{surjective} (also called onto) if every
+element of $B$ is hit by at least one input. Formally:
+\[
+  \text{for every } b \in B,\; \text{there exists } a \in A \text{ such that } f(a) = b
+\]
+
+\textbf{Is $f(x) = x^2$ surjective as $f\colon \mathbb{R} \to \mathbb{R}$?}\quad
+No: $-1$ is in the codomain but $f(x) = -1$ has no real solution.
+
+What if we redefine the codomain as $[0, \infty)$?
+Then range equals codomain, so yes --- surjective.
+Surjectivity depends on the codomain you declare.
+
+\bigskip
+\noindent\textbf{Bijective Functions}
+
+A function is \textbf{bijective} if it is both injective and surjective.
+Every element of the codomain is hit by exactly one input --- a perfect pairing.
+Only bijective functions have inverses.
+
+\bigskip
+\hrule
+\bigskip
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{Foundation Practice}
+
+\textbf{1.}~[15 pts]\quad
+Let $f(x) = 3x - 2$. Fill in the table, then answer the questions below.
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{2.2}
+\begin{tabular}{|C{2.5cm}|C{2.5cm}|}
+\hline
+$x$ & $f(x)$ \\
+\hline
+$0$           & \\ \hline
+$1$           & \\ \hline
+$-1$          & \\ \hline
+$4$           & \\ \hline
+$\frac{1}{3}$ & \\ \hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+
+\medskip
+(a)\quad What is $f\!\left(f(1)\right)$?
+\hfill Answer:\;\underline{\hspace{3cm}}
+
+\medskip
+(b)\quad Find $x$ such that $f(x) = 0$.
+\hfill Answer:\;\underline{\hspace{3cm}}
+
+\medskip
+(c)\quad Is $f$ injective? Write a one-sentence proof using
+\textit{suppose \ldots\ then \ldots\ therefore.}
+\wls{2}
+
+\bigskip
+\textbf{2.}~[15 pts]\quad
+Decide whether each rule defines a valid function from
+$A = \{1, 2, 3\}$ to $B = \{1, 2, 3, 4, 5\}$.
+If it does, state whether it is injective and/or surjective.
+If it does not, explain why not.
+
+\medskip
+(a)\quad Each number maps to its square: $1 \mapsto 1,\; 2 \mapsto 4,\; 3 \mapsto 9$.
+\wls{2}
+
+\medskip
+(b)\quad Every number maps to 1: $1 \mapsto 1,\; 2 \mapsto 1,\; 3 \mapsto 1$.
+\wls{2}
+
+\medskip
+(c)\quad $1 \mapsto 2,\; 2 \mapsto 4,\; 2 \mapsto 5$.
+\wls{2}
+
+\bigskip
+\textbf{3.}~[15 pts]\quad
+For each function, state the domain, codomain, and range.
+
+\medskip
+(a)\quad $g\colon \mathbb{R} \to \mathbb{R}$ defined by $g(x) = x^2 + 1$.
+\wls{2}
+
+\medskip
+(b)\quad $h\colon \{1, 2, 3\} \to \{1, 4, 9\}$ defined by $h(x) = x^2$.
+
+Is $h$ surjective? Compare your answer to (a) and explain why they differ
+despite using the same formula.
+\wls{3}
+
+% =============================================================================
+\newpage
+\section*{Part 2 --- Application \hfill [35 pts]}
+
+\textbf{4.}~[20 pts]\quad \textbf{From Bedrooms to Functions.}
+
+In Homework~1 Part~4, you were carpeting two Minecraft bedrooms.
+Both rooms are 10 blocks long. Bedroom~2 is 8 blocks wide.
+Bedroom~1 has unknown width $w$. Each carpet block takes 2 wool.
+
+\medskip
+(a)\quad Write a function $f(w)$ giving the \textbf{total} wool needed for both rooms.
+\wls{2}
+
+\medskip
+(b)\quad Evaluate $f(6)$. What does this number mean in context?
+\wls{2}
+
+\medskip
+(c)\quad Find $w$ such that $f(w) = 300$. What does this answer mean in context?
+\wls{2}
+
+\medskip
+(d)\quad Is $f$ injective? Write a formal proof using
+\textit{suppose \ldots\ then \ldots\ therefore.}
+\wls{3}
+
+\medskip
+\newpage
+(e)\quad State the natural domain of $f$ in the Minecraft context.
+Is $f$ surjective onto the positive integers? Explain.
+\wls{3}
+
+\bigskip
+\textbf{5.}~[15 pts]\quad \textbf{Speaking Functions.}
+
+\medskip
+(a)\quad Read $f(x) = 3x^2 + 1$ as a complete English sentence. Write what you would say.
+\wls{2}
+
+\medskip
+(b)\quad A classmate says: \textit{``$f(x)$ means $f$ times $x$.''}
+Are they right? Correct them in one sentence.
+\wls{2}
+
+\medskip
+(c)\quad Write $f(g(x))$ as a complete English sentence.
+What do you think this expression means?
+\wls{2}
+
+% =============================================================================
+\section*{Part 3 --- Challenge \hfill [20 pts]}
+
+\textbf{6.}~[8 pts]\quad \textbf{The Finite Trap.}
+
+Try to build a function $f\colon \{1, 2, 3\} \to \{1, 2, 3\}$ that is injective
+but \textit{not} surjective. Spend two minutes trying. Then explain what happens
+and why.
+\wls{5}
+
+\bigskip
+\textbf{7.}~[12 pts]\quad \textbf{The Collatz Function.}
+
+Define $C\colon \mathbb{N} \to \mathbb{N}$ by:
+\[
+  C(n) = \begin{cases} n/2 & \text{if } n \text{ is even} \\ 3n + 1 & \text{if } n \text{ is odd} \end{cases}
+\]
+Starting from any positive integer, apply $C$ repeatedly.
+
+\medskip
+(a)\quad Compute the sequence starting at $n = 6$. Stop when you reach 1.
+\wls{2}
+
+\medskip
+(b)\quad Compute the first 15 terms starting at $n = 27$.
+\wls{3}
+
+\medskip
+(c)\quad Is $C$ injective? Either prove it or find a counterexample.
+
+\wls{3}
+
+\medskip
+(d)\quad Write a conjecture about what always happens when you apply $C$ repeatedly
+starting from any positive integer.
+
+\wls{2}
+
+% =============================================================================
+\newpage
+\section*{Part 4 --- Notebook Artifact \hfill (ungraded)}
+
+On the \textbf{left page} of your notebook, write:
+
+\medskip
+\textbf{1.}\quad Two \textbf{Question Compass} questions about the word
+\textit{function}. Pick any two directions.
+
+\medskip
+\textbf{2.}\quad One \textbf{muddiest point} --- the single thing you are least
+sure about after today.
+
+% =============================================================================
+\newpage
+
+\begin{center}
+  {\large\bfseries ANSWER KEY --- DO NOT DISTRIBUTE}\\[4pt]
+  Worksheet II --- Introduction to Functions
+\end{center}
+\hrule\bigskip
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Reading --- Intentional Imprecision}
+
+The range of $f(x) = x^2$ is stated as ``all positive real numbers.''
+This is wrong: $f(0) = 0$, and $0$ is neither positive nor negative.
+The correct range is $[0, \infty)$ --- all \textit{non-negative} reals.
+See if either student catches it. If not, ask: \textit{``What is $f(0)$?
+Is that positive?''}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 1 --- Foundation}
+
+\textbf{Q1.}\quad $f(x) = 3x - 2$
+
+\medskip
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|C{2.5cm}|C{2.5cm}|}
+\hline
+$x$ & $f(x)$ \\
+\hline
+$0$           & $-2$ \\ \hline
+$1$           & $1$  \\ \hline
+$-1$          & $-5$ \\ \hline
+$4$           & $10$ \\ \hline
+$\frac{1}{3}$ & $-1$ \\ \hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\end{center}
+
+\medskip
+(a)\quad $f(1) = 1$, so $f\!\left(f(1)\right) = f(1) = \mathbf{1}$.
+
+\textit{Note: $f(1) = 1$ is a fixed point of $f$ --- the input equals the output.
+Worth mentioning if a student notices it.}
+
+\medskip
+(b)\quad $3x - 2 = 0 \implies x = \dfrac{2}{3}$
+
+\medskip
+(c)\quad Suppose $f(a) = f(b)$. Then $3a - 2 = 3b - 2$, so $3a = 3b$,
+therefore $a = b$. Injective. \checkmark
+
+\bigskip
+\textbf{Q2.}
+
+(a)\quad \textbf{NOT a valid function.} $3^2 = 9$, but $9 \notin B = \{1,2,3,4,5\}$.
+The output is outside the declared codomain.
+
+\textit{This is the curveball. Many students will say ``yes, it's $x^2$'' without
+checking whether 9 is in $B$. Socratic move: ``What is $3^2$? Is that in $B$?''}
+
+(b)\quad \textbf{Valid function.} NOT injective (1, 2, 3 all map to the same output).
+NOT surjective (2, 3, 4, 5 are never hit).
+
+\textit{This is the constant function. Students may say ``that can't be a function
+because the output never changes.'' Push back: does each input have exactly one output? Yes.
+That's all a function requires.}
+
+(c)\quad \textbf{NOT a valid function.} The element $2 \in A$ maps to both 4 and 5.
+One input, two outputs --- broken vending machine.
+
+\bigskip
+\textbf{Q3.}
+
+(a)\quad $g(x) = x^2 + 1$, $g\colon \mathbb{R} \to \mathbb{R}$.\\
+Domain: $\mathbb{R}$.\quad Codomain: $\mathbb{R}$.\quad Range: $[1, \infty)$.\\
+(Since $x^2 \geq 0$, we have $x^2 + 1 \geq 1$. And every value $\geq 1$ is achieved.)
+
+(b)\quad $h\colon \{1,2,3\} \to \{1,4,9\}$, $h(x) = x^2$.\\
+Domain: $\{1,2,3\}$.\quad Codomain: $\{1,4,9\}$.\quad Range: $\{1,4,9\}$.\\
+\textbf{Yes, $h$ is surjective} --- range $=$ codomain.
+
+Contrast with (a): same formula, but the codomain in (a) is all of $\mathbb{R}$,
+which $x^2 + 1$ never fully covers. In (b) the codomain was declared to be exactly
+the range, so surjectivity is automatic.
+
+\textit{Key insight: surjectivity is a relationship between the function and the
+declared codomain. You can make any function surjective by shrinking the codomain
+to equal the range.}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 2 --- Application}
+
+\textbf{Q4.}\quad Minecraft bedrooms.
+
+(a)\quad Wool for Bedroom~1: $2 \times 10 \times w = 20w$.
+Wool for Bedroom~2: $2 \times 10 \times 8 = 160$.
+\[
+  f(w) = 20w + 160
+\]
+
+(b)\quad $f(6) = 20(6) + 160 = 120 + 160 = \mathbf{280}$.\\
+Meaning: if Bedroom~1 is 6 blocks wide, you need 280 wool total.
+
+(c)\quad $20w + 160 = 300 \implies 20w = 140 \implies w = 7$.\\
+Meaning: if you want to collect exactly 300 wool, Bedroom~1 should be 7 blocks wide.
+
+(d)\quad Suppose $f(a) = f(b)$. Then $20a + 160 = 20b + 160$, so $20a = 20b$,
+therefore $a = b$. Injective. \checkmark
+
+(e)\quad Natural domain: positive integers ($w \geq 1$, whole blocks only).\\
+\textbf{Not surjective} onto $\mathbb{Z}^+$. The outputs of $f$ are $180, 200, 220, \ldots$
+--- only multiples of 20 starting at 180. Most positive integers (e.g.\ 181) are never hit.
+
+\textit{Good Socratic question: ``Is every even number a possible output?
+What about 182?'' $20w + 160 = 182 \implies w = 1.1$ --- not a whole number.}
+
+\bigskip
+\textbf{Q5.}\quad Speaking functions.
+
+(a)\quad \textit{``f of x equals three x squared plus one.''}
+
+(b)\quad No. $f(x)$ means ``the output of function $f$ when the input is $x$'' ---
+it is not multiplication. The parentheses are function-application notation, not grouping.
+
+(c)\quad \textit{``f of g of x.''} Meaning: first apply $g$ to $x$, then apply $f$
+to the result. This is function \textbf{composition} --- a preview of what's ahead.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section*{Part 3 --- Challenge}
+
+\textbf{Q6.}\quad The Finite Trap.
+
+\textbf{It is impossible.} Any injective function $f\colon \{1,2,3\} \to \{1,2,3\}$
+must send three distinct inputs to three distinct outputs --- but there are only three
+elements in the codomain, so all three must be used. Therefore it is automatically
+surjective.
+
+On finite sets of equal size: \textbf{injective $\iff$ surjective $\iff$ bijective}.
+
+\textit{The principle at work is the Pigeonhole Principle: if you have $n$ pigeons
+and $n$ holes, and each pigeon goes in a different hole, every hole has a pigeon.
+Name this for the students when they get stuck. This is one of the most useful
+ideas in all of combinatorics.}
+
+\bigskip
+\textbf{Q7.}\quad The Collatz Function.
+
+(a)\quad Starting at $n = 6$:
+\[
+  6 \to 3 \to 10 \to 5 \to 16 \to 8 \to 4 \to 2 \to 1
+\]
+8 steps.
+
+(b)\quad First 15 terms starting at $n = 27$:
+\[
+  27,\ 82,\ 41,\ 124,\ 62,\ 31,\ 94,\ 47,\ 142,\ 71,\ 214,\ 107,\ 322,\ 161,\ 484,\ \ldots
+\]
+\textit{The sequence from 27 takes 111 steps and reaches a maximum of 9232 before
+collapsing to 1. This is a great illustration of why checking examples is not the
+same as proving --- it gets much worse before it gets better.}
+
+(c)\quad $C$ is \textbf{not injective}. Counterexample: $C(3) = 10$ and $C(20) = 10$,
+but $3 \neq 20$.
+
+(Check: 3 is odd, $3(3)+1 = 10$. \; 20 is even, $20/2 = 10$.)
+
+\textit{Students who look for a counterexample by trying small cases will find this.
+Students who try to prove injectivity will get stuck --- which is the right outcome.
+Ask: ``Did you find a proof, or did you give up? Did you try to find a counterexample?''}
+
+(d)\quad \textbf{Conjecture:} Starting from any positive integer, repeated application
+of $C$ eventually reaches 1.
+
+\textit{This is the Collatz Conjecture, open since 1937. Verified computationally for
+all $n$ up to roughly $2^{68}$. Paul Erd\H{o}s said: ``Mathematics is not yet ready for
+such problems.'' If either student conjectures this correctly, tell them what it is.}
+
+\end{document}

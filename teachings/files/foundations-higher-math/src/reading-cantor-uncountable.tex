@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+
+\parindent=0pt
+\parskip=1em
+\pagestyle{fancy}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries The Mathematician Who Counted the Uncountable}\\[4pt]
+  Georg Cantor (1845--1918)\\[6pt]
+  \textit{Week 2 History Spotlight}
+\end{center}
+\hrule\bigskip
+
+\noindent\textbf{The Setup}
+
+In 1874, a German mathematician named Georg Cantor published a paper that asked
+one of the strangest questions in the history of mathematics: \textit{are all
+infinities the same size?}
+
+Everyone assumed the answer was yes. Infinity is infinity. It's the biggest thing
+there is. What would it even mean for one infinity to be bigger than another?
+
+Cantor proved they were wrong. Some infinities are strictly larger than others.
+And to do it, he invented set theory --- the same language you are learning today.
+
+\bigskip
+\noindent\textbf{Where He Came From}
+
+Cantor was born in Saint Petersburg, Russia, to a Danish merchant father and a
+Russian mother. The family moved to Germany when he was eleven, and he spent most
+of his life there. From an early age he was a gifted student, but unremarkable in
+the eyes of the mathematical establishment --- a detail that would matter a lot later.
+
+He got his doctorate from the University of Berlin in 1867, writing a thesis on
+number theory. Respectable work. Nothing that hinted at what was coming.
+
+\bigskip
+\noindent\textbf{The Idea That Changed Everything}
+
+Cantor started thinking about a deceptively simple question: how do you compare
+the ``sizes'' of two infinite sets?
+
+For finite sets, it's easy --- you count. But what does it mean to count an infinite
+collection? You can't just say ``the natural numbers are bigger than the even numbers''
+because both go on forever.
+
+Cantor's insight was to use \textbf{pairing}. Two sets have the same size if you
+can perfectly match their elements, one-to-one, with nothing left over.
+In the language you're learning: they have the same size if there's a \textbf{bijection}
+between them.
+
+Using this idea, he showed something wild: the natural numbers $\mathbb{N}$ and
+the even natural numbers $\{2, 4, 6, 8, \ldots\}$ are actually the \textbf{same
+size}. You can pair them:
+
+\[
+  1 \leftrightarrow 2,\quad
+  2 \leftrightarrow 4,\quad
+  3 \leftrightarrow 6,\quad
+  4 \leftrightarrow 8,\quad \ldots
+\]
+
+Every natural number gets a partner. No natural number is left out. No even number
+is doubled up. It's a perfect \textbf{bijection}. So the two sets are the same ``size,''
+even though one seems smaller.
+
+This was already strange. But Cantor wasn't done.
+
+\bigskip
+\noindent\textbf{The Diagonal Argument}
+
+Cantor then asked: what about the real numbers $\mathbb{R}$? Could we also pair
+every real number with a natural number?
+
+He proved we cannot. No matter how cleverly you try to list the real numbers between
+0 and 1, he could always find a real number you missed. His method --- now called
+\textbf{Cantor's diagonal argument} --- is still one of the most beautiful proofs
+in all of mathematics. It goes roughly like this:
+
+\textbf{Suppose} you claim you have a complete list of all real numbers between 0 and 1:
+
+\medskip
+\begin{center}
+\begin{tabular}{@{} c l @{}}
+  1st number: & $0.\mathbf{3}14159\ldots$ \\
+  2nd number: & $0.7\mathbf{1}8281\ldots$ \\
+  3rd number: & $0.57\mathbf{7}215\ldots$ \\
+  4th number: & $0.141\mathbf{5}92\ldots$ \\
+  \vdots & \vdots
+\end{tabular}
+\end{center}
+
+\medskip
+Now build a new number: look at the \textbf{diagonal} digits (bolded above:
+$3, 1, 7, 5, \ldots$) and change each one. If it's 3, write 4. If it's 1, write 2. If it's 9, write 0.
+And so on. The number you just built is different from the 1st entry in the 1st decimal place,
+different from the 2nd in the 2nd place, different from the 3rd in the 3rd place
+--- different from \textit{every} entry on the list, in the one spot that matters.
+
+So your ``complete'' list was not complete. There's always a real number missing.
+Cantor concluded that the real numbers are \textbf{strictly more numerous}
+than the natural numbers. A larger kind of infinity.
+
+He called the size of $\mathbb{N}$ the first infinite cardinal, $\aleph_0$
+(``aleph-null''), and the size of $\mathbb{R}$ something larger: $2^{\aleph_0}$.
+He spent years trying to prove there was no infinity ``in between'' these two.
+That question --- the \textbf{Continuum Hypothesis} --- was never resolved in his lifetime.
+(It is still, in a precise sense, unresolvable. But that's a story for another day.)
+
+\bigskip
+\noindent\textbf{The Reception}
+
+The mathematical world did not applaud.
+
+Leopold Kronecker --- one of the most powerful mathematicians in Germany,
+and Cantor's former professor --- despised the work. He called Cantor a
+``corrupter of youth.'' He publicly ridiculed him, blocked him from getting
+professorships in Berlin, and wrote letters campaigning against his publications.
+
+His objection was philosophical: he believed mathematics should only deal with
+things you can explicitly construct, step by step. Infinite sets, in his view,
+were nonsense. ``God made the integers,'' Kronecker famously said,
+``all else is the work of man.''
+
+Cantor was devastated. He suffered what his doctors called ``nervous exhaustion''
+--- what we would today recognize as severe depression. He was hospitalized multiple
+times over the years in a sanatorium in Halle.
+
+Between episodes, he kept working. He published. He corresponded with mathematicians
+across Europe who understood and supported him. He wrote long, impassioned letters
+defending his ideas. He also developed a keen interest in Shakespeare scholarship
+--- he became convinced, seriously, that Francis Bacon had secretly written
+Shakespeare's plays, and spent years on that project too. (He was wrong about this one.)
+
+\bigskip
+\noindent\textbf{The End, and the Legacy}
+
+Cantor died in 1918 in the sanatorium where he had been living.
+He had spent the final years of his life asking to be allowed to go home.
+He died before he could.
+
+Within a generation, the mathematical world had completely reversed its verdict.
+David Hilbert --- the most influential mathematician of the early 20th century ---
+called Cantor's work ``the finest product of mathematical genius and one of the
+supreme achievements of purely intellectual human activity.''
+
+Today, set theory is the foundation of essentially all of modern mathematics.
+When you write $f \colon A \to B$ or talk about domain and codomain,
+you are using Cantor's language. Every theorem in analysis, algebra, and topology
+is built on the idea that mathematical objects can be organized into sets and
+studied by their relationships.
+
+Cantor did not live to see that vindication.
+
+\bigskip
+\noindent\textbf{One Thing to Think About}
+
+Cantor showed that there are different sizes of infinity by finding a function ---
+a bijection (or proving one can't exist). The same tool he used to compare sets
+is the same tool we use to understand functions.
+
+When you prove that a function is injective or surjective, you are asking Cantor's
+question in miniature: can these two sets be perfectly paired?
+
+\bigskip
+\hrule\bigskip
+\noindent \textit{Discussion question}: Kronecker said you should only
+do mathematics with things you can explicitly build, step by step.
+Cantor said infinite sets are real mathematical objects even if you can't list them all.
+Who do you think is right? Does it matter?
+
+\bigskip
+
+Write a response in your words. 
+
+\end{document}

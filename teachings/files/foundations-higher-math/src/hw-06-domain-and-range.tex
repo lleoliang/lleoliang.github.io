@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\wl}{\par\vspace{5mm}\noindent\rule{\linewidth}{0.4pt}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\pagestyle{fancy}
+\begin{center}
+  {\Large\bfseries Homework 6}\\[4pt]
+  Domain \& Range: Finding Outputs by Solving Backwards\\[4pt]
+  {\small Functions Unit --- Extension}\\[6pt]
+  Name:\;\underline{\hspace{6.5cm}}\quad
+\end{center}
+\hrule\bigskip
+
+\section*{Instructions}
+Use a \textbf{pen} and \textbf{show every step}. This is a difficult homework, you must be resourceful. It would be a good idea to draft your answers on a blank sheet of paper before writing your final answer in pen. 
+
+For each function you will find the \textbf{domain} and the
+\textbf{range}, and for both you must \emph{justify} your answer using the method below. You may use the internet and AI as a
+\textbf{teacher}, but try the problems yourself first. 
+
+
+% ===========================================================================
+\section*{Reading --- Finding the Range by Solving Backwards}
+Recall from the functions unit: the \textbf{domain} is the set of allowed inputs, and the \textbf{range} is the
+set of outputs the function can actually produce. Finding the domain is about avoiding trouble; finding the range
+takes the clever idea you saw in class.
+
+\subsection*{Domain: avoid the two dangers}
+For every function in this homework, the domain is all real numbers \emph{except} where the rule breaks. Two
+things break a rule:
+\begin{itemize}
+  \item \textbf{Division by zero:} a denominator can never equal $0$.
+  \item \textbf{Even roots of negatives:} whatever sits inside a square root must be $\ge 0$.
+\end{itemize}
+Everywhere else, the input is allowed.
+
+\subsection*{Range: ask ``which outputs are reachable?''}
+Here is the key idea. Pick an \emph{arbitrary} target output $y$ and ask: is there an input $x$ in the domain with
+$f(x) = y$? To find out, \textbf{solve the equation $y = f(x)$ for $x$}.
+\begin{itemize}
+  \item If you can solve it and get a valid $x$ (a real number in the domain), then $y$ \emph{is} in the range.
+  \item If certain values of $y$ force an impossible $x$ (dividing by zero, or a square root of a negative), then
+        those $y$ are \emph{not} in the range.
+\end{itemize}
+
+\textit{This is exactly the ``onto'' question from our functions unit: a value $y$ is in the range precisely when
+it has a \textbf{preimage} --- an input that maps to it. Solving $y = f(x)$ for $x$ is how you hunt for that
+preimage.}
+
+\subsection*{Worked example}
+Find the domain and range of $\;g(x) = \dfrac{6x}{x+2}$.
+
+\textbf{Domain.} The denominator $x+2$ equals $0$ when $x = -2$, so the domain is all real numbers except $-2$.
+
+\textbf{Range.} Set $y = \dfrac{6x}{x+2}$ and solve for $x$:
+\begin{align*}
+  y(x+2) &= 6x \\
+  yx + 2y &= 6x \\
+  yx - 6x &= -2y \\
+  x(y-6) &= -2y \\
+  x &= \frac{-2y}{\,y-6\,}.
+\end{align*}
+This produces a valid $x$ for every $y$ \emph{except} $y = 6$ (which would divide by zero). So $g$ can output any
+real number except $6$: the range is all real numbers except $6$. You can also write this as $(-\infty,6) \cup (6,\infty)$. You can answer in words or use mathematical symbols, either is fine as long as you are clear.
+
+\medskip
+Now use this same method on each problem: \textbf{domain first, then solve $y = f(x)$ for $x$}.
+
+% ===========================================================================
+\newpage
+\section*{Problems}
+For each function, find the domain and range with formal justification.
+
+\bigskip
+\textbf{1.}\quad $f(x) = 4x - 7$.
+
+\newpage
+
+\bigskip
+\textbf{2.}\quad $f(x) = \sqrt{2x + 6}$.
+
+\newpage
+
+\newpage
+\textbf{3.}\quad $g(x) = \dfrac{5x}{\,x - 3\,}$.
+
+\newpage
+
+\bigskip
+\textbf{4.}\quad $h(x) = x^2 + 2$.
+
+\newpage
+
+\newpage
+\textbf{5.}\quad $\bigstar$\quad \textbf{Challenge.}\quad $p(x) = x^2 - 4x + 7$.
+
+\medskip
+\textit{Hint: solving $y = x^2 - 4x + 7$ for $x$ means solving a quadratic equation for $x$. Think about when that
+quadratic has a real solution --- that is the question that decides the range. (Completing the square is another
+route.)}
+
+
+% ===========================================================================
+\newpage
+\section*{Notebook Artifact}
+
+\bigskip
+\textbf{N1.}\quad If you used the internet or AI, describe how you used it.
+\wls{5}
+
+\end{document}

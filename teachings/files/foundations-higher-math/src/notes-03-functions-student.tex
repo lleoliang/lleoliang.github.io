@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyfoot[L]{\scriptsize CC BY-NC-SA 4.0 \textbullet\ Leo Liang}
+\renewcommand{\headrulewidth}{0pt}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array, booktabs}
+\usepackage{pgffor}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\parindent=0pt
+\parskip=1em
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\wl}{\par\vspace{3mm}\noindent\textcolor{gray!50}{\rule{\linewidth}{0.4pt}}\par\vspace{1mm}}
+\newcommand{\wls}[1]{\foreach \i in {1,...,#1}{\wl}}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Guided Notes --- Introduction to Functions}\\[6pt]
+{\large Worksheet II\quad|\quad Math Summer Camp}\\[8pt]
+Name:\enspace\underline{\hspace{6cm}}\quad Date:\enspace\underline{\hspace{3cm}}
+\end{center}
+\bigskip
+\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip
+\textbf{Taking notes is a skill.}\par\smallskip
+Here we provide a simple framework to help you get started on learning to take notes. Each concept box has three sections. Fill them in as Leo talks.\\[4pt]
+\textbf{DEFINITION} $\leftarrow$ Copy this exactly. Precision in math depends on exact wording.\\[2pt]
+\textbf{INTUITION} $\leftarrow$ Rephrase it in your own words. If you can't, you don't have it yet.\\[2pt]
+\textbf{EXAMPLE} $\leftarrow$ Write a worked example. This is what you'll look at when homework gets hard.
+\par\smallskip
+\end{minipage}}
+\bigskip\bigskip
+
+% ─── HOUR 1 ──────────────────────────────────────────────────────────────────
+\section*{Hour 1 --- What Is a Function?}
+
+\subsection*{Function}
+\hrule
+% Concept: Function
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{3}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ draw a valid arrow diagram here}
+
+A helpful note-taking tip is to write ``Refer to Example 2.2.1 (second week, second lesson, figure 1)'' here. Then write the problem and draw the figure in your notebook, and write Example 2.2.1 next to it somewhere you can easily find.
+\wls{1}
+
+\bigskip
+A function $f$ from set $A$ to set $B$ is written:\hfill
+\bigskip
+\bigskip
+\bigskip
+
+\textbf{Four ways to represent a function:}
+
+\bigskip
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\textbf{Arrow diagram} & \textbf{Ordered pairs}\\
+\hline
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+\hline
+\end{tabular}
+
+\begin{tabular}{|p{0.47\linewidth}|p{0.47\linewidth}|}
+\hline
+\textbf{Table} & \textbf{Graph}\\
+\hline
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+& \\[0.7cm]
+\hline
+\end{tabular}
+
+\bigskip\bigskip
+
+\textbf{What breaks the definition? (Counterexample)}
+
+The rule that makes something \textbf{not} a function:
+\wls{2}
+
+\newpage
+% Concept: Vertical Line Test
+\subsection*{Vertical Line Test}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ sketch one graph that passes and one that fails}
+\wl
+
+\textbf{Connection to last week --- Set Theory:}\quad{\small\itshape (fill in the blanks)}
+
+A function $f : A \to B$ is actually a special kind of subset of \underline{\hspace{3.5cm}}.
+
+Special because: each first element appears \underline{\hspace{4cm}}.
+
+\bigskip\bigskip
+
+% ─── HOUR 2 ──────────────────────────────────────────────────────────────────
+\newpage
+\section*{Hour 2 --- Function Notation, Domain, Codomain, Range}
+
+\subsection*{Function Notation\quad $f(x)$}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ evaluate $f(3)$ for a function Leo gives}
+\wls{3}
+
+\textbf{Practice:}\quad Given $f(x) = 2x + 1$:
+
+\bigskip
+\renewcommand{\arraystretch}{2.4}
+\begin{tabular}{|p{0.23\linewidth}|p{0.23\linewidth}|p{0.23\linewidth}|p{0.23\linewidth}|}
+\hline
+$f(0) = $ & $f(3) = $ & $f(-2) = $ & $f(a) = $\\
+\hline
+& & &\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\bigskip\bigskip
+
+\newpage
+\subsection*{Domain}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ identify the domain from a table or graph}
+\wls{2}
+
+\subsection*{Codomain}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ identify the codomain from an arrow diagram}
+\wls{2}
+
+\subsection*{Range\quad (Image)}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ list the range of $f(x)=2x+1$ when domain $=\{0,1,2\}$}
+\wls{2}
+
+\textbf{Set Theory connection:}\quad{\small\itshape (fill in the blanks)}
+
+The range is always a \underline{\hspace{3cm}} of the codomain.
+
+In set notation:\quad $R(f) \subseteq$\enspace\underline{\hspace{3.5cm}}.
+
+\textbf{Practice --- for each function below, identify domain, codomain, and range:}
+
+\bigskip
+\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{|p{0.395\linewidth}|p{0.175\linewidth}|p{0.175\linewidth}|p{0.175\linewidth}|}
+\hline
+\textbf{Function} & \textbf{Domain} & \textbf{Codomain} & \textbf{Range}\\
+\hline
+$f:\{1,2,3\}\to\{A,B,C,D\}$,\newline $f(1)=A,\ f(2)=A,\ f(3)=B$ & & &\\
+\hline
+$g:\mathbb{R}\to\mathbb{R}$,\quad $g(x) = x^{2}$ & & &\\
+\hline
+$h:\{\text{cats},\text{dogs}\}\to\{0,1,2\}$,\newline $h(\text{cats})=2$,\quad $h(\text{dogs})=2$ & & &\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\bigskip\bigskip
+
+% ─── HOUR 3 ──────────────────────────────────────────────────────────────────
+\newpage
+\section*{Hour 3 --- Injective, Surjective, Bijective}
+
+\subsection*{Injective\quad (one-to-one)}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ draw an injective arrow diagram}
+\wls{1}
+
+\subsection*{Surjective\quad (onto)}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ draw a surjective arrow diagram}
+\wls{1}
+
+\subsection*{Bijective}
+\hrule
+
+\textbf{DEFINITION}\hfill\textit{\footnotesize $\leftarrow$ write this verbatim --- precision matters}
+\wls{2}
+
+\textbf{INTUITION}\hfill\textit{\footnotesize $\leftarrow$ write this in your own words}
+\wls{2}
+
+\textbf{EXAMPLE}\hfill\textit{\footnotesize $\leftarrow$ draw a bijective arrow diagram}
+\wls{2}
+
+\textbf{Quick check --- label each diagram below as injective, surjective, bijective, or none:}
+\bigskip
+\begin{tabular}{|p{0.31\linewidth}|p{0.31\linewidth}|p{0.31\linewidth}|}
+\hline
+\textbf{Diagram 1} & \textbf{Diagram 2} & \textbf{Diagram 3}\\
+{\small\itshape (Leo draws)} & {\small\itshape (Leo draws)} & {\small\itshape (Leo draws)}\\[1.2cm]
+& &\\[1.2cm]
+& &\\[1.2cm]
+& &\\[1.2cm]
+Label:\enspace\underline{\hspace{2cm}} & Label:\enspace\underline{\hspace{2cm}} & Label:\enspace\underline{\hspace{2cm}}\\
+\hline
+\end{tabular}
+\bigskip\bigskip
+
+\textbf{Cantor connection:}\quad{\small\itshape (fill in the blanks)}
+
+A bijection between two sets means they have the same \underline{\hspace{3.5cm}}.
+
+Cantor used this idea to compare the sizes of \underline{\hspace{3cm}} sets.
+\bigskip\bigskip
+
+\noindent\fbox{\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+\smallskip
+\textbf{Challenge Problems}\par\smallskip
+\textbf{C1.}\enspace Let $A = \{1,2,3\}$ and $B = \{a,b,c,d\}$.\\[4pt]
+\quad (a)\enspace Can a function $f : A \to B$ be surjective?\enspace Explain.\\[4pt]
+\quad (b)\enspace Can a function $f : A \to B$ be injective?\enspace Construct one.
+\wls{8}
+\textbf{C2.}\enspace Let $f : \mathbb{R} \to \mathbb{R}$,\quad $f(x) = x^{2}$.\\[4pt]
+\quad (a)\enspace Is $f$ injective?\enspace Give a counterexample or a proof.\\[4pt]
+\quad (b)\enspace Is $f$ surjective?\enspace Justify.
+\wls{8}
+\par\smallskip
+\end{minipage}}
+
+\end{document}

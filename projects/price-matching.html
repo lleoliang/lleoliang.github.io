@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leo Liang | Store Price-Matching Algorithm</title>
+  <meta name="description" content="A pipeline that matches products across two grocery store catalogs despite differing names, brands, and sizes.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/project.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrapper header-inner">
+      <a class="brand" href="../index.html#about">
+        <h1>Leo Liang</h1>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <div class="nav-main">
+          <a href="../index.html#about">About</a>
+          <div class="nav-item">
+            <a href="../projects.html">Projects</a>
+            <ul class="nav-menu">
+              <li><a href="../projects/cvor.html">Cross-View Object Registration (CVOR)<span>January 2026 – Present</span></a></li>
+              <li><a href="../projects/claude-secretary.html">Claude Secretary<span>July 2026</span></a></li>
+              <li><a href="../projects/dynamic-memory-for-claude.html">Dynamic Memory for Claude<span>June 2026</span></a></li>
+              <li><a href="../projects/price-matching.html">Store Price-Matching Algorithm<span>December 2025</span></a></li>
+              <li><a href="../projects/simulation-calibration.html">Simulation Calibration for Autonomous Vehicles<span>June 2025 – August 2025</span></a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../teachings.html">Teachings</a>
+            <ul class="nav-menu">
+              <li><a href="../teachings/philosophy.html">Teaching Philosophy</a></li>
+              <li><a href="../teachings/math-164-ta.html">MATH 164 TA Materials</a></li>
+              <li><a href="../teachings/foundations-higher-math.html">Foundations of Higher Math</a></li>
+              <li><a href="../teachings/algebra-i-aops.html">Algebra I Supplements</a></li>
+              <li><a href="../teachings/course-design.html">Course Design</a></li>
+            </ul>
+          </div>
+          <div class="nav-item">
+            <a href="../music.html">Music</a>
+            <ul class="nav-menu">
+              <li><a href="../music/performances.html">Performances</a></li>
+              <li><a href="../music/compositions.html">Compositions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="nav-social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/ileoliang" aria-label="LinkedIn"><img src="../images/icons/linkedinicon.png" alt="" class="nav-icon"></a>
+          <a class="email-link" href="#" hidden aria-label="Email"><img src="../images/icons/emailicon.png" alt="" class="nav-icon"></a>
+          <a href="https://github.com/lleoliang" aria-label="GitHub"><img src="../images/icons/githubicon.png" alt="" class="nav-icon"></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrapper">
+
+    <a class="proj-back" href="../projects.html">← Projects</a>
+
+    <section class="proj-hero">
+      <p class="tl-date">December 2025</p>
+      <h2 class="proj-title">Store Price-Matching Algorithm</h2>
+      <p class="tl-sub">Python · ML · Data Analysis</p>
+      <a class="tl-link" href="https://github.com/lleoliang/price-matching-algorithm" target="_blank" rel="noopener">View on GitHub →</a>
+      <p class="proj-lead">An algorithm that matches products across two grocery store catalogs, even when the same item is named, branded, and sized differently in each.</p>
+
+      <div class="proj-stats" aria-label="Scale of the matching problem">
+        <div class="proj-stat">
+          <span class="proj-stat-num">~343,000,000</span>
+          <span class="proj-stat-label">possible product pairs</span>
+        </div>
+        <span class="proj-stat-arrow" aria-hidden="true">→</span>
+        <div class="proj-stat">
+          <span class="proj-stat-num">1</span>
+          <span class="proj-stat-label">best match per product</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The Problem</h3>
+      <p>To price-match, a business has to work out which of its products are the same as a competitor's. That is harder than it sounds: product names, brands, and sizes rarely line up between stores. One catalog might list a "6 x 8 oz" pack while another lists the same item as "48 oz", and brand and wording vary too.</p>
+      <p>The two catalogs here held about 36,900 and 9,300 products. Comparing every product against every other means roughly 343 million pairs, far too many to score carefully one by one.</p>
+      <p>tldr: Brute force time complexity sucks (O(n^2))! We want O(n log n) or better!</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The Intuition</h3>
+      <p>Suppose one store sells <strong>Coca-Cola Classic Soda, 12 oz cans, 12 pack</strong>, and the other store has these three products. As a shopper, which would you say is the closest match?</p>
+      <div class="proj-table-wrap">
+        <table class="proj-table">
+          <thead>
+            <tr><th>Other store's product</th><th>Wording</th><th>Size</th><th>Brand</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A. Coca-Cola Classic Soda, 12 oz cans, 24 pack</td><td>Nearly identical</td><td>Twice as much</td><td>Same</td></tr>
+            <tr><td>B. Coca-Cola Classic, 12 fl oz cans (12 ct)</td><td>Quite different</td><td>Same</td><td>Same</td></tr>
+            <tr><td>C. Pepsi Cola Soda, 12 oz cans, 12 pack</td><td>Similar</td><td>Same</td><td>Different</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Most shoppers would pick <strong>B</strong>. It's worded differently, but it is the same drink in the same amount. Product A reads almost exactly like the original but holds twice as much soda, so it sells at a different price. Product C is the right size but a different brand.</p>
+      <p>No single signal gets this right. Comparing wording alone picks A. Brand alone can't tell A from B, and size alone can't tell B from C. Only by looking at all three together does B come out on top, and some signals matter more than others, which is why I chose to implement a heuristic function.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Scoring</h3>
+      <p>Each candidate pair gets a final score that combines three signals:</p>
+      <ul class="proj-steps">
+        <li><strong>Text similarity (60%).</strong> The TF-IDF cosine similarity between the two products' text.</li>
+        <li><strong>Packaging (30%).</strong> How close the total sizes are, scored from 0 to 1. If the units are incompatible the score is 0, and if either side is missing a size it falls back to comparing pack counts.</li>
+        <li><strong>Brand (10%).</strong> 1 if the brands match exactly, otherwise 0.</li>
+      </ul>
+      <p>Blocking is done in batches with sparse matrix operations, which keeps memory use manageable across the full catalogs.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">How It Works</h3>
+      <p>Two raw catalogs go in, and one best match per product comes out.</p>
+      <div class="flow" role="group" aria-label="Flow chart of the matching pipeline">
+        <div class="flow-inputs">
+          <div class="flow-box flow-box--io"><strong>Store A catalog</strong><span>~36,900 products</span></div>
+          <div class="flow-box flow-box--io"><strong>Store B catalog</strong><span>~9,300 products</span></div>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-box flow-box--step">
+          <span class="flow-num">1</span>
+          <div>
+            <strong>Preprocess</strong>
+            <p>Standardize the text and size strings.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><span>~343M possible pairs</span></div>
+
+        <div class="flow-box flow-box--step">
+          <span class="flow-num">2</span>
+          <div>
+            <strong>Block</strong>
+            <p>Use TF-IDF to shortlist the 100 most similar Store B products for each Store A product.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><span>~3.7M candidate pairs</span></div>
+
+        <div class="flow-box flow-box--step">
+          <span class="flow-num">3</span>
+          <div>
+            <strong>Score</strong>
+            <p>Score each candidate on text similarity, packaging, and brand.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><span>scored candidates</span></div>
+
+        <div class="flow-box flow-box--step">
+          <span class="flow-num">4</span>
+          <div>
+            <strong>Match</strong>
+            <p>Pick the highest-scoring Store B product for each Store A product.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-box flow-box--io"><strong>Best matches</strong><span>one Store B product for each Store A product</span></div>
+      </div>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Results</h3>
+      <div class="proj-stats proj-stats--plain" aria-label="Key results">
+        <div class="proj-stat">
+          <span class="proj-stat-num">~93×</span>
+          <span class="proj-stat-label">fewer pairs to score</span>
+        </div>
+        <div class="proj-stat">
+          <span class="proj-stat-num">&lt; 1 min</span>
+          <span class="proj-stat-label">end-to-end runtime</span>
+        </div>
+        <div class="proj-stat">
+          <span class="proj-stat-num">36,559</span>
+          <span class="proj-stat-label">Store A products matched</span>
+        </div>
+      </div>
+      <ul class="proj-steps">
+        <li><strong>Blocking did the heavy lifting.</strong> Keeping the top 100 candidates per product cut about 343 million possible pairs to about 3.7 million—about 1% of the total—so the expensive scoring only ran on a small fraction of them.</li>
+        <li><strong>Fast enough.</strong> The full pipeline runs in under a minute. A brute-force version that scored every pair never finishes.</li>
+        <li><strong>Every product got a match.</strong> Each Store A product received exactly one best Store B match, 36,559 in total.</li>
+        <li><strong>Accurate results.</strong> Looking through the output manually, the matches fit human intuition near perfectly.</li>
+      </ul>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">Technical Topics</h3>
+      <p>Algorithm Design, Tokenization, Python, pandas, scikit-learn, NumPy</p>
+    </section>
+
+  </main>
+
+  <button id="backToTop" class="button back-to-top small" type="button" aria-label="Back to top">Top</button>
+
+  <footer class="site-footer">
+    <div class="wrapper footer-row">
+      <div>© <span id="year"></span> Leo Liang</div>
+      <div><a href="../index.html">leo-liang</a></div>
+    </div>
+  </footer>
+</body>
+</html>

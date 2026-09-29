@@ -206,6 +206,22 @@ body{
   }
 }
 
+@media (max-width: 700px){
+  /* The header's desktop padding (3rem a side) and full-size name/nav
+     leave almost no room on a phone, which is what forced the nav links
+     and social icons to collide and wrap into each other. Give the header
+     its own compact, single-column phone layout instead. */
+  .site-header .wrapper{ padding: 0.85rem 1.1rem; }
+  .header-inner{ flex-direction: column; align-items: center; gap: 10px; }
+  .brand h1{ font-size: 1.6rem; }
+  .nav{ flex-direction: column; gap: 10px; }
+  .nav-main{ width: 100%; }
+
+  /* Social icons move out of the sticky header (where they were crowding
+     the nav) down to the footer instead — see .footer-social below. */
+  .nav .nav-social{ display: none !important; }  /* wins over the later unconditional .nav-social rule */
+}
+
 /* Nav (simple text links) */
 .nav{
   display:flex;
@@ -317,6 +333,19 @@ body{
 .nav .nav-social a:hover .nav-icon{ opacity: 1; }
 
 .header-actions{ display:none; }
+
+/* Social icons repeated in the footer, phone-only (see .nav .nav-social
+   above, which hides the header copy at the same breakpoint). */
+.footer-social{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.1rem;
+}
+@media (max-width: 700px){
+  .footer-social{ display: flex; }
+}
 
 /* Generic elements */
 a{ color: inherit; }
@@ -570,9 +599,25 @@ section{
   .learn-more-row{ flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
-@media (max-width: 480px){
-  .branch{ gap: 0.75rem; }
-  .branch-links{ font-size: 0.9rem; }
+@media (max-width: 600px){
+  /* The decorative SVG and 2.5rem link text need real width to line up
+     properly (see the branch-diagram note in CLAUDE.md); below 600px there
+     isn't room for both, so drop the SVG and fall back to a plain list. */
+  .branch{
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .branch-svg{ display: none; }
+  .branch-links{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+  }
+  .branch-link{ font-size: 1.5rem; }
 }
 
 /* mobile: stack into one column with line on the left */

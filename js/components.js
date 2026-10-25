@@ -33,7 +33,7 @@
     { href: "projects/dynamic-memory-for-claude.html", title: "Dynamic Memory for Claude", date: "May 2026 – Present" },
     { href: "projects/price-matching.html", title: "Store Price-Matching Algorithm", date: "December 2025" },
     { href: "projects/meme-stock-dl.html", title: "Meme Stock Surge Prediction", date: "October – December 2025" },
-    { href: "projects/simulation-calibration.html", title: "Simulation Calibration for Autonomous Vehicles", date: "June 2025 – August 2025" }
+    { href: "projects/simulation-calibration.html", title: "Simulation Calibration for Autonomous Vehicles", date: "June – August 2025" }
   ];
 
   var TEACHINGS = [

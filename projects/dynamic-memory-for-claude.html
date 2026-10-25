@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Leo Liang | Dynamic Memory for Claude</title>
-  <meta name="description" content="Dynamic Memory for Claude: project page coming soon.">
+  <meta name="description" content="Dynamic Memory: a Claude Skill that gives Claude persistent, on-disk memory.">
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/project.css">
@@ -25,9 +25,10 @@
               <li><a href="../projects/cvor.html">Cross-View Object Registration (CVOR)<span>January 2026 – Present</span></a></li>
               <!-- Coming soon, hidden for now:
               <li><a href="../projects/claude-secretary.html">Claude Secretary<span>July 2026</span></a></li>
-              <li><a href="../projects/dynamic-memory-for-claude.html">Dynamic Memory for Claude<span>June 2026</span></a></li>
               -->
+              <li><a href="../projects/dynamic-memory-for-claude.html">Dynamic Memory for Claude<span>May 2026 – Present</span></a></li>
               <li><a href="../projects/price-matching.html">Store Price-Matching Algorithm<span>December 2025</span></a></li>
+              <li><a href="../projects/meme-stock-dl.html">Meme Stock Surge Prediction<span>October – December 2025</span></a></li>
               <li><a href="../projects/simulation-calibration.html">Simulation Calibration for Autonomous Vehicles<span>June 2025 – August 2025</span></a></li>
             </ul>
           </div>
@@ -63,9 +64,23 @@
     <a class="proj-back" href="../projects.html">← Projects</a>
 
     <section class="proj-hero">
-      <p class="tl-date">June 2026</p>
+      <p class="tl-date">May 2026 – Present</p>
       <h2 class="proj-title">Dynamic Memory for Claude</h2>
-      <p class="proj-lead">Coming soon.</p>
+      <p class="tl-sub">Claude Skill · Prompt Eng.</p>
+      <a class="tl-link" href="https://github.com/lleoliang/dynamic-memory" target="_blank" rel="noopener">View on GitHub →</a>
+      <p class="proj-lead">A memory skill that makes Claude a long-term collaborator — one that understands personal shorthand and remembers everything it's been told, across conversations.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The Problem</h3>
+      <p>Without memory, shorthand is meaningless. Tell Claude "ping J about Horizon before standup" in a fresh conversation and it has no idea who J is, what Horizon refers to, or when standup happens — all context that a real assistant would already know.</p>
+    </section>
+
+    <section class="proj-section">
+      <h3 class="proj-h3">The Solution</h3>
+      <p>Dynamic Memory is a Claude Skill that gives Claude a persistent, on-disk memory: contacts, preferences, projects, and any other category it decides is worth tracking, created on the fly rather than hardcoded in advance.</p>
+      <p>It's built as a two-tier store — a hot cache (<code>memory/cache.md</code>) for fast lookups, backed by deep storage in the <code>memory/</code> directory, with disk as the source of truth so multiple conversations can share the same memory. The design is inspired by the memory component of Anthropic's Productivity plugin, extended with dynamic (not predefined) categories and a hot cache kept separate from <code>CLAUDE.md</code>.</p>
+      <p>This repo is continuously evolving as I add new features and improvements to reduce token usage and improve efficiency.</p>
     </section>
 
   </main>

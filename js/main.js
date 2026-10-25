@@ -73,17 +73,13 @@ function setupMottoTime() {
       day: "2-digit"
     });
 
-    const time = now.toLocaleTimeString(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    });
-
-    el.textContent = `${date} ${time}`;
+    el.textContent = date;
   }
 
   tick();
-  setInterval(tick, 1000);
+  // Just the date now (no time), so a once-a-minute check is enough to
+  // catch the midnight rollover without a per-second interval.
+  setInterval(tick, 60000);
 }
 
 // Assemble the address at runtime so it isn't in the page source. The

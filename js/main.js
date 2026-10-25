@@ -112,12 +112,23 @@ function setupNewTabLinks() {
   });
 }
 
-/* Run setup after the page loads */
-document.addEventListener("DOMContentLoaded", () => {
+/* Run setup after the page loads. main.js is loaded by js/components.js
+   as a dynamically-created <script> element (so the header/footer it
+   touches already exist in the DOM), and a dynamically-inserted script
+   ignores the `defer` attribute and can finish loading after
+   DOMContentLoaded has already fired — so check readyState instead of
+   assuming the event is still to come. */
+function runSetup() {
   setActiveNav();
   setupBackToTop();
   setupFooterYear();
   setupMottoTime();
   setupEmail();
   setupNewTabLinks();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runSetup);
+} else {
+  runSetup();
+}

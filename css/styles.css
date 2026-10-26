@@ -374,6 +374,12 @@ section{
   /* letter-spacing: 0.4px; */
   font-family: "Ubuntu", Helvetica, Arial, sans-serif;
 }
+@media (max-width: 700px){
+  /* On phones the bio reads oversized next to everything else on the
+     site, which otherwise sits at the browser default (1rem) — bring
+     it down to match rather than let it dominate the small screen. */
+  .tagline{ font-size: 1rem; }
+}
 .motto{
   margin: 0;
   text-align: center;
@@ -622,6 +628,14 @@ section{
   transition: opacity 160ms ease;
 }
 .back-to-top.show{ opacity: 1; pointer-events:auto; }
+
+/* On phones this fixed, floating button sits over the bottom-right
+   corner of the content no matter how little space there is, so it
+   reads as clutter rather than a shortcut. Hide it below the same
+   breakpoint the rest of the site treats as "mobile". */
+@media (max-width: 700px){
+  .back-to-top{ display: none; }
+}
 
 /* Footer */
 .site-footer{

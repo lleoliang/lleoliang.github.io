@@ -101,6 +101,10 @@
 @media (max-width: 700px){
   .proj-video{ width: 100%; }
   .video-caption{ width: 100%; }
+  /* Same reasoning as .tagline in styles.css: this lead paragraph
+     otherwise reads oversized next to the 1rem body text everywhere
+     else on a phone-width screen. */
+  .proj-lead{ font-size: 1rem; }
 }
 
 /* Media at the top of a detail page: full-width video, then a strip of figures */
